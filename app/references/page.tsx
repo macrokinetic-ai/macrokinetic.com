@@ -43,29 +43,23 @@ export default function ReferencesPage() {
                   </span>
                 </div>
 
-                {/* Thumbnail — portrait covers get a 2:3 frame; landscape get 16:10 */}
-                {(() => {
-                  const cover = coverImage(r);
-                  const isPortrait = cover.h > cover.w;
-                  return (
-                    <div
-                      className={[
-                        "relative overflow-hidden rounded-lg bg-paper",
-                        r.featured ? "md:col-span-4" : "md:col-span-3",
-                      ].join(" ")}
-                    >
-                      <div className={isPortrait ? "aspect-[2/3]" : "aspect-[16/10]"}>
-                        <Image
-                          src={cover.src}
-                          alt={cover.alt}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
-                        />
-                      </div>
-                    </div>
-                  );
-                })()}
+                {/* Thumbnail — unified 4:3 frame for all entries */}
+                <div
+                  className={[
+                    "relative overflow-hidden rounded-lg bg-paper",
+                    r.featured ? "md:col-span-4" : "md:col-span-3",
+                  ].join(" ")}
+                >
+                  <div className="aspect-[4/3]">
+                    <Image
+                      src={coverImage(r).src}
+                      alt={coverImage(r).alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
+                    />
+                  </div>
+                </div>
 
                 {/* Title + meta */}
                 <div className={r.featured ? "md:col-span-4" : "md:col-span-4"}>
