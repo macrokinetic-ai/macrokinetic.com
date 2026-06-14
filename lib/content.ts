@@ -203,7 +203,7 @@ export type Reference = {
 export const references: Reference[] = [
   {
     slug: "hkia",
-    client: "Hong Kong International Airport",
+    client: "Hong Kong International Airport - Intelligent Customer Service Counter",
     editorialTitle: "Elevating Global Travel",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
@@ -222,7 +222,7 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["AI Solutions", "Retail Technology"],
     gallery: [
-      { src: "/references/hkia/01.jpg", w: 1600, h: 897, alt: "Intelligent Customer Service Counter interface at Hong Kong International Airport" },
+      { src: "https://static.wixstatic.com/media/66d5ca_da638972f5224936994f70ad383622fa~mv2.jpeg/v1/fill/w_1979,h_1484,al_c,q_90/66d5ca_da638972f5224936994f70ad383622fa~mv2.webp", w: 1979, h: 1484, alt: "HKIA Intelligent Customer Service Counter terminal installed by MacroKinetic at Hong Kong International Airport" },
       { src: "/references/hkia/02.jpg", w: 1600, h: 898, alt: "Terminal 1 interactive wayfinding map on an HKIA service kiosk" },
       { src: "/references/hkia/03.jpg", w: 1600, h: 900, alt: "Live video customer-service support on an HKIA Intelligent Service Counter" },
     ],
