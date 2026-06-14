@@ -142,82 +142,212 @@ export const pillars: Pillar[] = [
 ];
 
 export type Reference = {
+  slug: string;
   client: string;
+  editorialTitle?: string; // story-style title, in the company's "What We Did" voice
   sector: string;
   location: string;
   scope: string;
-  detail: string;
+  summary: string; // one-line intro for the index + detail header
+  detail: string; // longer body for the detail page
   partner?: string;
+  highlights?: string[]; // grounded figures / named venues
+  relatedSolutions?: string[]; // must match pillar `name`s
+  gallery: string[]; // public paths; gallery[0] doubles as thumb/hero
+  featured?: boolean;
 };
 
+/**
+ * Reference roster — grounded in the corporate decks (Corporate_Presentation_2025
+ * 0422 / 202402) and the live macrokinetic.com "What We Did" page. Copy, figures
+ * and partner names are taken from those sources; images are the decks' own project
+ * photos (see public/references/<slug>/). HKIA and Elements are featured first.
+ */
 export const references: Reference[] = [
   {
+    slug: "hkia",
     client: "Hong Kong International Airport",
-    sector: "Aviation · Wayfinding",
+    editorialTitle: "Elevating Global Travel",
+    sector: "Aviation · Public Interactive",
     location: "Hong Kong",
-    scope: "Intelligent Customer Service Counters & e-Wayfinding",
+    scope:
+      "Intelligent Customer Service Counters · Interactive Food-Court Menu · Secure Video-Conference Service",
+    summary:
+      "Intelligent service counters and interactive systems deployed across one of the world's busiest international airports.",
     detail:
-      "38 intelligent service counters deployed across Terminal 1, with ~50 further units planned for T2 and T3. Secure video-conference service with NLP chatbot and avatar fallback to back-office representatives.",
+      "MacroKinetic delivered the Intelligent Customer Service Counters (ICSC) for Hong Kong International Airport with NEC — 38 units across Terminal 1, with around 50 further units planned for T2 and T3. The platform pairs a multilingual NLP chatbot and virtual avatar with a proprietary secure video-conference link to back-office service representatives, alongside a two-unit interactive food-court menu.",
     partner: "with NEC",
+    highlights: [
+      "38 ICSC units in Terminal 1",
+      "~50 units planned for T2 & T3",
+      "Multilingual NLP chatbot + virtual avatar",
+      "Secure video-conference to back office",
+    ],
+    relatedSolutions: ["AI Solutions", "Retail Technology"],
+    gallery: [
+      "/references/hkia/01.jpg",
+      "/references/hkia/02.jpg",
+      "/references/hkia/03.jpg",
+      "/references/hkia/04.jpg",
+    ],
+    featured: true,
   },
   {
-    client: "Hong Kong Disneyland",
-    sector: "Entertainment · Interactive Retail",
-    location: "Hong Kong",
-    scope: "Interactive Retail & Gesture Experiences",
-    detail:
-      "Gesture-driven interactive retail and game installations bringing physical play into the guest journey.",
-    partner: "Kinect integration",
-  },
-  {
+    slug: "elements",
     client: "Elements Mall",
+    editorialTitle: "Wayfinding for a Landmark Destination",
     sector: "Retail · Public Interactive",
-    location: "Hong Kong",
+    location: "Kowloon, Hong Kong",
     scope: "e-Wayfinding · e-Concierge · e-Carpark Redemption",
+    summary:
+      "An end-to-end interactive concierge and wayfinding suite for a premier Kowloon retail destination.",
     detail:
-      "End-to-end interactive concierge and wayfinding suite, including automated carpark redemption, across a premier Kowloon retail destination.",
+      "Across ELEMENTS, MacroKinetic deployed an integrated e-Wayfinding, e-Concierge and e-Carpark Redemption suite — store directories with 'Take Me There' routing, dining and shopping guides, and automated car-park redemption — presented through a refined, brand-aligned touch interface.",
+    highlights: [
+      "Interactive directory with 'Take Me There' routing",
+      "e-Concierge & service information",
+      "Automated car-park redemption",
+    ],
+    relatedSolutions: ["Retail Technology", "Digital Signage"],
+    gallery: [
+      "/references/elements/01.jpg",
+      "/references/elements/02.jpg",
+      "/references/elements/03.jpg",
+      "/references/elements/04.jpg",
+      "/references/elements/05.jpg",
+    ],
+    featured: true,
   },
   {
-    client: "BMW Showroom",
-    sector: "Automotive · Brand Experience",
-    location: "Greater China",
-    scope: "Immersive Showroom Display Systems",
+    slug: "tai-po",
+    client: "Tai Po Music & Art Center",
+    editorialTitle: "Immersive Experiences in Art & Heritage",
+    sector: "Culture · Interactive Projection",
+    location: "Tai Po, Hong Kong",
+    scope: "Interactive Projection · Immersive Content",
+    summary:
+      "Immersive interactive projection blending technology with art and local heritage.",
     detail:
-      "High-fidelity display and interactive configuration experiences engineered for a flagship automotive brand environment.",
+      "With Cyberconcept, MacroKinetic created immersive interactive projection experiences for the Tai Po Music & Art Center — unique, responsive environments that blend technology with art and local heritage.",
+    partner: "with Cyberconcept",
+    highlights: [
+      "Interactive projection environments",
+      "Art & local-heritage storytelling",
+    ],
+    relatedSolutions: ["Retail Technology", "AI Solutions"],
+    gallery: [
+      "/references/tai-po/01.jpg",
+      "/references/tai-po/02.jpg",
+      "/references/tai-po/03.jpg",
+    ],
   },
   {
-    client: "Louis Vuitton · Van Cleef & Arpels",
-    sector: "Luxury Retail · Smart Lighting",
-    location: "Hong Kong · Macau",
-    scope: "Architectural & Retail Lighting Schemes",
+    slug: "interactive-installations",
+    client: "Interactive Brand & Cultural Installations",
+    editorialTitle: "Partner Projects in Public Interactive",
+    sector: "Public Interactive · Partner Projects",
+    location: "Hong Kong · Greater China",
+    scope: "Interactive Tables · Mirrors · Gesture Games · Brand Exhibitions",
+    summary:
+      "Selected partner-delivered interactive installations across museums, retail and brand experiences.",
     detail:
-      "Precision architectural lighting for maison-grade luxury retail, part of a portfolio spanning Lancôme, Four Seasons and StarWorld Macau.",
+      "A portfolio of partner projects under MacroKinetic's Public Interactive practice: interactive tables for the HSBC Museum & Archive; an AI dress-changing interactive mirror for Chow Sang Sang; gesture-driven games at Hong Kong Disneyland (Kinect); an interactive table at the BMW Showroom; an interactive exhibition for Dior Hong Kong; and an interactive game at Hong Kong Sky100.",
+    highlights: [
+      "HSBC Museum & Archive — interactive tables",
+      "Chow Sang Sang — AI dress-changing mirror",
+      "Hong Kong Disneyland — Kinect gesture games",
+      "BMW Showroom · Dior Hong Kong · Sky100",
+    ],
+    relatedSolutions: ["Retail Technology", "AI Solutions"],
+    gallery: [
+      "/references/interactive-installations/01.jpg",
+      "/references/interactive-installations/02.jpg",
+      "/references/interactive-installations/03.jpg",
+      "/references/interactive-installations/04.jpg",
+      "/references/interactive-installations/05.jpg",
+      "/references/interactive-installations/06.jpg",
+      "/references/interactive-installations/07.jpg",
+    ],
   },
   {
+    slug: "macau-customs",
     client: "Macau Customs — HK·Zhuhai·Macao Bridge",
+    editorialTitle: "Border Infrastructure at the HZMB",
     sector: "Government · Border Infrastructure",
     location: "Macau",
     scope: "LED Display & Kiosk Systems",
+    summary:
+      "Display and kiosk infrastructure for border-gate operations at a major cross-boundary crossing.",
     detail:
-      "Display and kiosk infrastructure for border-gate operations at one of the region's most significant cross-boundary crossings.",
+      "MacroKinetic supplied LED display and kiosk systems for Macau Customs at the Hong Kong–Zhuhai–Macao Bridge border gate — part of a public-infrastructure portfolio that also includes Windsor House and the Macau Sports Development Board venues.",
+    highlights: [
+      "HK–Zhuhai–Macao Bridge border gate",
+      "Windsor House",
+      "Macau Sports Development Board venues",
+    ],
+    relatedSolutions: ["Digital Signage"],
+    gallery: [
+      "/references/macau-customs/01.jpg",
+      "/references/macau-customs/02.jpg",
+      "/references/macau-customs/03.jpg",
+      "/references/macau-customs/04.jpg",
+    ],
   },
   {
-    client: "K11 Shopping Mall",
-    sector: "Retail · Display",
-    location: "Tsim Sha Tsui, Hong Kong",
-    scope: "LED Display & Smart Lighting",
-    detail:
-      "Integrated display and architectural lighting within a landmark art-and-retail destination.",
-  },
-  {
-    client: "HSBC Museum & Archive",
-    sector: "Culture · Interactive",
+    slug: "retail-led",
+    client: "Landmark Retail — LED & Kiosk",
+    editorialTitle: "LED & Kiosk Across Landmark Retail",
+    sector: "Retail · Digital Signage",
     location: "Hong Kong",
-    scope: "Interactive Table Installations",
+    scope: "LED Display & Interactive Kiosks",
+    summary:
+      "LED display and kiosk deployments across landmark malls, fashion and hospitality venues.",
     detail:
-      "Touch-driven interactive tables presenting heritage archives through an engaging, exploratory interface.",
+      "A portfolio of LED display and kiosk work across landmark retail and hospitality — including K11 (Tsim Sha Tsui), Mile Shopping Mall (Tai Kok Tsui), Emporio Armani, Shatin New Town Plaza and the W Hotel front desk.",
+    highlights: [
+      "K11 — Tsim Sha Tsui",
+      "Mile Shopping Mall — Tai Kok Tsui",
+      "Emporio Armani",
+      "Shatin New Town Plaza · W Hotel",
+    ],
+    relatedSolutions: ["Digital Signage", "Retail Technology"],
+    gallery: [
+      "/references/retail-led/01.jpg",
+      "/references/retail-led/02.jpg",
+      "/references/retail-led/03.jpg",
+      "/references/retail-led/04.jpg",
+    ],
+  },
+  {
+    slug: "smart-lighting",
+    client: "Architectural & Luxury-Retail Lighting",
+    editorialTitle: "Lighting for Maisons, Hotels & Landmarks",
+    sector: "Hospitality · Luxury Retail · Smart Lighting",
+    location: "Hong Kong · Macau",
+    scope: "Architectural, Façade & Retail Lighting",
+    summary:
+      "Architectural and retail lighting for luxury maisons, hotels and civic landmarks.",
+    detail:
+      "As sole Hong Kong & Macau distributor of Nicolaudie computerised DMX lighting control, MacroKinetic delivers architectural, façade and retail lighting schemes — a client roster spanning Louis Vuitton, Van Cleef & Arpels, Lancôme, Adidas, the W Hotel and the Penta / Harbour Plaza hotels, among others.",
+    partner: "Nicolaudie DMX — sole HK/Macau distributor",
+    highlights: [
+      "Louis Vuitton · Van Cleef & Arpels · Lancôme",
+      "Penta Hotel · Harbour Plaza",
+      "Sole HK/Macau Nicolaudie DMX distributor",
+    ],
+    relatedSolutions: ["Smart Lighting"],
+    gallery: [
+      "/references/smart-lighting/01.jpg",
+      "/references/smart-lighting/02.jpg",
+      "/references/smart-lighting/03.jpg",
+      "/references/smart-lighting/04.jpg",
+    ],
   },
 ];
+
+export function getReferenceBySlug(slug: string): Reference | undefined {
+  return references.find((r) => r.slug === slug);
+}
 
 export const offices = [
   {

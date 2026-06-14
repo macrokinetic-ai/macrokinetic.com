@@ -130,3 +130,42 @@ Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md
 - Prominence hierarchy: home logo 40px vs inner 28px; inner bar bg = rgba(255,255,255,0.8) + hairline.
 - Shared DNA across modes: same wordmark, nav labels, CTA, active underline, mobile dropdown.
 - Inner mobile: contained bar + hamburger dropdown opens/closes; no console errors.
+
+---
+
+# References → Case-Study Archive — 2026-06-14
+Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md
+
+## Grounding (real sources, not invented)
+- Mined Corporate_Presentation_20250422.pptx (41 photos) + 202402.pptx (135 photos,
+  36 slides) by unzipping ppt/media + slide XML; mapped images→slides→projects.
+- Pulled live macrokinetic.com voice: page is "What We Did" (/blog), tagline
+  "Unlock Your Technological Edge", real titles ("Elevating Global Travel…"),
+  partners (NEC, Cyberconcept, Nicolaudie, PQLabs, Kinect). **BMW verified** in
+  202402 deck slide 15.
+
+## Changes
+- [x] Extracted + downscaled 31 real project photos → public/references/<slug>/ (8.5MB).
+- [x] `lib/content.ts` — richer `Reference` model (slug, editorialTitle, summary,
+      highlights, relatedSolutions, gallery, featured) + `getReferenceBySlug`;
+      HKIA #1, Elements #2 (featured); grounded copy/figures.
+- [x] `app/references/page.tsx` — rebuilt as a clickable archive: whole-row `<Link>`,
+      real thumbnails, **"View case study"** CTA (replaces invented "View schematic"),
+      removed the fake CSS schematic. Eyebrow now "What We Did".
+- [x] `app/references/[slug]/page.tsx` — NEW detail template (back link, hero,
+      meta, summary+detail, highlights grid, gallery, related-solution links, CTA)
+      with `generateStaticParams` + per-page metadata.
+
+## Honest-attribution decision (worth noting)
+- Deck slides 6 & 15 group several partner projects on one slide, so individual
+  photos can't be truthfully attributed to a single client (e.g. deck image40 is a
+  skyline exhibition wall, NOT a BMW showroom). Rather than mislabel, merged
+  BMW / Dior HK / Sky100 / HSBC / Chow Sang Sang / Disney into one accurate grouped
+  case study: **"Interactive Brand & Cultural Installations"** that names all six.
+
+## Verification (all ✓)
+- `npm run build`: clean; 7 detail pages prerendered as SSG.
+- Index: links order = hkia, elements, …; "View case study" present; "View schematic" = 0.
+- Detail hkia renders grounded facts (38 ICSC units, with NEC, Elevating Global Travel).
+- All **31 images return 200** (0 404s). Click-through index→/references/hkia works.
+- Playwright screenshots (index + hkia + elements); console errors: **none**.
