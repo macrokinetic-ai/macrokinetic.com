@@ -1,0 +1,17 @@
+# Heavy source-research material — 38 GB of decks/raw video, never part of the app
+/INFO
+
+# Local tooling / editor state
+/.claude
+
+# Installed + built locally — Vercel installs deps and builds remotely
+/node_modules
+/.next
+/out
+/build
+
+# VCS + local env + os cruft
+/.git
+.env*.local
+*.tsbuildinfo
+.DS_Store
