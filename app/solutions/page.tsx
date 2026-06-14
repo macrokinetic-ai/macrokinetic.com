@@ -4,7 +4,7 @@ import { pillars } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Solutions & Capabilities",
   description:
-    "Five core pillars — Digital Signage, Retail Technology, Automation & Robotics, AI Solutions and Smart Lighting — delivered as one integrated practice.",
+    "Six disciplines — AI Solutions, Automation & Robotics, Digital Signage, Retail Technology, Smart Lighting and Smart Education — delivered as one integrated practice.",
 };
 
 export default function SolutionsPage() {

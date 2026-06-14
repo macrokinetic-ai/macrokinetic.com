@@ -4,7 +4,7 @@ import { company, offices, nav, gateways } from "@/lib/content";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="hairline-t bg-paper scroll-mt-24">
+    <footer className="hairline-t bg-paper">
       <div className="shell grid grid-cols-1 gap-px md:grid-cols-12">
         {/* Brand column */}
         <div className="py-14 md:col-span-4 md:pr-10">

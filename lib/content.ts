@@ -12,7 +12,7 @@ export const company = {
   established: 2008,
   tagline: "Engineering the interface between people and the physical world.",
   positioning:
-    "Integrated intelligent technology — AI, automation & robotics, digital signage, retail technology and smart lighting — engineered end-to-end for enterprise, transit and the built environment.",
+    "Integrated intelligent technology — AI, automation & robotics, digital signage, retail technology, smart lighting and smart education — engineered end-to-end for enterprise, transit and the built environment.",
   domains: {
     ai: "https://macrokinetic.ai",
     ponyabc: "https://ponyabc.co.uk",
@@ -37,7 +37,7 @@ export const gateways: GatewayCard[] = [
     external: true,
   },
   {
-    label: "Education & Interactive",
+    label: "Smart Education",
     title: "ponyabc.co.uk",
     description:
       "PonyABC — interactive learning, AR experiences and immersive content for the UK and European markets.",
@@ -149,7 +149,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "06",
-    name: "Education Technology",
+    name: "Smart Education",
     tagline: "Learning, Made Interactive",
     summary:
       "Interactive and AR-assisted learning experiences — MacroKinetic's education-technology practice, delivered to the UK through PonyABC.",

@@ -55,7 +55,7 @@ export default function HomePage() {
 
           {/* Hero baseline ticker — order follows the pillars source of truth */}
           <div className="shell hidden items-center justify-between border-t border-white/15 py-5 text-[10px] tracking-tracked text-white/60 md:flex lg:text-[11px]">
-            {pillars.slice(0, 5).map((p) => (
+            {pillars.map((p) => (
               <span key={p.index} className="uppercase">
                 {p.name}
               </span>
@@ -71,12 +71,12 @@ export default function HomePage() {
             <div className="md:col-span-4">
               <p className="eyebrow">Capabilities</p>
               <h2 className="mt-4 text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
-                Five disciplines, one integrated practice.
+                Six disciplines, one integrated practice.
               </h2>
             </div>
             <div className="md:col-span-8">
               <div className="border-hairline">
-                {pillars.slice(0, 5).map((p) => (
+                {pillars.map((p) => (
                   <Link
                     key={p.index}
                     href="/solutions"
