@@ -191,6 +191,7 @@ export type Reference = {
   highlights?: string[]; // grounded figures / named venues
   relatedSolutions?: string[]; // must match pillar `name`s
   gallery: GalleryImage[]; // gallery[0] = detail hero; see coverImage() for the index thumb
+  cover?: GalleryImage; // explicit index-thumbnail override (portrait projects, etc.)
   featured?: boolean;
 };
 
@@ -230,15 +231,15 @@ export const references: Reference[] = [
   },
   {
     slug: "hkia-food-court",
-    client: "HKIA — Interactive Food-Court Menu",
+    client: "Hong Kong International Airport - Interactive Food Court Menu",
     editorialTitle: "Dining Navigation at the Airport",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
-    scope: "Interactive Food-Court Menu · Vertical & Horizontal Kiosks",
+    scope: "Interactive Food Court Menu · Vertical & Horizontal Kiosks",
     summary:
-      "An interactive food-court menu helping travellers browse dining and restaurants at Hong Kong International Airport.",
+      "An interactive food court menu helping travellers browse dining and restaurants at Hong Kong International Airport.",
     detail:
-      "A separate deployment from the service counters: MacroKinetic installed two interactive food-court menu units at Hong Kong International Airport — a free-standing vertical kiosk and a horizontal menu board — letting travellers browse restaurants and dishes with a bilingual touch interface.",
+      "A separate deployment from the service counters: MacroKinetic installed two interactive food court menu units at Hong Kong International Airport — a free-standing vertical kiosk and a horizontal menu board — letting travellers browse restaurants and dishes with a bilingual touch interface.",
     highlights: [
       "2 units installed in the HKIA food court",
       "Free-standing vertical kiosk + horizontal menu board",
@@ -246,8 +247,8 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Retail Technology", "Digital Signage"],
     gallery: [
-      { src: "/references/hkia-food-court/01.jpg", w: 1600, h: 1199, alt: "Interactive food-court menu board at Hong Kong International Airport" },
-      { src: "/references/hkia-food-court/02.jpg", w: 1200, h: 1600, alt: "Free-standing interactive food-court kiosk at HKIA Terminal 1" },
+      { src: "/references/hkia-food-court/01.jpg", w: 1600, h: 1199, alt: "Interactive food court menu board at Hong Kong International Airport" },
+      { src: "/references/hkia-food-court/02.jpg", w: 1200, h: 1600, alt: "Free-standing interactive food court kiosk at HKIA Terminal 1" },
     ],
   },
   {
@@ -267,6 +268,7 @@ export const references: Reference[] = [
       "Automated car-park redemption",
     ],
     relatedSolutions: ["Retail Technology", "Digital Signage"],
+    cover: { src: "/references/elements/01.jpg", w: 900, h: 1600, alt: "ELEMENTS mall interactive e-Wayfinding directory kiosk" },
     gallery: [
       { src: "/references/elements/01.jpg", w: 900, h: 1600, alt: "ELEMENTS mall interactive e-Wayfinding directory with 'Take Me There' routing" },
       { src: "/references/elements/02.jpg", w: 1600, h: 1201, alt: "ELEMENTS mall interactive concierge kiosk" },
@@ -407,9 +409,10 @@ export function getReferenceBySlug(slug: string): Reference | undefined {
   return references.find((r) => r.slug === slug);
 }
 
-// Index thumbnails want a consistent landscape frame; pick the first landscape
-// image, falling back to the hero if a reference is portrait-only.
+// Index thumbnails: honour an explicit cover override first, then pick the first
+// landscape image, falling back to gallery[0] if the project is portrait-only.
 export function coverImage(ref: Reference): GalleryImage {
+  if (ref.cover) return ref.cover;
   return ref.gallery.find((g) => g.w >= g.h) ?? ref.gallery[0];
 }
 
