@@ -68,6 +68,9 @@ export type Pillar = {
   tagline: string;
   summary: string;
   capabilities: string[];
+  // Optional referral to a satellite destination in the MacroKinetic ecosystem
+  // (e.g. AI Solutions → macrokinetic.ai, Education Technology → ponyabc.co.uk).
+  link?: { label: string; href: string; note?: string };
 };
 
 // Ordered by strategic priority — AI Solutions leads. This array is the single
@@ -86,6 +89,11 @@ export const pillars: Pillar[] = [
       "Virtual avatars & video assistance",
       "Edge & back-office model deployment",
     ],
+    link: {
+      label: "AI Division",
+      href: company.domains.ai,
+      note: "Industrial vision & applied-AI operations, in depth.",
+    },
   },
   {
     index: "02",
@@ -139,7 +147,29 @@ export const pillars: Pillar[] = [
       "Festival & landmark lighting shows",
     ],
   },
+  {
+    index: "06",
+    name: "Education Technology",
+    tagline: "Learning, Made Interactive",
+    summary:
+      "Interactive and AR-assisted learning experiences — MacroKinetic's education-technology practice, delivered to the UK through PonyABC.",
+    capabilities: [
+      "Interactive & multi-sensory learning systems",
+      "AR-assisted learning (e.g. AR Magic Tangram)",
+      "Early-years & classroom multimedia",
+      "UK education range via PonyABC",
+    ],
+    link: {
+      label: "UK Initiative",
+      href: company.domains.ponyabc,
+      note: "Interactive & AR learning for the UK.",
+    },
+  },
 ];
+
+// Native intrinsic dimensions are stored so layouts can respect each image's true
+// orientation (portrait vs landscape) instead of cropping to a fixed ratio.
+export type GalleryImage = { src: string; w: number; h: number; alt: string };
 
 export type Reference = {
   slug: string;
@@ -153,7 +183,7 @@ export type Reference = {
   partner?: string;
   highlights?: string[]; // grounded figures / named venues
   relatedSolutions?: string[]; // must match pillar `name`s
-  gallery: string[]; // public paths; gallery[0] doubles as thumb/hero
+  gallery: GalleryImage[]; // gallery[0] = detail hero; see coverImage() for the index thumb
   featured?: boolean;
 };
 
@@ -171,26 +201,47 @@ export const references: Reference[] = [
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
     scope:
-      "Intelligent Customer Service Counters · Interactive Food-Court Menu · Secure Video-Conference Service",
+      "Intelligent Customer Service Counters (ICSC) · Interactive Wayfinding · Live Video Support",
     summary:
-      "Intelligent service counters and interactive systems deployed across one of the world's busiest international airports.",
+      "Intelligent Customer Service Counters deployed with the Hong Kong Airport Authority across one of the world's busiest airports.",
     detail:
-      "MacroKinetic delivered the Intelligent Customer Service Counters (ICSC) for Hong Kong International Airport with NEC — 38 units across Terminal 1, with around 50 further units planned for T2 and T3. The platform pairs a multilingual NLP chatbot and virtual avatar with a proprietary secure video-conference link to back-office service representatives, alongside a two-unit interactive food-court menu.",
-    partner: "with NEC",
+      "In collaboration with the Hong Kong Airport Authority (HKAA) and NEC, MacroKinetic deployed its Intelligent Customer Service Counters (ICSC) at Hong Kong International Airport — 38 units in Terminal 1, with further installations planned for Terminals 2 and 3. The solution offers passengers comprehensive airport and flight information, intuitive wayfinding (on-kiosk and bring-to-mobile), boarding-pass details, live video support from customer-service agents, and an AI LLM chatbot for 24/7 assistance.",
+    partner: "with HKAA & NEC",
     highlights: [
       "38 ICSC units in Terminal 1",
-      "~50 units planned for T2 & T3",
-      "Multilingual NLP chatbot + virtual avatar",
-      "Secure video-conference to back office",
+      "Further units planned for T2 & T3",
+      "Wayfinding: on-kiosk + bring-to-mobile",
+      "Live video support + AI LLM chatbot, 24/7",
     ],
     relatedSolutions: ["AI Solutions", "Retail Technology"],
     gallery: [
-      "/references/hkia/01.jpg",
-      "/references/hkia/02.jpg",
-      "/references/hkia/03.jpg",
-      "/references/hkia/04.jpg",
+      { src: "/references/hkia/01.jpg", w: 1600, h: 897, alt: "Intelligent Customer Service Counter interface at Hong Kong International Airport" },
+      { src: "/references/hkia/02.jpg", w: 1600, h: 898, alt: "Terminal 1 interactive wayfinding map on an HKIA service kiosk" },
+      { src: "/references/hkia/03.jpg", w: 1600, h: 900, alt: "Live video customer-service support on an HKIA Intelligent Service Counter" },
     ],
     featured: true,
+  },
+  {
+    slug: "hkia-food-court",
+    client: "HKIA — Interactive Food-Court Menu",
+    editorialTitle: "Dining Navigation at the Airport",
+    sector: "Aviation · Public Interactive",
+    location: "Hong Kong",
+    scope: "Interactive Food-Court Menu · Vertical & Horizontal Kiosks",
+    summary:
+      "An interactive food-court menu helping travellers browse dining and restaurants at Hong Kong International Airport.",
+    detail:
+      "A separate deployment from the service counters: MacroKinetic installed two interactive food-court menu units at Hong Kong International Airport — a free-standing vertical kiosk and a horizontal menu board — letting travellers browse restaurants and dishes with a bilingual touch interface.",
+    highlights: [
+      "2 units installed in the HKIA food court",
+      "Free-standing vertical kiosk + horizontal menu board",
+      "Bilingual restaurant & dish browsing",
+    ],
+    relatedSolutions: ["Retail Technology", "Digital Signage"],
+    gallery: [
+      { src: "/references/hkia-food-court/01.jpg", w: 1600, h: 1199, alt: "Interactive food-court menu board at Hong Kong International Airport" },
+      { src: "/references/hkia-food-court/02.jpg", w: 1200, h: 1600, alt: "Free-standing interactive food-court kiosk at HKIA Terminal 1" },
+    ],
   },
   {
     slug: "elements",
@@ -210,11 +261,11 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Retail Technology", "Digital Signage"],
     gallery: [
-      "/references/elements/01.jpg",
-      "/references/elements/02.jpg",
-      "/references/elements/03.jpg",
-      "/references/elements/04.jpg",
-      "/references/elements/05.jpg",
+      { src: "/references/elements/01.jpg", w: 900, h: 1600, alt: "ELEMENTS mall interactive e-Wayfinding directory with 'Take Me There' routing" },
+      { src: "/references/elements/02.jpg", w: 1600, h: 1201, alt: "ELEMENTS mall interactive concierge kiosk" },
+      { src: "/references/elements/03.jpg", w: 1600, h: 1199, alt: "ELEMENTS mall digital wayfinding display" },
+      { src: "/references/elements/04.jpg", w: 900, h: 1600, alt: "ELEMENTS mall e-Concierge touchscreen" },
+      { src: "/references/elements/05.jpg", w: 900, h: 1600, alt: "ELEMENTS mall e-Carpark redemption screen" },
     ],
     featured: true,
   },
@@ -236,9 +287,9 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Retail Technology", "AI Solutions"],
     gallery: [
-      "/references/tai-po/01.jpg",
-      "/references/tai-po/02.jpg",
-      "/references/tai-po/03.jpg",
+      { src: "/references/tai-po/01.jpg", w: 1600, h: 900, alt: "Interactive projection experience at Tai Po Music & Art Center" },
+      { src: "/references/tai-po/02.jpg", w: 900, h: 1600, alt: "Immersive interactive wall at Tai Po Music & Art Center" },
+      { src: "/references/tai-po/03.jpg", w: 1600, h: 738, alt: "Visitors engaging with interactive projection at Tai Po Music & Art Center" },
     ],
   },
   {
@@ -260,13 +311,13 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Retail Technology", "AI Solutions"],
     gallery: [
-      "/references/interactive-installations/01.jpg",
-      "/references/interactive-installations/02.jpg",
-      "/references/interactive-installations/03.jpg",
-      "/references/interactive-installations/04.jpg",
-      "/references/interactive-installations/05.jpg",
-      "/references/interactive-installations/06.jpg",
-      "/references/interactive-installations/07.jpg",
+      { src: "/references/interactive-installations/01.jpg", w: 1600, h: 1096, alt: "Interactive touch table at the HSBC Museum & Archive" },
+      { src: "/references/interactive-installations/02.jpg", w: 1600, h: 1312, alt: "Interactive heritage table installation, HSBC Museum & Archive" },
+      { src: "/references/interactive-installations/03.jpg", w: 906, h: 1600, alt: "AI dress-changing interactive mirror for Chow Sang Sang" },
+      { src: "/references/interactive-installations/04.jpg", w: 1600, h: 1088, alt: "Gesture-driven interactive game at Hong Kong Disneyland" },
+      { src: "/references/interactive-installations/05.jpg", w: 1600, h: 951, alt: "Interactive brand installation — partner project (BMW Showroom · Dior Hong Kong · Sky100)" },
+      { src: "/references/interactive-installations/06.jpg", w: 1600, h: 1239, alt: "Interactive exhibition installation — partner project" },
+      { src: "/references/interactive-installations/07.jpg", w: 1600, h: 852, alt: "Interactive game installation — partner project" },
     ],
   },
   {
@@ -287,10 +338,10 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Digital Signage"],
     gallery: [
-      "/references/macau-customs/01.jpg",
-      "/references/macau-customs/02.jpg",
-      "/references/macau-customs/03.jpg",
-      "/references/macau-customs/04.jpg",
+      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "LED display and kiosk at the HK–Zhuhai–Macao Bridge border gate" },
+      { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "Macau Customs border-gate LED signage" },
+      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Kiosk system at the HZMB Macau border" },
+      { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "Public-infrastructure LED display, Macau" },
     ],
   },
   {
@@ -312,10 +363,10 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
     gallery: [
-      "/references/retail-led/01.jpg",
-      "/references/retail-led/02.jpg",
-      "/references/retail-led/03.jpg",
-      "/references/retail-led/04.jpg",
+      { src: "/references/retail-led/01.jpg", w: 1600, h: 979, alt: "LED display at K11, Tsim Sha Tsui" },
+      { src: "/references/retail-led/02.jpg", w: 1600, h: 791, alt: "Retail LED signage at a landmark Hong Kong mall" },
+      { src: "/references/retail-led/03.jpg", w: 1600, h: 1200, alt: "Interactive retail kiosk" },
+      { src: "/references/retail-led/04.jpg", w: 1600, h: 1200, alt: "Hospitality front-desk display, W Hotel" },
     ],
   },
   {
@@ -337,16 +388,22 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Smart Lighting"],
     gallery: [
-      "/references/smart-lighting/01.jpg",
-      "/references/smart-lighting/02.jpg",
-      "/references/smart-lighting/03.jpg",
-      "/references/smart-lighting/04.jpg",
+      { src: "/references/smart-lighting/01.jpg", w: 1600, h: 1128, alt: "Architectural façade media lighting" },
+      { src: "/references/smart-lighting/02.jpg", w: 1577, h: 1600, alt: "Luxury retail lighting scheme" },
+      { src: "/references/smart-lighting/03.jpg", w: 1068, h: 1600, alt: "Hotel architectural lighting" },
+      { src: "/references/smart-lighting/04.jpg", w: 1066, h: 1600, alt: "Landmark lighting installation" },
     ],
   },
 ];
 
 export function getReferenceBySlug(slug: string): Reference | undefined {
   return references.find((r) => r.slug === slug);
+}
+
+// Index thumbnails want a consistent landscape frame; pick the first landscape
+// image, falling back to the hero if a reference is portrait-only.
+export function coverImage(ref: Reference): GalleryImage {
+  return ref.gallery.find((g) => g.w >= g.h) ?? ref.gallery[0];
 }
 
 export const offices = [

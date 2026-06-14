@@ -30,6 +30,7 @@ export default function ReferenceDetailPage({
   if (!ref) notFound();
 
   const [hero, ...rest] = ref.gallery;
+  const heroPortrait = hero.h > hero.w;
 
   return (
     <>
@@ -60,17 +61,23 @@ export default function ReferenceDetailPage({
         </div>
       </section>
 
-      {/* Hero image */}
+      {/* Hero image — rendered at its native aspect (never cropped). Landscape
+          fills the column; portrait is height-capped and centered on paper. */}
       <section className="bg-canvas">
         <div className="shell">
-          <div className="relative aspect-[16/9] overflow-hidden rounded-xl bg-paper">
+          <div className="overflow-hidden rounded-xl bg-paper">
             <Image
-              src={hero}
-              alt={ref.client}
-              fill
+              src={hero.src}
+              alt={hero.alt}
+              width={hero.w}
+              height={hero.h}
               priority
               sizes="(max-width: 1400px) 100vw, 1400px"
-              className="object-cover"
+              className={
+                heroPortrait
+                  ? "mx-auto h-auto max-h-[78vh] w-auto"
+                  : "h-auto w-full"
+              }
             />
           </div>
         </div>
@@ -143,23 +150,25 @@ export default function ReferenceDetailPage({
         </div>
       </section>
 
-      {/* Gallery */}
+      {/* Gallery — masonry columns at native aspect ratios, so portrait and
+          landscape project photos sit side by side without cropping. */}
       {rest.length > 0 && (
         <section className="hairline-t bg-paper">
           <div className="shell py-16 md:py-20">
             <p className="eyebrow">Gallery</p>
-            <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {rest.map((src, i) => (
+            <div className="mt-8 columns-1 gap-4 sm:columns-2 [&>*]:mb-4">
+              {rest.map((img) => (
                 <div
-                  key={src}
-                  className="relative aspect-[16/10] overflow-hidden rounded-lg bg-canvas"
+                  key={img.src}
+                  className="overflow-hidden rounded-lg bg-canvas break-inside-avoid"
                 >
                   <Image
-                    src={src}
-                    alt={`${ref.client} — image ${i + 2}`}
-                    fill
+                    src={img.src}
+                    alt={img.alt}
+                    width={img.w}
+                    height={img.h}
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
+                    className="h-auto w-full"
                   />
                 </div>
               ))}

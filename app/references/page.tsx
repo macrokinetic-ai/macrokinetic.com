@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { references } from "@/lib/content";
+import { references, coverImage } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "What We Did — Selected Work",
@@ -52,8 +52,8 @@ export default function ReferencesPage() {
                 >
                   <div className="aspect-[16/10]">
                     <Image
-                      src={r.gallery[0]}
-                      alt={r.client}
+                      src={coverImage(r).src}
+                      alt={coverImage(r).alt}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"

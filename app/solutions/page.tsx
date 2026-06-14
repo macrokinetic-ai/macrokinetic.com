@@ -15,7 +15,7 @@ export default function SolutionsPage() {
         <div className="shell pb-16 md:pb-24">
           <p className="eyebrow">Solutions &amp; Capabilities</p>
           <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
-            Five disciplines, engineered to operate as one.
+            Six disciplines, engineered to operate as one.
           </h1>
           <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-muted">
             From pixel to structure, from model to maintenance — MacroKinetic
@@ -68,6 +68,30 @@ export default function SolutionsPage() {
                   <p className="max-w-md text-[15px] leading-relaxed text-graphite">
                     {p.summary}
                   </p>
+
+                  {p.link && (
+                    <div className="mt-6 max-w-md hairline-t pt-5">
+                      <p className="text-[10px] uppercase tracking-tracked text-faint">
+                        {p.link.label}
+                      </p>
+                      <a
+                        href={p.link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link mt-2 inline-flex items-center gap-2 text-[14px] tracking-editorial text-ink transition-colors hover:text-kinetic"
+                      >
+                        {p.link.href.replace(/^https?:\/\//, "")}
+                        <span className="transition-transform duration-300 ease-editorial group-hover/link:translate-x-1">
+                          →
+                        </span>
+                      </a>
+                      {p.link.note && (
+                        <p className="mt-2 text-[12px] leading-relaxed text-muted">
+                          {p.link.note}
+                        </p>
+                      )}
+                    </div>
+                  )}
                 </div>
 
                 {/* Capabilities */}

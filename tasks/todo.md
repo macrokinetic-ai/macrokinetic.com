@@ -169,3 +169,68 @@ Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md
 - Detail hkia renders grounded facts (38 ICSC units, with NEC, Elevating Global Travel).
 - All **31 images return 200** (0 404s). Click-through index→/references/hkia works.
 - Playwright screenshots (index + hkia + elements); console errors: **none**.
+
+---
+
+# Solutions — AI referral + 6th solution (Education Technology) — 2026-06-14
+Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md
+
+## Changes
+- [x] `lib/content.ts` — added `Pillar.link?{label,href,note}`; AI Solutions →
+      `company.domains.ai` (macrokinetic.ai); appended pillar **06 Education
+      Technology** → `company.domains.ponyabc` (ponyabc.co.uk). Copy grounded in
+      PonyABC (AR Magic Tangram, talking-pen) + SINDRAX classroom materials.
+- [x] `app/solutions/page.tsx` — renders the shared `p.link` as a hairline-separated
+      referral (label · domain → · note) in the summary column; H1 "Five" → "Six".
+- [x] `app/page.tsx` — hero ticker + capability index use `pillars.slice(0, 5)` so the
+      homepage stays the curated five (heading unchanged); single data source kept.
+
+## Verification (all ✓)
+- `npm run build`: clean; static /solutions.
+- /solutions: H1 "Six disciplines"; 6 pillars incl. "06 Education Technology";
+  both referral links present (macrokinetic.ai + ponyabc.co.uk) with
+  target=_blank rel=noopener noreferrer.
+- Homepage: hero ticker = 5 spans; "Five disciplines" heading intact (slice works).
+- Playwright screenshot confirms the Education block + ponyabc referral; console: none.
+
+## Note
+- Both referrals reuse one mechanism → coherent ecosystem, matching the homepage
+  GatewaySplit (.ai / ponyabc). Education kept enterprise-toned, not childish.
+
+---
+
+# References — HKIA correction + content-aware image system (Phase 1) — 2026-06-14
+Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md (full 14-section review)
+
+## HKIA correction (grounded in live /post/elevating-global-travel…)
+- [x] HKIA reference is now **ICSC service-counters only**: gallery = counter UI,
+      wayfinding, live-video (image3/5/1); removed the food-court image. Copy rewritten
+      to the live post (HKAA + NEC, 38 units T1, on-kiosk + bring-to-mobile wayfinding,
+      live video support, AI LLM chatbot 24/7).
+- [x] Split **HKIA — Interactive Food-Court Menu** into its own reference
+      (`hkia-food-court`): landscape menu board + the vertical kiosk. The kiosk photo
+      was stored sideways; rotated 90° CW to its true upright **portrait** (asset
+      repair, not distortion).
+
+## Content-aware image system (the fixed-ratio object-cover layout was wrong)
+- [x] `lib/content.ts` — gallery model `string[]` → `GalleryImage[] {src,w,h,alt}`
+      with native dims + alt for all 32 images; added `coverImage()` (first landscape).
+- [x] `app/references/page.tsx` — index thumbnails use `coverImage()` (always a
+      landscape frame; portraits never cropped into the row).
+- [x] `app/references/[slug]/page.tsx` — hero renders at **native aspect**
+      (landscape full-width; portrait height-capped + centered on paper); gallery is
+      **CSS masonry** (`columns`, `break-inside-avoid`) at native ratios.
+
+## Verification (all ✓)
+- `npm run build`: clean; 8 case pages (added hkia-food-court).
+- Index order: hkia · hkia-food-court · elements. HKIA page: HKAA + AI LLM chatbot
+  copy, **0** "food-court" mentions. Food-court page: "2 units installed".
+- **Elements hero renders 0.56 ratio (= native 900/1600 portrait) — uncropped.**
+  Food-court kiosk renders upright portrait. Masonry mixes orientations cleanly.
+- All **32 images 200**; console errors: none.
+
+## Deferred (later phases — need live Wix / cutover, per the approved plan)
+- Cookie consent on the live Wix site (P0 there); Next.js consent at cutover.
+- SEO/AEO foundations (JSON-LD schema, sitemap/robots, semantic filenames+alt,
+  per-route metadata) — repo P1.
+- Wix→Next migration / 301 map preserving /post/*, /blog (Phase 4).
