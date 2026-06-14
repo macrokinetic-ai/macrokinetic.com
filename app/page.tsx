@@ -3,6 +3,27 @@ import CityFootprint from "@/components/CityFootprint";
 import GatewaySplit from "@/components/GatewaySplit";
 import { company, pillars } from "@/lib/content";
 
+// Organisation structured data — homepage only. The homepage is the canonical
+// entity page for MacroKinetic, so the Organization graph belongs here rather
+// than sitewide. Mirrors the corporate facts in lib/content + the FAQ source.
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "MacroKinetic",
+  alternateName: "MacroKinetic Global",
+  legalName: "MacroKinetic Mediatech Limited",
+  url: "https://macrokinetic.com",
+  foundingDate: "2008",
+  description:
+    "MacroKinetic designs, deploys, and maintains integrated intelligent technology systems — digital signage, interactive kiosks and wayfinding, service automation, smart lighting, and applied AI — for enterprise, government, and transit clients across Asia-Pacific and the United Kingdom.",
+  address: [
+    { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
+    { "@type": "PostalAddress", addressLocality: "Hong Kong", addressCountry: "HK" },
+    { "@type": "PostalAddress", addressLocality: "Shenzhen", addressCountry: "CN" },
+  ],
+  sameAs: [company.domains.ai, company.domains.ponyabc],
+};
+
 export default function HomePage() {
   return (
     <>
@@ -112,6 +133,11 @@ export default function HomePage() {
 
       <CityFootprint />
       <GatewaySplit />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+      />
     </>
   );
 }

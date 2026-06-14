@@ -344,10 +344,13 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
     cover: { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "LED display at a government sports hall, Macau" },
+    // Note: macau-customs/01.jpg (border customs-lane kiosk) is intentionally
+    // omitted from display — it shows a sensitive border checkpoint. The section
+    // still documents customs work in copy; visuals stay on the non-sensitive
+    // government sports-facility installations (04 hero, 03).
     gallery: [
       { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "LED display at a government sports hall, Macau" },
       { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Government sports facility installation — Macau Sports Development Board" },
-      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
     ],
   },
   {
