@@ -328,26 +328,25 @@ export const references: Reference[] = [
   },
   {
     slug: "macau-customs",
-    client: "Macau Customs — HK·Zhuhai·Macao Bridge",
-    editorialTitle: "Border Infrastructure at the HZMB",
-    sector: "Government · Border Infrastructure",
-    location: "Macau",
-    scope: "LED Display & Kiosk Systems",
+    client: "Government Projects",
+    editorialTitle: "Public Sector Deployments",
+    sector: "Government · Public Infrastructure",
+    location: "Hong Kong · Macau",
+    scope: "Customs Kiosks · Border Infrastructure · Sports Facilities",
     summary:
-      "Display and kiosk infrastructure for border-gate operations at a major cross-boundary crossing.",
+      "Selected public-sector deployments including customs lane kiosks, the Hong Kong–Zhuhai–Macao Bridge (Macau section), and government stadium and sports hall installations.",
     detail:
-      "MacroKinetic supplied LED display and kiosk systems for Macau Customs at the Hong Kong–Zhuhai–Macao Bridge border gate — part of a public-infrastructure portfolio that also includes Windsor House and the Macau Sports Development Board venues.",
+      "MacroKinetic's government and public-sector portfolio spans border infrastructure, civic display systems and sports facilities: customs lane kiosk systems; LED displays and infrastructure at the Hong Kong–Zhuhai–Macao Bridge (Macau section); and technology installations across government stadiums and sports halls under the Macau Sports Development Board.",
     highlights: [
-      "HK–Zhuhai–Macao Bridge border gate",
-      "Windsor House",
-      "Macau Sports Development Board venues",
+      "Customs lane kiosk systems",
+      "HK–Zhuhai–Macao Bridge (Macau section)",
+      "Government stadiums and sports halls — Macau Sports Development Board",
     ],
-    relatedSolutions: ["Digital Signage"],
+    relatedSolutions: ["Digital Signage", "Retail Technology"],
     gallery: [
-      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "LED display and kiosk at the HK–Zhuhai–Macao Bridge border gate" },
-      { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "Macau Customs border-gate LED signage" },
-      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Kiosk system at the HZMB Macau border" },
-      { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "Public-infrastructure LED display, Macau" },
+      { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "Customs border-gate LED signage and kiosk infrastructure" },
+      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Kiosk system at the HK–Zhuhai–Macao Bridge (Macau section)" },
+      { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "Public-infrastructure LED display, government venue" },
     ],
   },
   {
@@ -360,11 +359,11 @@ export const references: Reference[] = [
     summary:
       "LED display and kiosk deployments across landmark malls, fashion and hospitality venues.",
     detail:
-      "A portfolio of LED display and kiosk work across landmark retail and hospitality — including K11 (Tsim Sha Tsui), Mile Shopping Mall (Tai Kok Tsui), Emporio Armani, Shatin New Town Plaza and the W Hotel front desk.",
+      "A portfolio of LED display and kiosk work across landmark retail and hospitality — including K11 (Tsim Sha Tsui), Mile Shopping Mall (Tai Kok Tsui), Emporio Armani, Windsor House (Causeway Bay), Shatin New Town Plaza and the W Hotel front desk.",
     highlights: [
       "K11 — Tsim Sha Tsui",
       "Mile Shopping Mall — Tai Kok Tsui",
-      "Emporio Armani",
+      "Windsor House — Causeway Bay",
       "Shatin New Town Plaza · W Hotel",
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
@@ -373,6 +372,7 @@ export const references: Reference[] = [
       { src: "/references/retail-led/02.jpg", w: 1600, h: 791, alt: "Retail LED signage at a landmark Hong Kong mall" },
       { src: "/references/retail-led/03.jpg", w: 1600, h: 1200, alt: "Interactive retail kiosk" },
       { src: "/references/retail-led/04.jpg", w: 1600, h: 1200, alt: "Hospitality front-desk display, W Hotel" },
+      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "LED and kiosk installation at Windsor House, Causeway Bay" },
     ],
   },
   {
