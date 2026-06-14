@@ -43,22 +43,20 @@ export default function ReferencesPage() {
                   </span>
                 </div>
 
-                {/* Thumbnail — unified 4:3 frame for all entries */}
+                {/* Thumbnail — fixed pixel height so all rows are identical regardless of col width */}
                 <div
                   className={[
-                    "relative overflow-hidden rounded-lg bg-paper",
+                    "relative h-44 overflow-hidden rounded-lg bg-paper md:h-52",
                     r.featured ? "md:col-span-4" : "md:col-span-3",
                   ].join(" ")}
                 >
-                  <div className="aspect-[4/3]">
-                    <Image
-                      src={coverImage(r).src}
-                      alt={coverImage(r).alt}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
-                    />
-                  </div>
+                  <Image
+                    src={coverImage(r).src}
+                    alt={coverImage(r).alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-editorial group-hover:scale-[1.03]"
+                  />
                 </div>
 
                 {/* Title + meta */}
