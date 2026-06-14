@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CityFootprint from "@/components/CityFootprint";
 import GatewaySplit from "@/components/GatewaySplit";
+import HomeFAQ from "@/components/HomeFAQ";
 import { company, pillars } from "@/lib/content";
 
 export default function HomePage() {
@@ -112,6 +113,7 @@ export default function HomePage() {
 
       <CityFootprint />
       <GatewaySplit />
+      <HomeFAQ />
     </>
   );
 }
