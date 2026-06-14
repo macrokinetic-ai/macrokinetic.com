@@ -53,12 +53,16 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Hero baseline ticker — order follows the pillars source of truth */}
+          {/* Hero baseline ticker — each label links to its section on /solutions */}
           <div className="shell hidden items-center justify-between border-t border-white/15 py-5 text-[10px] tracking-tracked text-white/60 md:flex lg:text-[11px]">
             {pillars.map((p) => (
-              <span key={p.index} className="uppercase">
+              <Link
+                key={p.index}
+                href={`/solutions#${p.slug}`}
+                className="uppercase transition-colors duration-200 hover:text-white/90"
+              >
                 {p.name}
-              </span>
+              </Link>
             ))}
           </div>
         </div>
@@ -79,7 +83,7 @@ export default function HomePage() {
                 {pillars.map((p) => (
                   <Link
                     key={p.index}
-                    href="/solutions"
+                    href={`/solutions#${p.slug}`}
                     className="group flex items-baseline gap-6 py-6 hairline-t transition-colors hover:bg-paper md:px-4"
                   >
                     <span className="font-mono text-[12px] text-faint">

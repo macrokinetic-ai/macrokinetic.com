@@ -64,12 +64,13 @@ export const cities: City[] = [
 
 export type Pillar = {
   index: string;
+  slug: string;
   name: string;
   tagline: string;
   summary: string;
   capabilities: string[];
   // Optional referral to a satellite destination in the MacroKinetic ecosystem
-  // (e.g. AI Solutions → macrokinetic.ai, Education Technology → ponyabc.co.uk).
+  // (e.g. AI Solutions → macrokinetic.ai, Smart Education → ponyabc.co.uk).
   link?: { label: string; href: string; note?: string };
 };
 
@@ -79,6 +80,7 @@ export type Pillar = {
 export const pillars: Pillar[] = [
   {
     index: "01",
+    slug: "ai-solutions",
     name: "AI Solutions",
     tagline: "Intelligence, Made Operational",
     summary:
@@ -97,6 +99,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "02",
+    slug: "automation-robotics",
     name: "Automation & Robotics",
     tagline: "Precision in Motion, Reliability at Scale",
     summary:
@@ -110,6 +113,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "03",
+    slug: "digital-signage",
     name: "Digital Signage",
     tagline: "Brilliance at Every Touch, Vision in Every Pixel",
     summary:
@@ -123,6 +127,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "04",
+    slug: "retail-technology",
     name: "Retail Technology",
     tagline: "Engage Everyone, Everywhere",
     summary:
@@ -136,6 +141,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "05",
+    slug: "smart-lighting",
     name: "Smart Lighting",
     tagline: "Lighting the Future, Brightening your World",
     summary:
@@ -149,6 +155,7 @@ export const pillars: Pillar[] = [
   },
   {
     index: "06",
+    slug: "smart-education",
     name: "Smart Education",
     tagline: "Learning, Made Interactive",
     summary:

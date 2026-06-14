@@ -31,7 +31,8 @@ export default function SolutionsPage() {
           return (
             <article
               key={p.index}
-              className="group hairline-t first:border-t-0"
+              id={p.slug}
+              className="group hairline-t first:border-t-0 scroll-mt-28"
             >
               <div className="shell grid grid-cols-1 gap-px py-14 md:grid-cols-12 md:py-20">
                 {/* Index + name */}
