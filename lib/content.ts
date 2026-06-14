@@ -373,8 +373,8 @@ export const references: Reference[] = [
       { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "LED display and kiosk at Windsor House, Causeway Bay" },
       { src: "/references/retail-led/01.jpg", w: 1600, h: 979, alt: "LED display at K11, Tsim Sha Tsui" },
       { src: "/references/retail-led/02.jpg", w: 1600, h: 791, alt: "Retail LED signage at a landmark Hong Kong mall" },
-      { src: "/references/retail-led/03.jpg", w: 1600, h: 1200, alt: "Interactive retail kiosk" },
-      { src: "/references/retail-led/04.jpg", w: 1600, h: 1200, alt: "Hospitality front-desk display, W Hotel" },
+      { src: "/references/retail-led/03.jpg", w: 1200, h: 1600, alt: "Outdoor LED display, Hong Kong retail installation" },
+      { src: "/references/retail-led/04.jpg", w: 1200, h: 1600, alt: "Building exterior LED installation, Hong Kong" },
     ],
   },
   {
