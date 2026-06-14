@@ -55,6 +55,14 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/faq"
+                className="text-[13px] text-muted transition-colors hover:text-ink"
+              >
+                FAQ
+              </Link>
+            </li>
           </ul>
 
           <p className="mt-8 eyebrow">Network</p>
