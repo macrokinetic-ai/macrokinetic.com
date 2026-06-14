@@ -343,10 +343,11 @@ export const references: Reference[] = [
       "Government stadiums and sports halls — Macau Sports Development Board",
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
+    cover: { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
     gallery: [
-      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Macau customs lane kiosk system at the HK–Zhuhai–Macao Bridge border" },
-      { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "Border-gate LED display and kiosk infrastructure, HK–Zhuhai–Macao Bridge" },
-      { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "Public-infrastructure LED display, government venue" },
+      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
+      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Government sports facility installation — Macau Sports Development Board" },
+      { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "LED display at a government sports hall, Macau" },
     ],
   },
   {
@@ -367,12 +368,13 @@ export const references: Reference[] = [
       "Shatin New Town Plaza · W Hotel",
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
+    cover: { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "LED display and kiosk at Windsor House, Causeway Bay" },
     gallery: [
+      { src: "/references/macau-customs/02.jpg", w: 1600, h: 1201, alt: "LED display and kiosk at Windsor House, Causeway Bay" },
       { src: "/references/retail-led/01.jpg", w: 1600, h: 979, alt: "LED display at K11, Tsim Sha Tsui" },
       { src: "/references/retail-led/02.jpg", w: 1600, h: 791, alt: "Retail LED signage at a landmark Hong Kong mall" },
       { src: "/references/retail-led/03.jpg", w: 1600, h: 1200, alt: "Interactive retail kiosk" },
       { src: "/references/retail-led/04.jpg", w: 1600, h: 1200, alt: "Hospitality front-desk display, W Hotel" },
-      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "LED and kiosk installation at Windsor House, Causeway Bay" },
     ],
   },
   {
