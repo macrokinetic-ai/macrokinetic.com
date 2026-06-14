@@ -9,13 +9,13 @@ export default function Footer() {
         {/* Brand column */}
         <div className="py-14 md:col-span-4 md:pr-10">
           <Image
-            src="/brand/wordmark-black.png"
+            src="/brand/wordmark-black-tight.png"
             alt="MacroKinetic"
-            width={160}
-            height={32}
-            className="h-7 w-auto"
+            width={300}
+            height={37}
+            className="h-9 w-auto md:h-10"
           />
-          <p className="mt-6 max-w-xs text-[13px] leading-relaxed text-muted">
+          <p className="mt-7 max-w-xs text-[13px] leading-relaxed text-muted">
             {company.positioning}
           </p>
           <p className="mt-8 eyebrow">Established {company.established}</p>
