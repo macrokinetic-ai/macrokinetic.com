@@ -234,3 +234,78 @@ Plan: ~/.claude/plans/you-are-helping-me-sharded-nygaard.md (full 14-section rev
 - SEO/AEO foundations (JSON-LD schema, sitemap/robots, semantic filenames+alt,
   per-route metadata) — repo P1.
 - Wix→Next migration / 301 map preserving /post/*, /blog (Phase 4).
+
+---
+
+# Environment State — Wix Staging vs Vercel Preview — 2026-06-14
+
+Snapshot of where each environment stands and what is / isn't live. Two
+independent tracks: a Wix staging site (the old site's testing ground) and the
+Next.js app (this repo), now on a private Vercel preview. Neither touches the
+live production site.
+
+## Production (DO NOT TOUCH — untouched)
+- **Live site:** Wix `Macrokinetic` (ID `26f3c36b`), domain **macrokinetic.com** —
+  live production, never modified this session.
+- **Backup:** Wix `MacroCopy` (ID `02ff4d15`) — untouched.
+- DNS for macrokinetic.com still points at Wix. **No cutover performed.**
+
+## Track A — Wix staging site (`db400d6a`, "MacroKinetic Claude Staging Site")
+A duplicate of the live Wix site, used as an API-only testing target. Work here
+is intentionally **paused** — it hit the ceiling of what Wix REST can do without
+manual Editor/Velo work.
+- [x] FAQ CMS collection created (22 items, `read: ANYONE`, all `isPublished`)
+- [x] Blog post SEO — titles + meta descriptions on all 7 posts
+- [x] Organisation JSON-LD embed — live, sitewide HEAD (valid for Org type)
+- [x] FAQPage JSON-LD embed — **removed** (was invalid sitewide w/ no visible FAQ
+      page; embed `d6878c34…` deleted). Do not re-add until a visible /faq page
+      exists, then scope it to that page only.
+- [x] 32 reference images uploaded to Media Manager (READY)
+- [x] Site published after the above
+- **Stored-but-not-rendered:** FAQ items + the 32 images are queryable/in-manager
+      but no Wix page renders them (needs Editor to bind a collection / place media).
+- **Hard Wix limits (REST cannot do, confirmed against the spec):** connect CMS to
+      a page, place media on pages, per-page static SEO writes (read-only via
+      `ResolveStaticPageSeoTags`), category/tag SEO, scope an embed to one page
+      (page IDs unresolvable on an Editor site). All Editor/Velo-only.
+- Whole staging site is `noindex` (free `macrokinetic.wixsite.com/website-1` URL).
+
+## Track B — Next.js app (this repo) → Vercel **preview** (private)
+- [x] Code changes merged to `main` (PR #1, merge commit `36a7d9e`):
+      homepage-only Organisation JSON-LD, FAQPage kept scoped to `/faq`,
+      `app/sitemap.ts` + `app/robots.ts` (canonical `macrokinetic.com`), and the
+      sensitive `macau-customs/01.jpg` (border checkpoint) removed from the
+      Government Projects gallery.
+- [x] `.vercelignore` + `.gitignore` (`.vercel`) committed `5c3b00b`, pushed.
+      `.vercelignore` excludes the 38 GB `/INFO` folder (CLI deploys failed on the
+      2 GiB upload limit without it).
+- [x] Deployed to Vercel as a **preview** (not production):
+      `https://macrokinetic-1e9eyruca-benny-4363s-projects.vercel.app`
+      - **Protected (401)** — private; viewable only while signed into the Vercel
+        account `benny-4363` (Deployment Protection ON — leave as-is).
+      - **`x-robots-tag: noindex`** — Google will not index it.
+      - **0 custom domains** attached → macrokinetic.com / live Wix untouched.
+      - Fully reversible (delete the Vercel project).
+- The earlier accidental *production*-target deploy (public, indexable) was
+      **removed**; only the private preview remains.
+
+## Not done / intentionally not done
+- No Vercel → macrokinetic.com domain cutover (would replace the live Wix site).
+- Deployment protection NOT disabled; no shareable link created (private
+      validation only, per instruction).
+- Contact form (`/api/contact`, nodemailer) needs SMTP env vars on the host to
+      actually send — preview deploy has none, so it returns the "email us
+      directly" 503 by design.
+
+## Verification (all ✓)
+- Deployed build = commit `36a7d9e` content, confirmed before lockdown: Organisation
+  JSON-LD only on `/`, FAQPage only on `/faq`, `macau-customs/01.jpg` absent,
+  `robots.txt`/`sitemap.xml` canonical to macrokinetic.com, all routes 200.
+- Post-cleanup: old public prod URLs → 404; preview → 401 + `noindex`; `vercel
+  domains ls` → 0 domains.
+
+## Next decision points (when ready — not started)
+- Choose go-live host/path for the Next.js app and, separately, the
+  macrokinetic.com cutover from Wix (explicit, hard-to-reverse — confirm first).
+- Add SMTP + Turnstile env vars on the host for the contact form.
+- If a dedicated /faq page is ever built on Wix, re-add a page-scoped FAQPage embed.
