@@ -43,13 +43,8 @@ export default function ReferencesPage() {
                   </span>
                 </div>
 
-                {/* Thumbnail — fixed pixel height so all rows are identical regardless of col width */}
-                <div
-                  className={[
-                    "relative h-44 overflow-hidden rounded-lg bg-paper md:h-52",
-                    r.featured ? "md:col-span-4" : "md:col-span-3",
-                  ].join(" ")}
-                >
+                {/* Thumbnail — fixed height + fixed col-width so every row is identical */}
+                <div className="relative h-44 overflow-hidden rounded-lg bg-paper md:col-span-3 md:h-52">
                   <Image
                     src={coverImage(r).src}
                     alt={coverImage(r).alt}

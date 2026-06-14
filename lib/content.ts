@@ -271,8 +271,7 @@ export const references: Reference[] = [
     cover: { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory kiosk" },
     gallery: [
       { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory with 'Take Me There' routing" },
-      { src: "/references/elements/02.jpg", w: 1600, h: 1201, alt: "ELEMENTS mall interactive concierge kiosk" },
-      { src: "/references/elements/03.jpg", w: 1600, h: 1199, alt: "ELEMENTS mall digital wayfinding display" },
+      { src: "https://static.wixstatic.com/media/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall e-Wayfinding kiosk — store directory and concierge interface" },
     ],
     featured: true,
   },
