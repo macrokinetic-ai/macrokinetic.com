@@ -343,11 +343,11 @@ export const references: Reference[] = [
       "Government stadiums and sports halls — Macau Sports Development Board",
     ],
     relatedSolutions: ["Digital Signage", "Retail Technology"],
-    cover: { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
+    cover: { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "LED display at a government sports hall, Macau" },
     gallery: [
-      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
-      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Government sports facility installation — Macau Sports Development Board" },
       { src: "/references/macau-customs/04.jpg", w: 1600, h: 1199, alt: "LED display at a government sports hall, Macau" },
+      { src: "/references/macau-customs/03.jpg", w: 1600, h: 1199, alt: "Government sports facility installation — Macau Sports Development Board" },
+      { src: "/references/macau-customs/01.jpg", w: 1199, h: 1600, alt: "Macau customs lane kiosk at the border gate" },
     ],
   },
   {
