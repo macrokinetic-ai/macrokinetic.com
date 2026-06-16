@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
-const TO = "enquiry@macrokinetic.com, macrokinetic.93166749@gmail.com";
+const TO = "enquiry@macrokinetic.com";
 
 async function verifyTurnstile(token: string): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     });
 
-    const from = SMTP_FROM ?? "enquiry@macrokinetic.com";
+    const from = SMTP_FROM ?? "website@macrokinetic.com";
     const subject = `Enquiry from ${name}${company ? ` — ${company}` : ""}`;
 
     await transporter.sendMail({
