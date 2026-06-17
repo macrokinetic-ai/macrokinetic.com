@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { references, getReferenceBySlug } from "@/lib/content";
+import { references, getReferenceBySlug, pillars } from "@/lib/content";
 
 export function generateStaticParams() {
   return references.map((r) => ({ slug: r.slug }));
@@ -137,7 +137,7 @@ export default function ReferenceDetailPage({
                   {ref.relatedSolutions.map((s) => (
                     <Link
                       key={s}
-                      href="/solutions"
+                      href={`/solutions#${pillars.find((p) => p.name === s)?.slug ?? ""}`}
                       className="rounded-full border-hair border-hairline px-4 py-1.5 text-[12px] tracking-editorial text-graphite transition-colors hover:bg-paper hover:text-ink"
                     >
                       {s}

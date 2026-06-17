@@ -9,13 +9,13 @@ import { company, pillars } from "@/lib/content";
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MacroKinetic",
-  alternateName: "MacroKinetic Global",
-  legalName: "MacroKinetic Mediatech Limited",
+  "@id": "https://macrokinetic.com/#organization",
+  name: company.name,
+  legalName: company.legalName,
   url: "https://macrokinetic.com",
-  foundingDate: "2008",
-  description:
-    "MacroKinetic designs, deploys, and maintains integrated intelligent technology systems — digital signage, interactive kiosks and wayfinding, service automation, smart lighting, and applied AI — for enterprise, government, and transit clients across Asia-Pacific and the United Kingdom.",
+  logo: "https://macrokinetic.com/brand/wordmark-black-tight.png",
+  foundingDate: String(company.established),
+  description: company.positioning,
   address: [
     { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
     { "@type": "PostalAddress", addressLocality: "Hong Kong", addressCountry: "HK" },
