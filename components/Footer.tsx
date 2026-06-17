@@ -85,13 +85,19 @@ export default function Footer() {
 
       {/* Baseline */}
       <div className="hairline-t">
-        <div className="shell flex flex-col items-start justify-between gap-2 py-6 text-[12px] text-faint sm:flex-row sm:items-center">
-          <p>
-            © {new Date().getFullYear()} {company.legalName}. All rights
-            reserved.
-          </p>
-          <p className="tracking-editorial">
-            London · Hong Kong · Shenzhen
+        <div className="shell py-6">
+          <div className="flex flex-col items-start justify-between gap-2 text-[12px] text-faint sm:flex-row sm:items-center">
+            <p>
+              © {new Date().getFullYear()} {company.legalName}. All rights
+              reserved.
+            </p>
+            <p className="tracking-editorial">
+              London · Hong Kong · Shenzhen
+            </p>
+          </div>
+          <p className="mt-2 text-[11px] text-faint">
+            Site updated: {process.env.NEXT_PUBLIC_BUILD_DATE} ·{" "}
+            {process.env.NEXT_PUBLIC_BUILD_SHA}
           </p>
         </div>
       </div>

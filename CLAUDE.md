@@ -84,43 +84,35 @@ hotfix/*    ← urgent production fixes
 
 ---
 
-## FAQ Versioning — Non-Negotiable Rule
+## Site Version Marker — Non-Negotiable Rule
 
-The `/faq` page displays a low-visibility update marker near the bottom:
+Every page on macrokinetic.com displays a low-visibility site version marker in the footer baseline:
 
 ```
-FAQ updated: YYYY-MM-DD · vYYYY.MM.DD-N
+Site updated: YYYY-MM-DD · <7-char commit SHA>
 ```
 
-### Source of truth
+### How it works (automatic — no manual maintenance)
 
-`lib/content.ts` — the `faqVersion` export (immediately above the `faqs` array):
+The value is baked in at build time via two env vars defined in `next.config.js`:
 
-```typescript
-export const faqVersion = {
-  date: "YYYY-MM-DD",
-  id: "vYYYY.MM.DD-N",
-};
-```
+| Variable | Source | Example |
+|---|---|---|
+| `NEXT_PUBLIC_BUILD_DATE` | `new Date()` at build time | `2026-06-17` |
+| `NEXT_PUBLIC_BUILD_SHA` | `VERCEL_GIT_COMMIT_SHA` (Vercel injects this) | `cc7e4ea` |
 
-Increment `-N` if multiple FAQ edits happen on the same day.
+**Every deploy automatically updates both values.** No manual step required.
+Locally the SHA shows as `dev` and the date is the local build date.
 
-### What triggers a version bump
+### Where to look
 
-A version bump is required whenever any of the following change:
-- FAQ questions or answers (`faqs` array in `lib/content.ts`)
-- FAQ section headings (`heading` field in `lib/content.ts`)
-- Any structural or visual change to `app/faq/page.tsx` (e.g. HTML element changes, layout changes, new sections)
-
-A version bump is NOT required for:
-- Changes to files unrelated to the FAQ page
-- Changes to `app/layout.tsx`, other pages, components, or styles that don't touch `/faq`
-
-**When in doubt, bump.** The cost of a false bump is trivial; a missed bump is a broken audit trail.
+- **Display:** `components/Footer.tsx` — footer baseline, below copyright/city row
+- **Source:** `next.config.js` — the `env:` block
+- **Internal FAQ metadata:** `lib/content.ts` — `faqVersion` export (internal only, not displayed)
 
 ### Rules (required, not optional)
 
-1. **Any change to `/faq` → always update `faqVersion`** in the same commit. Both `date` and `id` must reflect today's date and the next revision number.
-2. **No change to `/faq` → never touch `faqVersion`**. Unrelated site edits must not alter the version stamp.
-3. **Every commit or PR that touches `app/faq/page.tsx` or the `faqs`/`faqVersion` exports in `lib/content.ts` must state the old and new FAQ version** explicitly. Example: `FAQ version: v2026.06.17-1 → v2026.06.17-2`.
-4. **Never remove the update marker from `/faq`**. The marker must always be present and visible.
+1. **Never remove the site version marker from the footer.** It must always be present on every page.
+2. **Never replace the automatic value with a hardcoded string.** The displayed value must always be derived from git/build state.
+3. **Do not add a separate manual version field** for site-wide deployment tracking — the automatic marker already covers this.
+4. The internal `faqVersion` in `lib/content.ts` may be used for internal FAQ content tracking but is not the visible deployment marker.

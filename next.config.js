@@ -1,6 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+
+  // Bake build identity into every page at build time.
+  // VERCEL_GIT_COMMIT_SHA is injected by Vercel; falls back to "dev" locally.
+  // NEXT_PUBLIC_ prefix makes these available in server and client components.
+  env: {
+    NEXT_PUBLIC_BUILD_SHA: process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7) ?? "dev",
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString().slice(0, 10),
+  },
+
   images: {
     remotePatterns: [
       {
