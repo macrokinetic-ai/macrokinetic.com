@@ -449,7 +449,7 @@ export type FaqSection = { heading: string; items: { q: string; a: string }[] };
 // multiple FAQ edits happen on the same day).
 export const faqVersion = {
   date: "2026-06-17",
-  id: "v2026.06.17-1",
+  id: "v2026.06.17-2",
 };
 
 export const faqs: FaqSection[] = [
