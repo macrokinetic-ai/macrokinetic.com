@@ -444,6 +444,14 @@ export const nav = [
 
 export type FaqSection = { heading: string; items: { q: string; a: string }[] };
 
+// Bump both fields whenever FAQ content changes. Leave untouched for unrelated site edits.
+// Format: date = YYYY-MM-DD, id = v<YYYY>.<MM>.<DD>-<revision> (increment revision if
+// multiple FAQ edits happen on the same day).
+export const faqVersion = {
+  date: "2026-06-17",
+  id: "v2026.06.17-1",
+};
+
 export const faqs: FaqSection[] = [
   {
     heading: "Company & Operations",
