@@ -18,6 +18,12 @@ export const metadata: Metadata = {
     title: "MacroKinetic | Global Corporate Hub",
     description: company.positioning,
     type: "website",
+    url: "https://macrokinetic.com",
+  },
+  twitter: {
+    card: "summary",
+    title: "MacroKinetic | Global Corporate Hub",
+    description: company.positioning,
   },
 };
 

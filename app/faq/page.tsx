@@ -40,7 +40,7 @@ export default function FAQPage() {
           <div className="shell py-10 md:py-14">
             <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
               <div className="md:col-span-4">
-                <p className="eyebrow">{heading}</p>
+                <h2 className="eyebrow">{heading}</h2>
               </div>
               <div className="md:col-span-8">
                 <div className="border-hairline">
