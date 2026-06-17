@@ -81,3 +81,33 @@ hotfix/*    ← urgent production fixes
 - All site content lives in `lib/content.ts` — edit there first
 - `app/faq/page.tsx` imports `faqs` from `lib/content` (do not add inline data back)
 - For a content-only change, only `lib/content.ts` should need editing
+
+---
+
+## FAQ Versioning — Non-Negotiable Rule
+
+The `/faq` page displays a low-visibility update marker near the bottom:
+
+```
+FAQ updated: YYYY-MM-DD · vYYYY.MM.DD-N
+```
+
+### Source of truth
+
+`lib/content.ts` — the `faqVersion` export (immediately above the `faqs` array):
+
+```typescript
+export const faqVersion = {
+  date: "YYYY-MM-DD",
+  id: "vYYYY.MM.DD-N",
+};
+```
+
+Increment `-N` if multiple FAQ edits happen on the same day.
+
+### Rules (required, not optional)
+
+1. **FAQ content changed → always update `faqVersion`** in the same commit. Both `date` and `id` must reflect today's date and the next revision number.
+2. **FAQ content did NOT change → never touch `faqVersion`**. Unrelated site edits must not alter the version stamp.
+3. **Every FAQ-related commit message and PR description must state the old and new FAQ version** explicitly. Example: `FAQ version: v2026.06.17-1 → v2026.06.18-1`.
+4. **Never remove the update marker from `/faq`**. The marker must always be present and visible.
