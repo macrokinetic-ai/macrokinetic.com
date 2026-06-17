@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { faqs } from "@/lib/content";
+import { faqs, faqVersion } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
@@ -63,6 +63,14 @@ export default function FAQPage() {
           </div>
         </section>
       ))}
+
+      <section className="hairline-t bg-canvas">
+        <div className="shell py-5">
+          <p className="text-[11px] text-faint">
+            FAQ updated: {faqVersion.date} · {faqVersion.id}
+          </p>
+        </div>
+      </section>
 
       <script
         type="application/ld+json"
