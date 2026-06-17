@@ -50,3 +50,34 @@
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
 - **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
 - **Minimat Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+
+## Git & Deployment Workflow
+
+### Branch Strategy
+
+```
+main        ← production only. PR merges only. Never push directly.
+content/*   ← copy, FAQ, case studies, image swaps
+feat/*      ← new components, pages, layout changes
+hotfix/*    ← urgent production fixes
+```
+
+### Rules
+
+1. **Never push directly to `main`** — always branch + PR, even for one-liners
+2. **Always verify the preview before merging** — open the branch URL in incognito
+3. **No Vercel CLI deploys** — GitHub push auto-triggers preview; PR merge auto-triggers production
+4. **Run `npm run build` locally before pushing** for any `feat/*` or `hotfix/*` branch
+
+### How Deploys Work
+
+| Action | Result |
+|---|---|
+| Push any non-`main` branch | Vercel auto-creates preview at `macrokineticcom-git-<branch>-benny-4363s-projects.vercel.app` |
+| Merge PR into `main` | Vercel auto-promotes to production (`macrokinetic.com`) |
+
+### Content Architecture
+
+- All site content lives in `lib/content.ts` — edit there first
+- `app/faq/page.tsx` imports `faqs` from `lib/content` (do not add inline data back)
+- For a content-only change, only `lib/content.ts` should need editing
