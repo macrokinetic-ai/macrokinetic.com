@@ -47,7 +47,7 @@ export default function PrivacyPage() {
           {privacySections.map((s) => (
             <div key={s.heading} className="hairline-t py-8">
               <h2 className="text-xl font-medium tracking-editorial text-ink">{s.heading}</h2>
-              {s.paras?.slice(0, s.items ? 1 : undefined).map((p) => (
+              {s.intro?.map((p) => (
                 <p key={p} className="mt-4 text-[15px] leading-relaxed text-graphite">{linkify(p)}</p>
               ))}
               {s.items && (
@@ -57,8 +57,7 @@ export default function PrivacyPage() {
                   ))}
                 </ul>
               )}
-              {s.items &&
-                s.paras?.slice(1).map((p) => (
+              {s.paras?.map((p) => (
                   <p key={p} className="mt-4 text-[15px] leading-relaxed text-graphite">{linkify(p)}</p>
                 ))}
             </div>

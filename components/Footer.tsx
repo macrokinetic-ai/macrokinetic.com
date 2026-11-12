@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CookieSettingsLink from "./CookieSettingsLink";
 import { company, offices, nav, gateways } from "@/lib/content";
 
 export default function Footer() {
@@ -120,7 +121,9 @@ export default function Footer() {
             {company.ukEntity.office}.{" "}
             <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
               Privacy notice
-            </a>
+            </a>{" "}
+            ·{" "}
+            <CookieSettingsLink className="underline underline-offset-2 hover:text-ink" />
           </p>
           <p className="mt-2 text-[11px] text-faint">
             Site updated: {process.env.NEXT_PUBLIC_BUILD_DATE} ·{" "}

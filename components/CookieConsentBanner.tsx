@@ -15,8 +15,32 @@ export function getConsentCookie(): "accepted" | "declined" | null {
   return val === "accepted" || val === "declined" ? val : null;
 }
 
+const GA_ID = "G-5DWEDYDC6N";
+
+// Remove Google Analytics cookies and stop further tracking on this page.
+function clearAnalytics() {
+  (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = true;
+  const host = window.location.hostname;
+  const domains = ["", host, `.${host}`, `.${host.replace(/^www\./, "")}`];
+  document.cookie.split("; ").forEach((c) => {
+    const name = c.split("=")[0];
+    if (name === "_ga" || name.startsWith("_ga_") || name === "_gid") {
+      domains.forEach((d) => {
+        document.cookie = `${name}=; max-age=0; path=/${d ? `; domain=${d}` : ""}`;
+      });
+    }
+  });
+}
+
+/** Reopen the cookie banner so a visitor can change their choice. */
+export function openCookieSettings() {
+  window.dispatchEvent(new Event("open-cookie-settings"));
+}
+
 function setConsentCookie(value: "accepted" | "declined") {
   document.cookie = `${COOKIE_NAME}=${value}; max-age=${MAX_AGE}; path=/; SameSite=Lax`;
+  if (value === "declined") clearAnalytics();
+  else (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = false;
   window.dispatchEvent(new Event("cookie-consent-changed"));
 }
 
@@ -25,6 +49,9 @@ export default function CookieConsentBanner() {
 
   useEffect(() => {
     if (getConsentCookie() === null) setVisible(true);
+    const open = () => setVisible(true);
+    window.addEventListener("open-cookie-settings", open);
+    return () => window.removeEventListener("open-cookie-settings", open);
   }, []);
 
   if (!visible) return null;
@@ -38,9 +65,10 @@ export default function CookieConsentBanner() {
     <div className="fixed bottom-0 left-0 right-0 z-50 border-t border-gray-200 bg-white/95 px-6 py-5 shadow-lg backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[13px] leading-relaxed text-gray-600">
-          We use cookies for essential functionality and analytics (Google
-          Analytics 4). You can accept all cookies or decline non-essential
-          ones. Your choice is stored for one year.{" "}
+          We use essential cookies to run this site and, only if you accept,
+          Google Analytics 4 cookies to understand how it is used. You can
+          change your choice at any time with &ldquo;Cookie settings&rdquo; in
+          the footer.{" "}
           <a href="/privacy" className="underline underline-offset-2">
             Privacy notice
           </a>

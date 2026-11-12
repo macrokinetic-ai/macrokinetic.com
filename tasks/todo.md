@@ -336,3 +336,11 @@ manual Editor/Velo work.
 - [x] /solutions: "in-house" heading -> partners; "24/7 monitoring" -> monitoring, maintenance & support
 - [x] Homepage + FAQ: PonyABC described as early-years brand (no "AR/immersive")
 - [ ] Off-site: Trevo partner page on trevo.ai; Bing Webmaster + IndexNow; HOSPA public listing; privacy notice page; rehost 4 Wix images; old /wp-content URLs (Vercel returns 403)
+
+## 12 Nov 2026 — PR #10 follow-up (privacy, images, old WordPress URLs)
+- [x] Privacy notice /privacy, revised after ChatGPT review (cookie settings link, transfers, partner roles, 30-day complaints procedure, automated decisions)
+- [x] Footer "Cookie settings" reopens the banner; declining clears GA cookies and disables GA
+- [x] Privacy line beside the enquiry form
+- [x] Three Wix-hosted reference photos rehosted and optimised (ChatGPT settings)
+- [x] Old WordPress paths (/wp-content etc.) 301 to the new site (verified on preview)
+- [ ] Benny: ICO data protection fee check; confirm transfer safeguards (IDTA/Addendum) with HK company, Trevo, Horion
