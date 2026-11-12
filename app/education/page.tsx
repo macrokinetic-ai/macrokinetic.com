@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import Link from "next/link";
 import SensoryScene from "@/components/SensoryScene";
 import FriendsScene from "@/components/FriendsScene";
@@ -322,6 +324,7 @@ export default function EducationPage() {
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <JsonLd data={breadcrumbSchema([{ name: "Education", path: "/education" }])} />
     </>
   );
 }

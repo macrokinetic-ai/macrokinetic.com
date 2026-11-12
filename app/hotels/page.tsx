@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -287,20 +289,34 @@ export default function HotelsPage() {
       <section className="hairline-t bg-canvas">
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-4">
-            <SectionHead eyebrow="Your UK partner" title="UK sales, installation and local support." />
+            <SectionHead eyebrow="Your UK partner" title="Hotel self check-in kiosk supplier, installation and support in the UK." />
           </div>
           <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-8">
             <p>
-              MacroKinetic MediaTech Limited is based in London and is
-              Trevo&rsquo;s authorised UK and Europe partner. We work with UK
-              hotels on product selection, the proposed guest journey,
-              installation and local support.
+              MacroKinetic MediaTech Limited is a London-based hotel technology
+              company and Trevo&rsquo;s authorised partner for the UK and
+              Europe. We supply Trevo hotel self check-in kiosks and work with
+              UK hotels on kiosk selection, lobby layout, installation and
+              local support.
             </p>
             <p>
-              Whether you are considering a single lobby kiosk or reviewing
-              self-service across several properties, we can talk through the
-              practical requirements with your team.
+              We discuss the guest arrival process and check the requirements
+              of your property management system (PMS), door locks and payment
+              systems before recommending a configuration. Whether you operate
+              a boutique hotel or manage several properties, we can help you
+              explore a suitable approach.
             </p>
+            <p className="text-[15px] text-muted">
+              Trevo is a Singapore hospitality technology company with hotel
+              deployments in more than eight countries; the first UK
+              installations are being prepared.{" "}
+              <a href={company.domains.trevo} target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">
+                Trevo — Singapore hotel technology provider ↗
+              </a>
+            </p>
+            <a href="#contact" className={`inline-block ${btnDark}`}>
+              Discuss your hotel
+            </a>
           </div>
         </div>
       </section>
@@ -409,6 +425,7 @@ export default function HotelsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <JsonLd data={breadcrumbSchema([{ name: "Hotels", path: "/hotels" }])} />
     </>
   );
 }

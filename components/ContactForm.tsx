@@ -236,6 +236,15 @@ export default function ContactForm() {
         </p>
       )}
 
+      <p className="text-[12px] leading-relaxed text-faint">
+        Name, email and message are required; company is optional. We use your
+        details only to reply to your enquiry. See our{" "}
+        <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
+          privacy notice
+        </a>
+        .
+      </p>
+
       {/* Submit */}
       <button
         type="submit"

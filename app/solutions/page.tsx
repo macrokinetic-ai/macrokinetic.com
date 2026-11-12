@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { pillars } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -127,7 +129,7 @@ export default function SolutionsPage() {
       <section className="hairline-t bg-paper">
         <div className="shell flex flex-col items-start justify-between gap-6 py-16 md:flex-row md:items-center">
           <h2 className="max-w-lg text-xl font-medium leading-snug tracking-editorial text-ink md:text-2xl">
-            Every deployment is engineered, installed and maintained in-house.
+            Integrated delivery, supported by specialist partners.
           </h2>
           <a
             href="#contact"
@@ -137,6 +139,7 @@ export default function SolutionsPage() {
           </a>
         </div>
       </section>
+      <JsonLd data={breadcrumbSchema([{ name: "Solutions", path: "/solutions" }])} />
     </>
   );
 }

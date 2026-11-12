@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import { faqs } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -69,6 +71,7 @@ export default function FAQPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <JsonLd data={breadcrumbSchema([{ name: "FAQ", path: "/faq" }])} />
     </>
   );
 }

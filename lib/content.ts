@@ -54,7 +54,7 @@ export const gateways: GatewayCard[] = [
     label: "Smart Education",
     title: "ponyabc.co.uk",
     description:
-      "PonyABC — interactive learning, AR experiences and immersive content for the UK and European markets.",
+      "PonyABC — our London-designed early-years learning brand: multilingual talking pens, learning materials, digital content and connected technology.",
     href: company.domains.ponyabc,
     external: true,
   },
@@ -122,7 +122,7 @@ export const pillars: Pillar[] = [
       "Autonomous service & guidance robots",
       "Self-service & transactional kiosks",
       "Systems integration & orchestration",
-      "24/7 monitoring & field maintenance",
+      "Monitoring, maintenance & technical support",
     ],
     link: {
       label: "UK Hotels",
@@ -200,6 +200,7 @@ export type GalleryImage = { src: string; w: number; h: number; alt: string };
 export type Reference = {
   slug: string;
   client: string;
+  seoTitle?: string; // <=45 chars; used as <title> when client name is long
   editorialTitle?: string; // story-style title, in the company's "What We Did" voice
   sector: string;
   location: string;
@@ -224,6 +225,7 @@ export const references: Reference[] = [
   {
     slug: "hkia",
     client: "Hong Kong International Airport - Intelligent Customer Service Counter",
+    seoTitle: "HKIA Intelligent Customer Service Counters",
     editorialTitle: "Elevating Global Travel",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
@@ -242,7 +244,7 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["AI Solutions", "Retail Technology"],
     gallery: [
-      { src: "https://static.wixstatic.com/media/66d5ca_da638972f5224936994f70ad383622fa~mv2.jpeg/v1/fill/w_1979,h_1484,al_c,q_90/66d5ca_da638972f5224936994f70ad383622fa~mv2.webp", w: 1979, h: 1484, alt: "HKIA Intelligent Customer Service Counter terminal installed by MacroKinetic at Hong Kong International Airport" },
+      { src: "/references/hkia/kiosk-visitors.jpg", w: 2560, h: 1920, alt: "Two visitors using a MacroKinetic interactive customer service kiosk at Hong Kong International Airport." },
       { src: "/references/hkia/02.jpg", w: 1600, h: 898, alt: "Terminal 1 interactive wayfinding map on an HKIA service kiosk" },
       { src: "/references/hkia/03.jpg", w: 1600, h: 900, alt: "Live video customer-service support on an HKIA Intelligent Service Counter" },
     ],
@@ -251,6 +253,7 @@ export const references: Reference[] = [
   {
     slug: "hkia-food-court",
     client: "Hong Kong International Airport - Interactive Food Court Menu",
+    seoTitle: "HKIA Interactive Food Court Menu — Case Study",
     editorialTitle: "Dining Navigation at the Airport",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
@@ -287,10 +290,10 @@ export const references: Reference[] = [
       "Automated car-park redemption",
     ],
     relatedSolutions: ["Retail Technology", "Digital Signage"],
-    cover: { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory kiosk" },
+    cover: { src: "/references/elements/directory-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted interactive shopping directory showing a floor plan at ELEMENTS shopping centre, Hong Kong." },
     gallery: [
-      { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory with 'Take Me There' routing" },
-      { src: "https://static.wixstatic.com/media/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall e-Wayfinding kiosk — store directory and concierge interface" },
+      { src: "/references/elements/directory-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted interactive shopping directory showing a floor plan at ELEMENTS shopping centre, Hong Kong." },
+      { src: "/references/elements/parking-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted parking redemption kiosk installed in a stone column at ELEMENTS shopping centre, Hong Kong." },
     ],
     featured: true,
   },
@@ -482,6 +485,14 @@ export const faqs: FaqSection[] = [
         a: "Trevo is a Singapore hotel technology company. MacroKinetic MediaTech Limited, based in London, is Trevo's authorised partner for the UK and Europe, providing sales, installation and local support for UK hotels.",
       },
       {
+        q: "Can MacroKinetic supply and install Trevo self check-in kiosks for our hotel in the UK?",
+        a: "Yes. MacroKinetic MediaTech Limited, based in London, is Trevo's authorised UK and Europe partner. We provide sales, installation and local support for UK hotels considering Trevo self check-in technology, and discuss kiosk options, lobby requirements, PMS and door-lock integration and the installation process before recommending a solution.",
+      },
+      {
+        q: "Is MacroKinetic the manufacturer of Trevo kiosks?",
+        a: "No. Trevo is a Singapore hospitality technology company that makes the kiosks and software. MacroKinetic MediaTech Limited is Trevo's authorised UK and Europe partner for sales, installation and local support.",
+      },
+      {
         q: "Will Trevo work with our existing PMS, room locks and payments?",
         a: "Trevo's integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on your particular systems, versions and configuration, so we review the requirements with you before making a recommendation.",
       },
@@ -532,7 +543,7 @@ export const faqs: FaqSection[] = [
       },
       {
         q: "What is the relationship between macrokinetic.com, macrokinetic.ai, and ponyabc.co.uk?",
-        a: "macrokinetic.com is the corporate hub for the MacroKinetic group. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is MacroKinetic's UK education technology brand, selling interactive and AR learning products for children.",
+        a: "macrokinetic.com is the corporate hub for the MacroKinetic group. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is the website of PonyABC, the London-designed early-years learning brand of MacroKinetic MediaTech Limited (talking pens, learning cards and books, songs, free nursery resources and the Sensory Colour Learning System).",
       },
       {
         q: "Does MacroKinetic handle the full project lifecycle?",

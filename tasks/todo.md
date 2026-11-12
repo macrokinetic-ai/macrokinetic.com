@@ -326,3 +326,21 @@ manual Editor/Velo work.
 - [x] /education enterprise page (copy with ChatGPT): Sensory Colour Learning System headline, how it works + video, components, configurations, research/partners, 7 FAQ, CTA to marketing@ponyabc.co.uk
 - [x] Nav "Education" after Hotels; Smart Education pillar → /education; homepage capability item → /education; sitemap; llms.txt PonyABC section; FAQ PonyABC prices removed
 - Images/video hot-linked from ponyabc.co.uk Shopify CDN (/cdn/shop/files, /cdn/shop/videos)
+
+## 2026-11-12 — SEO/AIO audit (branch seo/aio-audit-nov12), with ChatGPT review
+- [x] Sitewide JSON-LD: UK company (Organization, Trevo partner, PonyABC brand) + HK head company (parentOrganization), WebSite; each with its own LinkedIn sameAs
+- [x] BreadcrumbList on all non-home pages; ItemList on /references; CreativeWork + OG image per case study (creator = HK company)
+- [x] Short titles for the two HKIA case studies
+- [x] Homepage hero video 15.8 MB -> 1.6 MB, real poster frame
+- [x] /hotels: supplier/installation paragraph, Trevo link, 2 FAQs (supply & install; not the manufacturer)
+- [x] /solutions: "in-house" heading -> partners; "24/7 monitoring" -> monitoring, maintenance & support
+- [x] Homepage + FAQ: PonyABC described as early-years brand (no "AR/immersive")
+- [ ] Off-site: Trevo partner page on trevo.ai; Bing Webmaster + IndexNow; HOSPA public listing; privacy notice page; rehost 4 Wix images; old /wp-content URLs (Vercel returns 403)
+
+## 12 Nov 2026 — PR #10 follow-up (privacy, images, old WordPress URLs)
+- [x] Privacy notice /privacy, revised after ChatGPT review (cookie settings link, transfers, partner roles, 30-day complaints procedure, automated decisions)
+- [x] Footer "Cookie settings" reopens the banner; declining clears GA cookies and disables GA
+- [x] Privacy line beside the enquiry form
+- [x] Three Wix-hosted reference photos rehosted and optimised (ChatGPT settings)
+- [x] Old WordPress paths (/wp-content etc.) 301 to the new site (verified on preview)
+- [ ] Benny: ICO data protection fee check; confirm transfer safeguards (IDTA/Addendum) with HK company, Trevo, Horion

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import CookieSettingsLink from "./CookieSettingsLink";
 import { company, offices, nav, gateways } from "@/lib/content";
 
 export default function Footer() {
@@ -117,7 +118,12 @@ export default function Footer() {
           <p className="mt-2 text-[11px] text-faint">
             {company.ukEntity.name} is registered in England and Wales, company
             no. {company.ukEntity.number}. Registered office:{" "}
-            {company.ukEntity.office}.
+            {company.ukEntity.office}.{" "}
+            <a href="/privacy" className="underline underline-offset-2 hover:text-ink">
+              Privacy notice
+            </a>{" "}
+            ·{" "}
+            <CookieSettingsLink className="underline underline-offset-2 hover:text-ink" />
           </p>
           <p className="mt-2 text-[11px] text-faint">
             Site updated: {process.env.NEXT_PUBLIC_BUILD_DATE} ·{" "}
