@@ -86,7 +86,7 @@ const nextConfig = {
       },
       {
         source: "/post/success-at-childcare-education-expo-uk-midland",
-        destination: "/solutions#smart-education",
+        destination: "/education",
         statusCode: 301,
       },
 
@@ -108,15 +108,26 @@ const nextConfig = {
       },
       {
         source: "/sindrax",
-        destination: "/solutions#smart-education",
+        destination: "/education",
         statusCode: 301,
       },
       {
         source: "/copy-of-sindrax",
-        destination: "/solutions#smart-education",
+        destination: "/education",
         statusCode: 301,
       },
       { source: "/zonepro", destination: "/solutions", statusCode: 301 },
+      { source: "/s-projects-basic", destination: "/references", statusCode: 301 },
+      {
+        source: "/copy-of-muxwave",
+        destination: "/solutions#digital-signage",
+        statusCode: 301,
+      },
+      {
+        source: "/copy-of-muxwave-1",
+        destination: "/solutions#digital-signage",
+        statusCode: 301,
+      },
       {
         source: "/zoneprocasestudies",
         destination: "/references",
@@ -127,12 +138,12 @@ const nextConfig = {
       // education section rather than bouncing users off-domain)
       {
         source: "/product-page/ar-tangram",
-        destination: "/solutions#smart-education",
+        destination: "/education",
         statusCode: 301,
       },
       {
         source: "/category/all-products",
-        destination: "/solutions#smart-education",
+        destination: "/education",
         statusCode: 301,
       },
     ];
