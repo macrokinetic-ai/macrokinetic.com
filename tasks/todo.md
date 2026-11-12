@@ -321,3 +321,8 @@ manual Editor/Velo work.
 - [x] ChatGPT review applied (12 Nov): how-it-works steps, model "best for" lines, CTAs to enquiry form, 7 buying-objection FAQs, UK-partner + experience sections, homepage band copy, Solutions link to /hotels, delivery-claim wording, llms.txt
 - [ ] Open: Mk3 screen size (Trevo site says 17", our ref says 12") — not published either way
 - [ ] Open: UTM tags on LinkedIn links; GA4 event for enquiry form submit
+
+## 2026-11-12 — Education page (PonyABC) — branch content/education-ponyabc
+- [x] /education enterprise page (copy with ChatGPT): Sensory Colour Learning System headline, how it works + video, components, configurations, research/partners, 7 FAQ, CTA to marketing@ponyabc.co.uk
+- [x] Nav "Education" after Hotels; Smart Education pillar → /education; homepage capability item → /education; sitemap; llms.txt PonyABC section; FAQ PonyABC prices removed
+- Images/video hot-linked from ponyabc.co.uk Shopify CDN (/cdn/shop/files, /cdn/shop/videos)

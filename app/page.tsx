@@ -155,7 +155,7 @@ export default function HomePage() {
                 {pillars.map((p) => (
                   <Link
                     key={p.index}
-                    href={`/solutions#${p.slug}`}
+                    href={p.slug === "smart-education" ? "/education" : `/solutions#${p.slug}`}
                     className="group flex items-baseline gap-6 py-6 hairline-t transition-colors hover:bg-paper md:px-4"
                   >
                     <span className="font-mono text-[12px] text-faint">

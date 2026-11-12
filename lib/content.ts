@@ -178,17 +178,17 @@ export const pillars: Pillar[] = [
     name: "Smart Education",
     tagline: "Learning, Made Interactive",
     summary:
-      "Interactive and AR-assisted learning experiences — MacroKinetic's education-technology practice, delivered to the UK through PonyABC.",
+      "Through PonyABC, MacroKinetic MediaTech develops interactive early-years learning — multilingual talking pens, physical learning cards and responsive smart lighting. The forthcoming PonyABC Sensory Colour Learning System brings child-led colour exploration into nursery and early-years SEN settings.",
     capabilities: [
-      "Interactive & multi-sensory learning systems",
-      "AR-assisted learning (e.g. AR Magic Tangram)",
-      "Early-years & classroom multimedia",
-      "UK education range via PonyABC",
+      "PonyABC Sensory Colour Learning System",
+      "Multilingual talking pen & PVC learning cards",
+      "Early-years songs, videos & free teaching resources",
+      "Institutional, research & distribution partnerships",
     ],
     link: {
-      label: "UK Initiative",
-      href: company.domains.ponyabc,
-      note: "Interactive & AR learning for the UK.",
+      label: "Education",
+      href: "/education",
+      note: "PonyABC for early-years settings — institutional, research and partner enquiries.",
     },
   },
 ];
@@ -458,6 +458,7 @@ export const offices = [
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Hotels", href: "/hotels" },
+  { label: "Education", href: "/education" },
   { label: "Solutions", href: "/solutions" },
   { label: "References", href: "/references" },
 ] as const;
@@ -598,11 +599,11 @@ export const faqs: FaqSection[] = [
     items: [
       {
         q: "What is PonyABC?",
-        a: "PonyABC is MacroKinetic's UK education technology brand, offering interactive and augmented-reality (AR) learning products for children aged 3 and above. Products are sold through ponyabc.co.uk and target UK and European families, including bilingual and trilingual households.",
+        a: "PonyABC (\"Learn and Play\") is an early-years learning brand of MacroKinetic MediaTech Limited, London, for children aged 3 and over. It develops multilingual talking pens, learning cards, songs and the PonyABC Sensory Colour Learning System for nursery settings. Products are sold through ponyabc.co.uk; institutional enquiries go to marketing@ponyabc.co.uk.",
       },
       {
         q: "What products does PonyABC sell?",
-        a: "PonyABC currently offers three products: the AR Magic Tangram (£29.90), the Time-Capsule Voice Sticker in a Hug Hug Dinosaur Special Edition (£39.90), and the Trilingual Early Learning Encyclopedia and Smart Talking Pen Set covering Cantonese, Mandarin, and English with 5,000+ knowledge points across 29 themes (£59.90).",
+        a: "PonyABC offers the P5 talking pen, multilingual talking books and flash cards, PVC learning cards, children's songs and videos, free printable early-years teaching packs and 3D-printed learning toys (Makerplace). The PonyABC Sensory Colour Learning System for nursery settings is coming in winter 2026. See ponyabc.co.uk for the current range.",
       },
       {
         q: "What is the AR Magic Tangram?",
@@ -689,4 +690,49 @@ export const trevoIntegrations = [
   "VingCard",
   "Stripe",
   "Adyen",
+];
+
+// ── PonyABC / Education (/education) ───────────────────────────────────────
+// Enterprise copy drafted with ChatGPT (12 Nov 2026). Rules: no prices, no
+// certification claims, no "sensory-safe"/therapeutic claims, Philips/IKEA/
+// TrimUI named as third-party products only (no partnership or endorsement).
+export const PONYABC_SENSORY_URL = "https://ponyabc.co.uk/pages/sensory-colour-system";
+export const PONYABC_EMAIL = "marketing@ponyabc.co.uk";
+
+export const eduSteps = [
+  { title: "Tap a colour", text: "A child taps a PonyABC colour card using the P5 talking pen." },
+  { title: "Hear the colour", text: "The pen names the colour in multiple languages, supporting multilingual exploration." },
+  { title: "See the response", text: "The room lights change to match the card. Tap black and the lights turn off." },
+];
+
+export const eduBenefits = [
+  { title: "Child-led exploration", text: "Children choose when to interact. There are no scores, reward charts or prescribed sequences." },
+  { title: "Portable by design", text: "The system needs power and Wi-Fi and can be moved between rooms." },
+  { title: "Multilingual learning", text: "The P5 pen supports English, French, Italian, Spanish, German, Portuguese, Mandarin and Cantonese, with further languages planned." },
+  { title: "Considered light responses", text: "Lights change colour when a card is tapped, with at least 1–2 seconds between taps. They do not flash." },
+];
+
+export const eduComponents = [
+  { title: "PonyABC Colour Cards", text: "Durable PVC cards with rounded corners and a wipe-clean surface, designed for repeated nursery use." },
+  { title: "PonyABC P5 Talking Pen", text: "Co-designed in London. Works offline for talking-card activities and speaks colour names in multiple languages." },
+  { title: "PonyABC Gateway", text: "A TrimUI Smart Pro handheld pre-installed with the PonyABC app. Kept beside the teacher, it shows colour names, pen and light status, low-battery alerts and simple British English settings. The pen reconnects automatically." },
+  { title: "Your choice of smart lighting", text: "Philips Hue: Hue Bridge with Hue colour lamps, such as Hue Iris or Hue Bloom. Or IKEA: DIRIGERA hub with KAJPLATS colour bulbs. The lights are third-party products, not made by PonyABC." },
+];
+
+export const eduPartners = [
+  "Universities and early-years researchers",
+  "SEN specialists and education practitioners",
+  "Nursery groups and local authorities",
+  "Education distributors and resellers",
+  "Technology and smart-environment partners",
+];
+
+export const eduFaq: { q: string; a: string }[] = [
+  { q: "When will the Sensory Colour Learning System be available?", a: "The system is planned for winter 2026. Nurseries, education organisations, distributors and research partners can register their interest now." },
+  { q: "What is included in the starter configuration?", a: "A PonyABC P5 talking pen, PVC colour cards, a TrimUI Smart Pro gateway pre-installed with the PonyABC app, and one supported lighting option. Additional lights, pens and cards can be discussed, and we confirm what is supplied when we tailor the package." },
+  { q: "Does the system require Wi-Fi?", a: "The P5 pen works offline for talking-card activities. The connected colour-light system needs power and Wi-Fi to communicate with the supported lighting equipment." },
+  { q: "Can we use existing smart lights?", a: "The currently supported options are a Philips Hue Bridge with compatible Hue colour lamps, or an IKEA DIRIGERA hub with compatible KAJPLATS colour bulbs. Other devices should not be assumed compatible without testing." },
+  { q: "Does the lighting flash or change rapidly?", a: "No. Lighting changes are triggered by card taps, with at least 1–2 seconds between taps. A calmer mode with dimmer lighting and slower fades is planned but not yet available." },
+  { q: "Is this a therapeutic or clinical sensory system?", a: "No. PonyABC is an early-years educational product for interactive learning and play, including nursery and SEN settings. It is not a clinical or therapy device. It is intended for children aged 3 and over with adult supervision, and individual children's sensory preferences should guide its use." },
+  { q: "Can we discuss multi-site use, distribution or research?", a: "Yes. We welcome enquiries from nursery groups, local authorities, education distributors, SEN specialists, universities and technology partners. Tell us about your organisation and the opportunity you would like to explore." },
 ];

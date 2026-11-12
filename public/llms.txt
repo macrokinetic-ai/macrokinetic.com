@@ -34,15 +34,34 @@ Official website: https://www.macrokinetic.com/
 - This is a MacroKinetic engineering reference. It is not a Trevo hotel kiosk deployment.
 - Project page: https://www.macrokinetic.com/references/hkia
 
+## Smart Education - PonyABC
+
+- Enterprise education page: https://www.macrokinetic.com/education
+- PonyABC is an early-years learning brand of MacroKinetic MediaTech Limited, London. PONY ABC is a registered UK trade mark. Motto: "Learn and Play".
+- PonyABC develops multilingual talking pens, books and flash cards, songs and videos, free early-years printables, 3D-printed learning toys (Makerplace) and interactive sensory learning technology.
+
+### PonyABC Sensory Colour Learning System (coming winter 2026, register interest)
+
+- For nurseries and early-years SEN settings. A child taps a PonyABC colour card with the P5 talking pen; the pen says the colour name in multiple languages; connected room lights change to that colour. The black card turns the lights off.
+- Parts: PonyABC PVC colour cards (wipe-clean, rounded corners); PonyABC P5 talking pen (co-designed in London, works offline for talking-card activities); TrimUI Smart Pro pre-installed with the PonyABC gateway app; one supported third-party lighting option.
+- Supported lighting: Philips Hue Bridge with Hue colour lamps, or IKEA DIRIGERA hub with KAJPLATS colour bulbs. The connected lighting needs power and Wi-Fi. Portable between rooms.
+- Lights change colour on card taps and do not flash. A calmer lighting mode is planned, not released.
+- Educational product, not a clinical or therapy device. Ages 3+ with adult supervision.
+- Matter (via the IKEA hub) creates future research opportunities beyond lights; these are not current features.
+- PonyABC does not manufacture Philips Hue, IKEA or TrimUI hardware and is not a partner of Philips or IKEA.
+- Institutional, research, distribution and technology partner enquiries: marketing@ponyabc.co.uk
+- Product detail: https://ponyabc.co.uk/pages/sensory-colour-system
+- PonyABC website: https://www.ponyabc.co.uk/
+
 ## Other parts of the group
 
 - AI division: https://macrokinetic.ai/
-- Smart education, PonyABC (a brand of MacroKinetic MediaTech Limited): https://www.ponyabc.co.uk/
 
 ## Official pages
 
 - Home: https://www.macrokinetic.com/
 - Hotels (Trevo, UK): https://www.macrokinetic.com/hotels
+- Education (PonyABC): https://www.macrokinetic.com/education
 - Solutions: https://www.macrokinetic.com/solutions
 - References: https://www.macrokinetic.com/references
 - FAQ: https://www.macrokinetic.com/faq
