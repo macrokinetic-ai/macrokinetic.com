@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
+import SensoryScene from "@/components/SensoryScene";
+import FriendsScene from "@/components/FriendsScene";
 import {
   company,
   eduOffer,
@@ -17,7 +18,6 @@ const TITLE = "Education Technology — PonyABC | MacroKinetic";
 const DESCRIPTION =
   "Explore MacroKinetic's early-years education work through PonyABC: talking pens, multilingual books, nursery resources, sensory learning and partnerships.";
 const HERO = "https://ponyabc.co.uk/cdn/shop/files/pa-b-sensory-bg.png";
-const PLAY = "https://ponyabc.co.uk/cdn/shop/files/pa-play-bg.png";
 const MAIL = `mailto:${PONYABC_EMAIL}?subject=${encodeURIComponent("Education partnership enquiry")}`;
 const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
@@ -119,15 +119,7 @@ export default function EducationPage() {
       <section className="bg-canvas">
         <div className="shell">
           <div className="overflow-hidden rounded-xl bg-paper">
-            <Image
-              src={HERO}
-              alt="Nursery room with soft colour lighting, cushions and a rainbow rug"
-              width={1536}
-              height={1024}
-              priority
-              sizes="(max-width: 1400px) 100vw, 1400px"
-              className="h-auto max-h-[620px] w-full object-cover"
-            />
+            <SensoryScene />
           </div>
         </div>
       </section>
@@ -209,14 +201,7 @@ export default function EducationPage() {
                 through music, language and play.
               </p>
               <div className="overflow-hidden rounded-xl bg-paper">
-                <Image
-                  src={PLAY}
-                  alt="Pony and friends at the playground"
-                  width={960}
-                  height={540}
-                  sizes="(max-width: 768px) 100vw, 640px"
-                  className="h-auto w-full"
-                />
+                <FriendsScene />
               </div>
               <a href={PONYABC_YOUTUBE} {...ext} className={`inline-block ${btnLight}`}>
                 Visit @PonyABC ↗
