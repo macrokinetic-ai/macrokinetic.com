@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/solutions`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/references`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/faq`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE_URL}/privacy`, lastModified, changeFrequency: "yearly", priority: 0.2 },
   ];
 
   const referenceRoutes: MetadataRoute.Sitemap = references.map((ref) => ({

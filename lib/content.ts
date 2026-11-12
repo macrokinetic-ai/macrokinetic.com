@@ -244,7 +244,7 @@ export const references: Reference[] = [
     ],
     relatedSolutions: ["AI Solutions", "Retail Technology"],
     gallery: [
-      { src: "https://static.wixstatic.com/media/66d5ca_da638972f5224936994f70ad383622fa~mv2.jpeg/v1/fill/w_1979,h_1484,al_c,q_90/66d5ca_da638972f5224936994f70ad383622fa~mv2.webp", w: 1979, h: 1484, alt: "HKIA Intelligent Customer Service Counter terminal installed by MacroKinetic at Hong Kong International Airport" },
+      { src: "/references/hkia/kiosk-visitors.jpg", w: 2560, h: 1920, alt: "Two visitors using a MacroKinetic interactive customer service kiosk at Hong Kong International Airport." },
       { src: "/references/hkia/02.jpg", w: 1600, h: 898, alt: "Terminal 1 interactive wayfinding map on an HKIA service kiosk" },
       { src: "/references/hkia/03.jpg", w: 1600, h: 900, alt: "Live video customer-service support on an HKIA Intelligent Service Counter" },
     ],
@@ -290,10 +290,10 @@ export const references: Reference[] = [
       "Automated car-park redemption",
     ],
     relatedSolutions: ["Retail Technology", "Digital Signage"],
-    cover: { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory kiosk" },
+    cover: { src: "/references/elements/directory-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted interactive shopping directory showing a floor plan at ELEMENTS shopping centre, Hong Kong." },
     gallery: [
-      { src: "https://static.wixstatic.com/media/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_b8d7d0c9487943d3a2f94953ee3890a5~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall interactive e-Wayfinding directory with 'Take Me There' routing" },
-      { src: "https://static.wixstatic.com/media/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg/v1/fill/w_738,h_975,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/66d5ca_a510723a2af24033a58cb5d6d4bbff0a~mv2.jpg", w: 738, h: 975, alt: "ELEMENTS mall e-Wayfinding kiosk — store directory and concierge interface" },
+      { src: "/references/elements/directory-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted interactive shopping directory showing a floor plan at ELEMENTS shopping centre, Hong Kong." },
+      { src: "/references/elements/parking-kiosk.jpg", w: 768, h: 1024, alt: "Wall-mounted parking redemption kiosk installed in a stone column at ELEMENTS shopping centre, Hong Kong." },
     ],
     featured: true,
   },

@@ -36,6 +36,16 @@ const nextConfig = {
   // canonicalisation are handled at the Vercel domain level, not here.
   async redirects() {
     return [
+      // Legacy WordPress site (before 2025): old uploads (product brochures,
+      // technical PDFs) and WP system paths → closest page on the new site.
+      { source: "/wp-content/:path*", destination: "/solutions", statusCode: 301 },
+      { source: "/wp-includes/:path*", destination: "/", statusCode: 301 },
+      { source: "/wp-admin/:path*", destination: "/", statusCode: 301 },
+      { source: "/wp-login.php", destination: "/", statusCode: 301 },
+      { source: "/wp-json/:path*", destination: "/", statusCode: 301 },
+      { source: "/index.php", destination: "/", statusCode: 301 },
+      { source: "/feed", destination: "/references", statusCode: 301 },
+
       // Blog ("What We Did") index → case-study archive
       { source: "/blog", destination: "/references", statusCode: 301 },
 

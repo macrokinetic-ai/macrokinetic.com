@@ -41,6 +41,9 @@ export default function CookieConsentBanner() {
           We use cookies for essential functionality and analytics (Google
           Analytics 4). You can accept all cookies or decline non-essential
           ones. Your choice is stored for one year.{" "}
+          <a href="/privacy" className="underline underline-offset-2">
+            Privacy notice
+          </a>
         </p>
         <div className="flex shrink-0 gap-3">
           <button
