@@ -123,13 +123,18 @@ export default function HomePage() {
           className="group shell flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between md:py-12"
         >
           <div>
-            <p className="eyebrow">For UK hotels · Now</p>
-            <p className="mt-3 text-xl font-medium tracking-editorial text-ink md:text-2xl">
-              Trevo hotel self check-in kiosks — authorised UK &amp; Europe partner, local support in London.
+            <p className="eyebrow">For UK hotels</p>
+            <p className="mt-3 text-2xl font-medium tracking-editorial text-ink md:text-3xl">
+              Less paperwork at reception. More time for guests.
+            </p>
+            <p className="mt-3 max-w-3xl text-[14px] leading-relaxed text-muted">
+              Trevo hotel self check-in kiosks, app-free mobile check-in and AI
+              guest concierge — with sales, installation and local support from
+              MacroKinetic MediaTech in London.
             </p>
           </div>
-          <span className="whitespace-nowrap text-[13px] font-medium text-ink">
-            Explore Hotels{" "}
+          <span className="whitespace-nowrap rounded-full bg-ink px-6 py-3 text-[13px] font-medium text-white">
+            Explore hotel self check-in{" "}
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </span>
         </Link>

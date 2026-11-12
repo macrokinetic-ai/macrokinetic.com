@@ -124,6 +124,11 @@ export const pillars: Pillar[] = [
       "Systems integration & orchestration",
       "24/7 monitoring & field maintenance",
     ],
+    link: {
+      label: "UK Hotels",
+      href: "/hotels",
+      note: "Trevo hotel self check-in kiosks — authorised UK & Europe partner.",
+    },
   },
   {
     index: "03",
@@ -472,24 +477,32 @@ export const faqs: FaqSection[] = [
     heading: "Trevo — Hotel Self Check-in (UK)",
     items: [
       {
-        q: "What is MacroKinetic's role with Trevo?",
-        a: "MacroKinetic MediaTech Limited in London is Trevo's authorised partner for the UK and Europe. We provide sales, installation and local support for UK hotels using Trevo self check-in kiosks, mobile check-in and the Trevo AI virtual concierge.",
+        q: "Who is MacroKinetic, and what is your relationship with Trevo?",
+        a: "Trevo is a Singapore hotel technology company. MacroKinetic MediaTech Limited, based in London, is Trevo's authorised partner for the UK and Europe, providing sales, installation and local support for UK hotels.",
       },
       {
-        q: "Which Trevo kiosks are available?",
-        a: "The range includes the Mk0 (compact touchscreen stations built into a hotel's own reception counter), the Mk1 (portable tabletop key-card kiosk), the Mk2 (portable kiosk with passport and ID scanning, payment and key-card collection) and the Mk3 (compact self check-in kiosk). Trevo also offers app-free mobile and web check-in and an AI virtual concierge. Kiosk screens are available in 52 languages.",
+        q: "Will Trevo work with our existing PMS, room locks and payments?",
+        a: "Trevo's integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on your particular systems, versions and configuration, so we review the requirements with you before making a recommendation.",
       },
       {
-        q: "Does Trevo work with our hotel's existing systems?",
-        a: "Trevo integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on each hotel's property management, door-lock and payment systems and on the project's requirements, so we check this with your team at the start.",
+        q: "Do guests have to use a kiosk?",
+        a: "No. Hotels can keep assisted check-in alongside Trevo's self-service options, and guests can also use app-free mobile and web check-in.",
       },
       {
-        q: "Does a kiosk replace the reception team?",
-        a: "No. Trevo takes routine admin off the desk — forms, ID capture, payment and key cards — so the reception team has more time for the guests who need a person.",
+        q: "What if a guest's room is not ready?",
+        a: "Trevo supports auto-resume, so an unfinished check-in can continue later rather than starting again. We can review how this fits your hotel's room-status process.",
       },
       {
-        q: "How do we start a conversation?",
-        a: "Email accounts@macrokinetic.com. We are based in London and can discuss what could work for your property, whether a boutique hotel or a larger site.",
+        q: "Does Trevo replace our reception team?",
+        a: "No. It is designed to handle routine check-in tasks, not the personal welcome. Your reception team remains important for hospitality, exceptions and guests who prefer assistance.",
+      },
+      {
+        q: "Can Trevo support UK guest-registration requirements?",
+        a: "Trevo offers identity capture and digital registration features that may support parts of a hotel's guest-record process. What is collected, how long it is kept and how it fits the hotel's UK legal and data-protection obligations are reviewed as part of each project. Using a kiosk does not by itself make a hotel compliant.",
+      },
+      {
+        q: "How do we get started?",
+        a: "Email accounts@macrokinetic.com or use the enquiry form to request an initial 20-minute conversation. Tell us a little about your property and the systems you use, and we will discuss your priorities and suitable next steps.",
       },
     ],
   },
@@ -616,6 +629,7 @@ export type TrevoModel = {
   name: string;
   title: string;
   description: string;
+  bestFor: string;
   image: GalleryImage;
 };
 
@@ -624,37 +638,47 @@ export const trevoModels: TrevoModel[] = [
     name: "Mk0",
     title: "Built into your counter",
     description:
-      "Compact touchscreen stations built into a hotel's own reception counter, so self check-in sits where guests already go.",
+      "Compact touchscreen check-in stations built into the hotel's own reception furniture.",
+    bestFor: "For hotels planning a new counter or adapting an existing one.",
     image: { src: "/hotels/mk0.jpg", w: 1600, h: 837, alt: "Trevo Mk0 touchscreen check-in stations built into a hotel reception counter" },
   },
   {
     name: "Mk1",
-    title: "Tabletop key-card kiosk",
+    title: "Tabletop key-card collection",
     description:
-      "A portable tabletop kiosk with automatic key-card encoding and dispensing, and QR key collection for guests who checked in on their phone.",
+      "A portable touchscreen kiosk with automatic key-card encoding and dispensing, including QR-based key collection.",
+    bestFor: "For hotels adding self-service key collection without redesigning the reception desk.",
     image: { src: "/hotels/mk1.jpg", w: 1600, h: 837, alt: "Guest checking in on a Trevo Mk1 tabletop kiosk in a hotel lobby" },
   },
   {
     name: "Mk2",
     title: "Passport, payment and keys",
     description:
-      "A portable kiosk with built-in passport and ID scanning, a selfie camera with liveness checking, payment and key-card collection, for hotels that need a fuller kiosk journey.",
+      "A portable check-in kiosk with passport and ID scanning, a selfie camera with liveness checking, payment and key-card collection.",
+    bestFor: "For hotels wanting more of the arrival handled at one self-service station.",
     image: { src: "/hotels/mk2.jpg", w: 1600, h: 837, alt: "Guest scanning a passport on a Trevo Mk2 self check-in kiosk" },
   },
   {
     name: "Mk3",
     title: "Compact self check-in",
     description:
-      "A compact self check-in kiosk for smaller lobbies, side counters and lift corners.",
+      "A compact self check-in kiosk for properties where reception space is limited.",
+    bestFor: "For smaller lobbies, side counters and layouts where a larger kiosk would not fit.",
     image: { src: "/hotels/mk3.jpg", w: 1600, h: 837, alt: "Trevo Mk3 compact self check-in kiosk" },
   },
 ];
 
+export const trevoSteps = [
+  { title: "Check in before arriving", text: "Guests can start registration on their own phone through a web link. No app download needed." },
+  { title: "Complete the necessary checks", text: "Depending on the kiosk and configuration, Trevo supports passport or ID scanning, selfie matching with liveness checking, and payment." },
+  { title: "Collect a room key", text: "Guests collect an encoded key card from a supported Trevo kiosk, connected to the hotel's systems." },
+  { title: "Continue when the room is ready", text: "If a room is not ready, auto-resume lets check-in continue later instead of starting again." },
+];
+
 export const trevoExtras = [
-  { title: "App-free mobile check-in", text: "Guests can check in on the web before they arrive, without installing a hotel app." },
-  { title: "AI virtual concierge", text: "A virtual concierge on the kiosk screen that answers common guest questions, in 52 major languages." },
-  { title: "52 languages", text: "Kiosk screens are available in 52 languages for international guests." },
-  { title: "Room not ready? Auto-resume", text: "If a room is not ready, check-in picks up again later instead of starting from scratch." },
+  { title: "App-free mobile check-in", text: "Guests complete supported registration steps through a web link on their phone, without installing an app." },
+  { title: "AI virtual concierge", text: "A screen-based virtual concierge answers everyday guest questions, in 52 major languages." },
+  { title: "52 kiosk languages", text: "Kiosk screens are available in 52 languages for international guests." },
 ];
 
 export const trevoIntegrations = [

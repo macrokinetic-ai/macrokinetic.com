@@ -318,3 +318,6 @@ manual Editor/Velo work.
 - [x] Organization JSON-LD: real legal entities, Companies House no., LinkedIn sameAs; Service + FAQPage JSON-LD on /hotels
 - [x] Fact fixes: HKIA ICSC 48 units live (was 38/T1), developer not operator; "MacroKinetic Global" legal name removed; FAQ Trevo section
 - [x] UK company disclosure in footer (name, number, registered office)
+- [x] ChatGPT review applied (12 Nov): how-it-works steps, model "best for" lines, CTAs to enquiry form, 7 buying-objection FAQs, UK-partner + experience sections, homepage band copy, Solutions link to /hotels, delivery-claim wording, llms.txt
+- [ ] Open: Mk3 screen size (Trevo site says 17", our ref says 12") — not published either way
+- [ ] Open: UTM tags on LinkedIn links; GA4 event for enquiry form submit
