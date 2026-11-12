@@ -54,7 +54,7 @@ export const gateways: GatewayCard[] = [
     label: "Smart Education",
     title: "ponyabc.co.uk",
     description:
-      "PonyABC — interactive learning, AR experiences and immersive content for the UK and European markets.",
+      "PonyABC — our London-designed early-years learning brand: multilingual talking pens, learning materials, digital content and connected technology.",
     href: company.domains.ponyabc,
     external: true,
   },
@@ -122,7 +122,7 @@ export const pillars: Pillar[] = [
       "Autonomous service & guidance robots",
       "Self-service & transactional kiosks",
       "Systems integration & orchestration",
-      "24/7 monitoring & field maintenance",
+      "Monitoring, maintenance & technical support",
     ],
     link: {
       label: "UK Hotels",
@@ -200,6 +200,7 @@ export type GalleryImage = { src: string; w: number; h: number; alt: string };
 export type Reference = {
   slug: string;
   client: string;
+  seoTitle?: string; // <=45 chars; used as <title> when client name is long
   editorialTitle?: string; // story-style title, in the company's "What We Did" voice
   sector: string;
   location: string;
@@ -224,6 +225,7 @@ export const references: Reference[] = [
   {
     slug: "hkia",
     client: "Hong Kong International Airport - Intelligent Customer Service Counter",
+    seoTitle: "HKIA Intelligent Customer Service Counters",
     editorialTitle: "Elevating Global Travel",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
@@ -251,6 +253,7 @@ export const references: Reference[] = [
   {
     slug: "hkia-food-court",
     client: "Hong Kong International Airport - Interactive Food Court Menu",
+    seoTitle: "HKIA Interactive Food Court Menu — Case Study",
     editorialTitle: "Dining Navigation at the Airport",
     sector: "Aviation · Public Interactive",
     location: "Hong Kong",
@@ -482,6 +485,14 @@ export const faqs: FaqSection[] = [
         a: "Trevo is a Singapore hotel technology company. MacroKinetic MediaTech Limited, based in London, is Trevo's authorised partner for the UK and Europe, providing sales, installation and local support for UK hotels.",
       },
       {
+        q: "Can MacroKinetic supply and install Trevo self check-in kiosks for our hotel in the UK?",
+        a: "Yes. MacroKinetic MediaTech Limited, based in London, is Trevo's authorised UK and Europe partner. We provide sales, installation and local support for UK hotels considering Trevo self check-in technology, and discuss kiosk options, lobby requirements, PMS and door-lock integration and the installation process before recommending a solution.",
+      },
+      {
+        q: "Is MacroKinetic the manufacturer of Trevo kiosks?",
+        a: "No. Trevo is a Singapore hospitality technology company that makes the kiosks and software. MacroKinetic MediaTech Limited is Trevo's authorised UK and Europe partner for sales, installation and local support.",
+      },
+      {
         q: "Will Trevo work with our existing PMS, room locks and payments?",
         a: "Trevo's integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on your particular systems, versions and configuration, so we review the requirements with you before making a recommendation.",
       },
@@ -532,7 +543,7 @@ export const faqs: FaqSection[] = [
       },
       {
         q: "What is the relationship between macrokinetic.com, macrokinetic.ai, and ponyabc.co.uk?",
-        a: "macrokinetic.com is the corporate hub for the MacroKinetic group. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is MacroKinetic's UK education technology brand, selling interactive and AR learning products for children.",
+        a: "macrokinetic.com is the corporate hub for the MacroKinetic group. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is the website of PonyABC, the London-designed early-years learning brand of MacroKinetic MediaTech Limited (talking pens, learning cards and books, songs, free nursery resources and the Sensory Colour Learning System).",
       },
       {
         q: "Does MacroKinetic handle the full project lifecycle?",

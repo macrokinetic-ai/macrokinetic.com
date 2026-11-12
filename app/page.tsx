@@ -8,49 +8,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-// Organisation structured data — homepage only. The homepage is the canonical
-// entity page for MacroKinetic, so the Organization graph belongs here rather
-// than sitewide. Mirrors the corporate facts in lib/content + the FAQ source.
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": `${company.siteUrl}/#organization`,
-  name: company.name,
-  legalName: company.ukEntity.name,
-  url: company.siteUrl,
-  logo: `${company.siteUrl}/brand/wordmark-black-tight.png`,
-  email: company.salesEmail,
-  foundingDate: String(company.established),
-  description: company.positioning,
-  identifier: {
-    "@type": "PropertyValue",
-    propertyID: "Companies House (England and Wales)",
-    value: company.ukEntity.number,
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "128 City Road",
-    addressLocality: "London",
-    postalCode: "EC1V 2NX",
-    addressCountry: "GB",
-  },
-  areaServed: ["GB", "Europe", "HK"],
-  knowsAbout: ["Hotel self check-in kiosks", "Self-service kiosks", "Digital signage", "Applied AI"],
-  subOrganization: {
-    "@type": "Organization",
-    name: company.hkEntity,
-    foundingDate: String(company.established),
-    address: { "@type": "PostalAddress", addressLocality: "Hong Kong", addressCountry: "HK" },
-    sameAs: [company.linkedin.group],
-  },
-  sameAs: [
-    company.linkedin.uk,
-    company.linkedin.group,
-    company.domains.ai,
-    company.domains.ponyabc,
-  ],
-};
-
 export default function HomePage() {
   return (
     <>
@@ -63,7 +20,7 @@ export default function HomePage() {
           loop
           playsInline
           preload="auto"
-          poster="/brand/wordmark-white.png"
+          poster="/media/hero-poster.jpg"
         >
           <source src="/media/hero.mp4" type="video/mp4" />
         </video>
@@ -184,11 +141,6 @@ export default function HomePage() {
 
       <CityFootprint />
       <GatewaySplit />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
     </>
   );
 }

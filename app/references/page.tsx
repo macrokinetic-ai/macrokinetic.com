@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
-import { references, coverImage } from "@/lib/content";
+import { references, coverImage, company } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/references" },
@@ -107,6 +109,20 @@ export default function ReferencesPage() {
           </a>
         </div>
       </section>
+      <JsonLd data={breadcrumbSchema([{ name: "What We Did", path: "/references" }])} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          name: "MacroKinetic selected work",
+          itemListElement: references.map((r, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            name: r.client,
+            url: `${company.siteUrl}/references/${r.slug}`,
+          })),
+        }}
+      />
     </>
   );
 }

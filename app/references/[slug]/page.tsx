@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { references, getReferenceBySlug, pillars } from "@/lib/content";
+import { references, getReferenceBySlug, pillars, company } from "@/lib/content";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbSchema, HK_ID } from "@/lib/schema";
 
 export function generateStaticParams() {
   return references.map((r) => ({ slug: r.slug }));
@@ -15,10 +17,18 @@ export function generateMetadata({
 }): Metadata {
   const ref = getReferenceBySlug(params.slug);
   if (!ref) return { title: "Case Study" };
+  const og = ref.gallery[0];
   return {
-    title: `${ref.client} — Case Study`,
+    title: ref.seoTitle ?? `${ref.client} — Case Study`,
     description: ref.summary,
     alternates: { canonical: `/references/${ref.slug}` },
+    openGraph: {
+      title: ref.seoTitle ?? ref.client,
+      description: ref.summary,
+      url: `/references/${ref.slug}`,
+      type: "article",
+      ...(og ? { images: [{ url: og.src, width: og.w, height: og.h, alt: og.alt }] } : {}),
+    },
   };
 }
 
@@ -192,6 +202,29 @@ export default function ReferenceDetailPage({
           </a>
         </div>
       </section>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          "@id": `${company.siteUrl}/references/${ref.slug}#project`,
+          name: ref.client,
+          headline: ref.editorialTitle ?? ref.client,
+          description: ref.summary,
+          about: ref.sector,
+          locationCreated: { "@type": "Place", name: ref.location },
+          creator: { "@id": HK_ID },
+          url: `${company.siteUrl}/references/${ref.slug}`,
+          image: ref.gallery.slice(0, 3).map((g) =>
+            g.src.startsWith("http") ? g.src : `${company.siteUrl}${g.src}`
+          ),
+        }}
+      />
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: "What We Did", path: "/references" },
+          { name: ref.client, path: `/references/${ref.slug}` },
+        ])}
+      />
     </>
   );
 }

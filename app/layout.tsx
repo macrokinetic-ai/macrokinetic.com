@@ -4,6 +4,8 @@ import FloatingNav from "@/components/FloatingNav";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Analytics from "@/components/Analytics";
+import JsonLd from "@/components/JsonLd";
+import { siteSchema } from "@/lib/schema";
 import CookieConsentBanner from "@/components/CookieConsentBanner";
 import { company } from "@/lib/content";
 
@@ -44,6 +46,7 @@ export default function RootLayout({
         <ContactSection />
         <Footer />
         <Analytics />
+        <JsonLd data={siteSchema} />
         <CookieConsentBanner />
       </body>
     </html>
