@@ -8,7 +8,16 @@
 
 export const company = {
   name: "MacroKinetic",
-  legalName: "MacroKinetic Global",
+  // Real legal entities (shown in the footer; UK Companies Act disclosure).
+  legalName: "MacroKinetic MediaTech Limited",
+  ukEntity: {
+    name: "MacroKinetic MediaTech Limited",
+    number: "16420643",
+    office: "128 City Road, London EC1V 2NX",
+  },
+  hkEntity: "MacroKinetic Technology Consulting Limited",
+  siteUrl: "https://www.macrokinetic.com",
+  salesEmail: "accounts@macrokinetic.com",
   established: 2008,
   tagline: "Engineering the interface between people and the physical world.",
   positioning:
@@ -16,6 +25,11 @@ export const company = {
   domains: {
     ai: "https://macrokinetic.ai",
     ponyabc: "https://ponyabc.co.uk",
+    trevo: "https://www.trevo.ai",
+  },
+  linkedin: {
+    uk: "https://www.linkedin.com/company/macrokinetic-mediatech",
+    group: "https://www.linkedin.com/company/macrokinetic",
   },
 } as const;
 
@@ -211,13 +225,13 @@ export const references: Reference[] = [
     scope:
       "Intelligent Customer Service Counters (ICSC) · Interactive Wayfinding · Live Video Support",
     summary:
-      "Intelligent Customer Service Counters deployed with the Hong Kong Airport Authority across one of the world's busiest airports.",
+      "Intelligent Customer Service Counters designed and developed with NEC for one of the world's busiest airports — 48 units live.",
     detail:
-      "In collaboration with the Hong Kong Airport Authority (HKAA) and NEC, MacroKinetic deployed its Intelligent Customer Service Counters (ICSC) at Hong Kong International Airport — 38 units in Terminal 1, with further installations planned for Terminals 2 and 3. The solution offers passengers comprehensive airport and flight information, intuitive wayfinding (on-kiosk and bring-to-mobile), boarding-pass details, live video support from customer-service agents, and an AI LLM chatbot for 24/7 assistance.",
+      "Together with NEC, and for the Hong Kong Airport Authority (HKAA), MacroKinetic designed and developed the Intelligent Customer Service Counters (ICSC) at Hong Kong International Airport — 48 units are live, with more planned. MacroKinetic is the developer; it does not operate the counters. The solution offers passengers comprehensive airport and flight information, intuitive wayfinding (on-kiosk and bring-to-mobile), boarding-pass details, live video support from customer-service agents, and an AI LLM chatbot for 24/7 assistance.",
     partner: "with HKAA & NEC",
     highlights: [
-      "38 ICSC units in Terminal 1",
-      "Further units planned for T2 & T3",
+      "48 ICSC units live",
+      "More units planned",
       "Wayfinding: on-kiosk + bring-to-mobile",
       "Live video support + AI LLM chatbot, 24/7",
     ],
@@ -421,7 +435,7 @@ export function coverImage(ref: Reference): GalleryImage {
 export const offices = [
   {
     city: "London",
-    lines: ["European Headquarters", "Commercial & Partnerships"],
+    lines: ["European Headquarters", "Trevo Partner, UK & Europe"],
     region: "EMEA",
   },
   {
@@ -438,6 +452,7 @@ export const offices = [
 
 export const nav = [
   { label: "Home", href: "/" },
+  { label: "Hotels", href: "/hotels" },
   { label: "Solutions", href: "/solutions" },
   { label: "References", href: "/references" },
 ] as const;
@@ -448,11 +463,36 @@ export type FaqSection = { heading: string; items: { q: string; a: string }[] };
 // Format: date = YYYY-MM-DD, id = v<YYYY>.<MM>.<DD>-<revision> (increment revision if
 // multiple FAQ edits happen on the same day).
 export const faqVersion = {
-  date: "2026-06-17",
-  id: "v2026.06.17-2",
+  date: "2026-11-12",
+  id: "v2026.11.12-1",
 };
 
 export const faqs: FaqSection[] = [
+  {
+    heading: "Trevo — Hotel Self Check-in (UK)",
+    items: [
+      {
+        q: "What is MacroKinetic's role with Trevo?",
+        a: "MacroKinetic MediaTech Limited in London is Trevo's authorised partner for the UK and Europe. We provide sales, installation and local support for UK hotels using Trevo self check-in kiosks, mobile check-in and the Trevo AI virtual concierge.",
+      },
+      {
+        q: "Which Trevo kiosks are available?",
+        a: "The range includes the Mk0 (compact touchscreen stations built into a hotel's own reception counter), the Mk1 (portable tabletop key-card kiosk), the Mk2 (portable kiosk with passport and ID scanning, payment and key-card collection) and the Mk3 (compact self check-in kiosk). Trevo also offers app-free mobile and web check-in and an AI virtual concierge. Kiosk screens are available in 52 languages.",
+      },
+      {
+        q: "Does Trevo work with our hotel's existing systems?",
+        a: "Trevo integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on each hotel's property management, door-lock and payment systems and on the project's requirements, so we check this with your team at the start.",
+      },
+      {
+        q: "Does a kiosk replace the reception team?",
+        a: "No. Trevo takes routine admin off the desk — forms, ID capture, payment and key cards — so the reception team has more time for the guests who need a person.",
+      },
+      {
+        q: "How do we start a conversation?",
+        a: "Email accounts@macrokinetic.com. We are based in London and can discuss what could work for your property, whether a boutique hotel or a larger site.",
+      },
+    ],
+  },
   {
     heading: "Company & Operations",
     items: [
@@ -466,19 +506,23 @@ export const faqs: FaqSection[] = [
       },
       {
         q: "Where does MacroKinetic operate?",
-        a: "MacroKinetic operates from three locations: Hong Kong (Asia-Pacific operations and project delivery), London, United Kingdom (European headquarters and commercial), and Shenzhen, China (engineering, manufacturing, and R&D). A Singapore hub is planned.",
+        a: "MacroKinetic operates from three locations: London, United Kingdom (European headquarters), Hong Kong (Asia-Pacific operations and project delivery), and Shenzhen, China (engineering, manufacturing, and R&D). A Singapore hub is planned.",
       },
       {
-        q: "What is MacroKinetic Mediatech Limited?",
-        a: "MacroKinetic Mediatech Limited is the UK-registered legal entity for MacroKinetic's European operations, established in London to serve EMEA commercial and partnership requirements.",
+        q: "What is MacroKinetic MediaTech Limited?",
+        a: "MacroKinetic MediaTech Limited is MacroKinetic's London company, registered in England and Wales (company number 16420643). It is Trevo's authorised partner for the UK and Europe, providing sales, installation and local support for Trevo hotel self check-in kiosks, and it is the company behind the PonyABC education brand.",
+      },
+      {
+        q: "What is MacroKinetic Technology Consulting Limited?",
+        a: "MacroKinetic Technology Consulting Limited is MacroKinetic's Hong Kong company, working since 2008. It designed and developed the Intelligent Customer Service Counters at Hong Kong International Airport together with NEC.",
       },
       {
         q: "What is the relationship between macrokinetic.com, macrokinetic.ai, and ponyabc.co.uk?",
-        a: "macrokinetic.com is the corporate hub for MacroKinetic Global. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is MacroKinetic's UK education technology brand, selling interactive and AR learning products for children.",
+        a: "macrokinetic.com is the corporate hub for the MacroKinetic group. macrokinetic.ai is the company's industrial AI division, focused on computer vision inspection and compliance monitoring for manufacturers. ponyabc.co.uk is MacroKinetic's UK education technology brand, selling interactive and AR learning products for children.",
       },
       {
         q: "Does MacroKinetic handle the full project lifecycle?",
-        a: "Yes. MacroKinetic owns the complete delivery chain — from solution design and hardware supply through to installation, content management, and ongoing field maintenance — without subcontracting core work to third parties.",
+        a: "Yes. MacroKinetic manages the delivery chain — from solution design and hardware supply through to installation, content management and ongoing field maintenance — working with selected hardware and software partners on each project.",
       },
     ],
   },
@@ -491,7 +535,7 @@ export const faqs: FaqSection[] = [
       },
       {
         q: "What is an Intelligent Customer Service Counter (ICSC)?",
-        a: "An ICSC is a self-service kiosk that provides passengers or visitors with venue and flight information, interactive wayfinding with bring-to-mobile capability, live video support from human agents, and an AI LLM chatbot for 24/7 assistance. MacroKinetic deployed 38 ICSC units at Hong Kong International Airport Terminal 1 in collaboration with the Hong Kong Airport Authority and NEC, with further units planned for Terminals 2 and 3.",
+        a: "An ICSC is a self-service kiosk that provides passengers or visitors with venue and flight information, interactive wayfinding with bring-to-mobile capability, live video support from human agents, and an AI LLM chatbot for 24/7 assistance. MacroKinetic designed and developed the ICSC at Hong Kong International Airport together with NEC: 48 units are live, with more planned. MacroKinetic is the developer and does not operate the counters.",
       },
       {
         q: "What is e-Wayfinding and where has MacroKinetic deployed it?",
@@ -512,7 +556,7 @@ export const faqs: FaqSection[] = [
     items: [
       {
         q: "What is MacroKinetic's industrial AI division?",
-        a: "MacroKinetic's AI division (macrokinetic.ai) designs and deploys computer vision systems for manufacturing operations — covering quality inspection and defect detection, SOP compliance monitoring, safety and PPE surveillance, and MES integration. It is a division of MacroKinetic Mediatech Limited, UK.",
+        a: "MacroKinetic's AI division (macrokinetic.ai) designs and deploys computer vision systems for manufacturing operations — covering quality inspection and defect detection, SOP compliance monitoring, safety and PPE surveillance, and MES integration. It is a division of MacroKinetic MediaTech Limited, UK.",
       },
       {
         q: "What industries does MacroKinetic AI serve?",
@@ -563,3 +607,62 @@ export const faqs: FaqSection[] = [
   },
 ];
 
+
+// ── Trevo hotel self check-in (UK) — /hotels landing page ──────────────────
+// Copy mirrors the MacroKinetic MediaTech LinkedIn page overview (Nov 2026).
+// Rules: say "authorised partner", never "exclusive"; no prices; no customer
+// names; images must show real Trevo models only.
+export type TrevoModel = {
+  name: string;
+  title: string;
+  description: string;
+  image: GalleryImage;
+};
+
+export const trevoModels: TrevoModel[] = [
+  {
+    name: "Mk0",
+    title: "Built into your counter",
+    description:
+      "Compact touchscreen stations built into a hotel's own reception counter, so self check-in sits where guests already go.",
+    image: { src: "/hotels/mk0.jpg", w: 1600, h: 837, alt: "Trevo Mk0 touchscreen check-in stations built into a hotel reception counter" },
+  },
+  {
+    name: "Mk1",
+    title: "Tabletop key-card kiosk",
+    description:
+      "A portable tabletop kiosk with automatic key-card encoding and dispensing, and QR key collection for guests who checked in on their phone.",
+    image: { src: "/hotels/mk1.jpg", w: 1600, h: 837, alt: "Guest checking in on a Trevo Mk1 tabletop kiosk in a hotel lobby" },
+  },
+  {
+    name: "Mk2",
+    title: "Passport, payment and keys",
+    description:
+      "A portable kiosk with built-in passport and ID scanning, a selfie camera with liveness checking, payment and key-card collection, for hotels that need a fuller kiosk journey.",
+    image: { src: "/hotels/mk2.jpg", w: 1600, h: 837, alt: "Guest scanning a passport on a Trevo Mk2 self check-in kiosk" },
+  },
+  {
+    name: "Mk3",
+    title: "Compact self check-in",
+    description:
+      "A compact self check-in kiosk for smaller lobbies, side counters and lift corners.",
+    image: { src: "/hotels/mk3.jpg", w: 1600, h: 837, alt: "Trevo Mk3 compact self check-in kiosk" },
+  },
+];
+
+export const trevoExtras = [
+  { title: "App-free mobile check-in", text: "Guests can check in on the web before they arrive, without installing a hotel app." },
+  { title: "AI virtual concierge", text: "A virtual concierge on the kiosk screen that answers common guest questions, in 52 major languages." },
+  { title: "52 languages", text: "Kiosk screens are available in 52 languages for international guests." },
+  { title: "Room not ready? Auto-resume", text: "If a room is not ready, check-in picks up again later instead of starting from scratch." },
+];
+
+export const trevoIntegrations = [
+  "Oracle OPERA",
+  "Infor HMS",
+  "Cloudbeds",
+  "SALTO",
+  "VingCard",
+  "Stripe",
+  "Adyen",
+];

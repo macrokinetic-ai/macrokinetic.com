@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import CityFootprint from "@/components/CityFootprint";
 import GatewaySplit from "@/components/GatewaySplit";
 import { company, pillars } from "@/lib/content";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // Organisation structured data — homepage only. The homepage is the canonical
 // entity page for MacroKinetic, so the Organization graph belongs here rather
@@ -9,19 +14,41 @@ import { company, pillars } from "@/lib/content";
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://macrokinetic.com/#organization",
+  "@id": `${company.siteUrl}/#organization`,
   name: company.name,
-  legalName: company.legalName,
-  url: "https://macrokinetic.com",
-  logo: "https://macrokinetic.com/brand/wordmark-black-tight.png",
+  legalName: company.ukEntity.name,
+  url: company.siteUrl,
+  logo: `${company.siteUrl}/brand/wordmark-black-tight.png`,
+  email: company.salesEmail,
   foundingDate: String(company.established),
   description: company.positioning,
-  address: [
-    { "@type": "PostalAddress", addressLocality: "London", addressCountry: "GB" },
-    { "@type": "PostalAddress", addressLocality: "Hong Kong", addressCountry: "HK" },
-    { "@type": "PostalAddress", addressLocality: "Shenzhen", addressCountry: "CN" },
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "Companies House (England and Wales)",
+    value: company.ukEntity.number,
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "128 City Road",
+    addressLocality: "London",
+    postalCode: "EC1V 2NX",
+    addressCountry: "GB",
+  },
+  areaServed: ["GB", "Europe", "HK"],
+  knowsAbout: ["Hotel self check-in kiosks", "Self-service kiosks", "Digital signage", "Applied AI"],
+  subOrganization: {
+    "@type": "Organization",
+    name: company.hkEntity,
+    foundingDate: String(company.established),
+    address: { "@type": "PostalAddress", addressLocality: "Hong Kong", addressCountry: "HK" },
+    sameAs: [company.linkedin.group],
+  },
+  sameAs: [
+    company.linkedin.uk,
+    company.linkedin.group,
+    company.domains.ai,
+    company.domains.ponyabc,
   ],
-  sameAs: [company.domains.ai, company.domains.ponyabc],
 };
 
 export default function HomePage() {
@@ -87,6 +114,25 @@ export default function HomePage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* ───────────────── Hotels / Trevo (UK focus) ───────────────── */}
+      <section className="hairline-b bg-paper">
+        <Link
+          href="/hotels"
+          className="group shell flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between md:py-12"
+        >
+          <div>
+            <p className="eyebrow">For UK hotels · Now</p>
+            <p className="mt-3 text-xl font-medium tracking-editorial text-ink md:text-2xl">
+              Trevo hotel self check-in kiosks — authorised UK &amp; Europe partner, local support in London.
+            </p>
+          </div>
+          <span className="whitespace-nowrap text-[13px] font-medium text-ink">
+            Explore Hotels{" "}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </span>
+        </Link>
       </section>
 
       {/* ───────────────── Capability index ───────────────── */}

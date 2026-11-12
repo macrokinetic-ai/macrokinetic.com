@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pillars } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/solutions" },
   title: "Solutions & Capabilities",
   description:
     "Six disciplines — AI Solutions, Automation & Robotics, Digital Signage, Retail Technology, Smart Lighting and Smart Education — delivered as one integrated practice.",

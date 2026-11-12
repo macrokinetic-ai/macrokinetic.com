@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 // Production canonical origin. Matches `metadataBase` in app/layout.tsx and
 // BASE_URL in app/sitemap.ts. Update all three together if the domain changes.
-const BASE_URL = "https://macrokinetic.com";
+const BASE_URL = "https://www.macrokinetic.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {
