@@ -226,15 +226,25 @@ export default function HotelsPage() {
           </div>
           <div className="md:col-span-5">
             <div className="overflow-hidden rounded-xl bg-paper">
-              <Image
-                src="/hotels/ai-concierge.jpg"
-                alt="Trevo AI virtual concierge on a kiosk screen"
-                width={464}
-                height={832}
-                sizes="(max-width: 768px) 100vw, 460px"
-                className="mx-auto h-auto max-h-[640px] w-auto"
+              <video
+                src="/hotels/m-hotel-mk2.mp4"
+                poster="/hotels/m-hotel-mk2-poster.jpg"
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                preload="metadata"
+                width={544}
+                height={960}
+                className="mx-auto h-auto max-h-[680px] w-auto"
+                aria-label="Trevo at M Hotel: pre-arrival registration on a phone, check-in at a Trevo Mk2 kiosk and key-card collection"
               />
             </div>
+            <p className="mt-3 text-[12px] text-faint">
+              Real Trevo installation at M Hotel: pre-arrival registration,
+              kiosk check-in and key collection.
+            </p>
           </div>
         </div>
       </section>

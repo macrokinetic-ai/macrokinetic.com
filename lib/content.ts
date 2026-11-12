@@ -178,17 +178,17 @@ export const pillars: Pillar[] = [
     name: "Smart Education",
     tagline: "Learning, Made Interactive",
     summary:
-      "Interactive and AR-assisted learning experiences — MacroKinetic's education-technology practice, delivered to the UK through PonyABC.",
+      "Through PonyABC, our London-based early-years brand, MacroKinetic brings together interactive learning hardware, multilingual content, digital media and connected technology — talking pens, learning materials, sensory colour experiences, free nursery resources and new education product development.",
     capabilities: [
-      "Interactive & multi-sensory learning systems",
-      "AR-assisted learning (e.g. AR Magic Tangram)",
-      "Early-years & classroom multimedia",
-      "UK education range via PonyABC",
+      "Multilingual talking pens, cards & books",
+      "Sensory Colour Learning System (winter 2026)",
+      "Songs, videos & free nursery teaching resources",
+      "Education product development & partnerships",
     ],
     link: {
-      label: "UK Initiative",
-      href: company.domains.ponyabc,
-      note: "Interactive & AR learning for the UK.",
+      label: "Education",
+      href: "/education",
+      note: "MacroKinetic in early-years education, through PonyABC.",
     },
   },
 ];
@@ -458,6 +458,7 @@ export const offices = [
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Hotels", href: "/hotels" },
+  { label: "Education", href: "/education" },
   { label: "Solutions", href: "/solutions" },
   { label: "References", href: "/references" },
 ] as const;
@@ -598,11 +599,11 @@ export const faqs: FaqSection[] = [
     items: [
       {
         q: "What is PonyABC?",
-        a: "PonyABC is MacroKinetic's UK education technology brand, offering interactive and augmented-reality (AR) learning products for children aged 3 and above. Products are sold through ponyabc.co.uk and target UK and European families, including bilingual and trilingual households.",
+        a: "PonyABC (\"Learn and Play\") is an early-years learning brand of MacroKinetic MediaTech Limited, London, for children aged 3 and over. It develops multilingual talking pens, learning cards, songs and the PonyABC Sensory Colour Learning System for nursery settings. Products are sold through ponyabc.co.uk; institutional enquiries go to marketing@ponyabc.co.uk.",
       },
       {
         q: "What products does PonyABC sell?",
-        a: "PonyABC currently offers three products: the AR Magic Tangram (£29.90), the Time-Capsule Voice Sticker in a Hug Hug Dinosaur Special Edition (£39.90), and the Trilingual Early Learning Encyclopedia and Smart Talking Pen Set covering Cantonese, Mandarin, and English with 5,000+ knowledge points across 29 themes (£59.90).",
+        a: "PonyABC offers the P5 talking pen, multilingual talking books and flash cards, PVC learning cards, children's songs and videos, free printable early-years teaching packs and 3D-printed learning toys (Makerplace). The PonyABC Sensory Colour Learning System for nursery settings is coming in winter 2026. See ponyabc.co.uk for the current range.",
       },
       {
         q: "What is the AR Magic Tangram?",
@@ -689,4 +690,60 @@ export const trevoIntegrations = [
   "VingCard",
   "Stripe",
   "Adyen",
+];
+
+// ── PonyABC / Education (/education) ───────────────────────────────────────
+// Enterprise copy drafted with ChatGPT (12 Nov 2026). Rules: no prices, no
+// certification claims, no "sensory-safe"/therapeutic claims, Philips/IKEA/
+// TrimUI named as third-party products only (no partnership or endorsement).
+export const PONYABC_SENSORY_URL = "https://ponyabc.co.uk/pages/sensory-colour-system";
+export const PONYABC_EMAIL = "marketing@ponyabc.co.uk";
+
+export const PONYABC_SHOP = "https://ponyabc.co.uk/collections/all";
+export const PONYABC_NURSERIES = "https://ponyabc.co.uk/pages/faq?view=nurseries";
+export const PONYABC_YOUTUBE = "https://www.youtube.com/@PonyABC";
+export const PONYABC_TM = "UK00004423033";
+
+export const eduOffer: { title: string; text: string; link: { label: string; href: string } }[] = [
+  {
+    title: "Talking pens and learning cards",
+    text: "The PonyABC P5 talking pen works offline, bringing multilingual audio to physical learning materials. Durable PVC phonics and colour cards support hands-on early-years activities.",
+    link: { label: "Explore pens and cards", href: PONYABC_SHOP },
+  },
+  {
+    title: "Multilingual talking books",
+    text: "Interactive books support language exploration through audio and physical reading. The range includes a trilingual Cantonese, Mandarin and English encyclopedia and pen set.",
+    link: { label: "Explore learning books", href: PONYABC_SHOP },
+  },
+  {
+    title: "Sensory Colour Learning System",
+    text: "Coming winter 2026. Children tap a colour card with a talking pen, hear the colour name and see connected room lights change to match. Works with supported third-party Philips Hue or IKEA lighting.",
+    link: { label: "Explore the system", href: PONYABC_SENSORY_URL },
+  },
+  {
+    title: "3D-printed learning toys",
+    text: "The PonyABC Makerplace range includes small learning toys made in the UK, bringing physical play and creative design together.",
+    link: { label: "Explore Makerplace", href: PONYABC_SHOP },
+  },
+  {
+    title: "Songs and learning videos",
+    text: "Gentle nursery songs and simple learning videos help young children explore language and everyday concepts through music and familiar characters.",
+    link: { label: "PonyABC on YouTube", href: PONYABC_YOUTUBE },
+  },
+];
+
+export const eduPartners = [
+  "Nursery groups and early-years settings",
+  "Universities and early-years researchers",
+  "SEN specialists",
+  "Education distributors",
+  "Technology partners",
+  "Chinese schools developing teaching materials",
+];
+
+export const eduFaq: { q: string; a: string }[] = [
+  { q: "What is MacroKinetic's role in education?", a: "MacroKinetic brings its experience in interactive systems, connected hardware and digital technology into early-years education through PonyABC, a brand of its London company, MacroKinetic MediaTech Limited." },
+  { q: "What does PonyABC offer?", a: "PonyABC develops multilingual talking pens and learning cards, interactive books, sensory colour learning technology, UK-made 3D-printed toys, nursery songs, learning videos and free teaching resources. Some products, including the Sensory Colour Learning System, are still in development." },
+  { q: "Are PonyABC's nursery teaching resources free?", a: "Yes. PonyABC provides more than 30 free printable teaching packs for ages 2–5, also available on Tes. New topics are released regularly." },
+  { q: "Can organisations collaborate with MacroKinetic on education projects?", a: "Yes. We welcome discussions with nursery groups, universities and researchers, SEN specialists, education distributors, technology partners and Chinese schools developing learning materials. Contact marketing@ponyabc.co.uk." },
 ];
