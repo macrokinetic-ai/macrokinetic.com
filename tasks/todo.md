@@ -309,3 +309,15 @@ manual Editor/Velo work.
   macrokinetic.com cutover from Wix (explicit, hard-to-reverse — confirm first).
 - Add SMTP + Turnstile env vars on the host for the contact form.
 - If a dedicated /faq page is ever built on Wix, re-add a page-scoped FAQPage embed.
+
+## 2026-11-12 — Trevo hotels page + LinkedIn + SEO (branch content/trevo-hotels-linkedin-seo)
+- [x] New /hotels landing page (Trevo authorised UK & Europe partner) — target for LinkedIn page/ads clicks
+- [x] Nav "Hotels", homepage Trevo band, footer LinkedIn links (UK page + group page)
+- [x] Canonical host fixed to https://www.macrokinetic.com (Vercel serves www; sitemap/robots/OG used non-www)
+- [x] Per-page canonical tags, OG images (1200x630), summary_large_image, lang en-GB
+- [x] Organization JSON-LD: real legal entities, Companies House no., LinkedIn sameAs; Service + FAQPage JSON-LD on /hotels
+- [x] Fact fixes: HKIA ICSC 48 units live (was 38/T1), developer not operator; "MacroKinetic Global" legal name removed; FAQ Trevo section
+- [x] UK company disclosure in footer (name, number, registered office)
+- [x] ChatGPT review applied (12 Nov): how-it-works steps, model "best for" lines, CTAs to enquiry form, 7 buying-objection FAQs, UK-partner + experience sections, homepage band copy, Solutions link to /hotels, delivery-claim wording, llms.txt
+- [ ] Open: Mk3 screen size (Trevo site says 17", our ref says 12") — not published either way
+- [ ] Open: UTM tags on LinkedIn links; GA4 event for enquiry form submit

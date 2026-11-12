@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { faqs } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/faq" },
   title: "Frequently Asked Questions",
   description:
-    "Answers to common questions about MacroKinetic — the company, its services, industrial AI division, and PonyABC education brand.",
+    "Answers to common questions about MacroKinetic — Trevo hotel self check-in in the UK, the company, its services, industrial AI division and PonyABC education brand.",
 };
 
 const schema = {

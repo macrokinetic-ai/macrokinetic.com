@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pillars } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/solutions" },
   title: "Solutions & Capabilities",
   description:
     "Six disciplines — AI Solutions, Automation & Robotics, Digital Signage, Retail Technology, Smart Lighting and Smart Education — delivered as one integrated practice.",
@@ -19,7 +20,8 @@ export default function SolutionsPage() {
           </h1>
           <p className="mt-8 max-w-xl text-[15px] leading-relaxed text-muted">
             From pixel to structure, from model to maintenance — MacroKinetic
-            owns the full delivery chain across each of its core pillars.
+            works across design, integration, installation and support,
+            with selected partners on each project.
           </p>
         </div>
       </section>
@@ -77,11 +79,12 @@ export default function SolutionsPage() {
                       </p>
                       <a
                         href={p.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(p.link.href.startsWith("/")
+                          ? {}
+                          : { target: "_blank", rel: "noopener noreferrer" })}
                         className="group/link mt-2 inline-flex items-center gap-2 text-[14px] tracking-editorial text-ink transition-colors hover:text-kinetic"
                       >
-                        {p.link.href.replace(/^https?:\/\//, "")}
+                        {p.link.href.startsWith("/") ? `macrokinetic.com${p.link.href}` : p.link.href.replace(/^https?:\/\//, "")}
                         <span className="transition-transform duration-300 ease-editorial group-hover/link:translate-x-1">
                           →
                         </span>

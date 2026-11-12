@@ -4,6 +4,7 @@ import Link from "next/link";
 import { references, coverImage } from "@/lib/content";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/references" },
   title: "What We Did — Selected Work",
   description:
     "Selected MacroKinetic deployments — Hong Kong International Airport, Elements Mall, interactive installations, border infrastructure, landmark retail LED and architectural lighting.",

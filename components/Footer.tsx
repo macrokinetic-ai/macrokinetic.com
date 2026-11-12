@@ -80,6 +80,25 @@ export default function Footer() {
               </li>
             ))}
           </ul>
+
+          <p className="mt-8 eyebrow">LinkedIn</p>
+          <ul className="mt-4 space-y-2">
+            {[
+              { href: company.linkedin.uk, label: "MacroKinetic MediaTech (UK · Trevo)" },
+              { href: company.linkedin.group, label: "MacroKinetic (Group)" },
+            ].map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[13px] text-muted transition-colors hover:text-ink"
+                >
+                  {l.label} ↗
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
 
@@ -88,13 +107,18 @@ export default function Footer() {
         <div className="shell py-6">
           <div className="flex flex-col items-start justify-between gap-2 text-[12px] text-faint sm:flex-row sm:items-center">
             <p>
-              © {new Date().getFullYear()} {company.legalName}. All rights
-              reserved.
+              © {new Date().getFullYear()} {company.ukEntity.name} ·{" "}
+              {company.hkEntity}. All rights reserved.
             </p>
             <p className="tracking-editorial">
               London · Hong Kong · Shenzhen
             </p>
           </div>
+          <p className="mt-2 text-[11px] text-faint">
+            {company.ukEntity.name} is registered in England and Wales, company
+            no. {company.ukEntity.number}. Registered office:{" "}
+            {company.ukEntity.office}.
+          </p>
           <p className="mt-2 text-[11px] text-faint">
             Site updated: {process.env.NEXT_PUBLIC_BUILD_DATE} ·{" "}
             {process.env.NEXT_PUBLIC_BUILD_SHA}

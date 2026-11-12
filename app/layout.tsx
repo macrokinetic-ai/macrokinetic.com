@@ -9,20 +9,24 @@ import { company } from "@/lib/content";
 
 export const metadata: Metadata = {
   title: {
-    default: "MacroKinetic | Global Corporate Hub",
+    default: "MacroKinetic | Self-Service Kiosks, Hotel Check-in & AI",
     template: "%s | MacroKinetic",
   },
   description: company.positioning,
-  metadataBase: new URL("https://macrokinetic.com"),
+  metadataBase: new URL(company.siteUrl),
   openGraph: {
-    title: "MacroKinetic | Global Corporate Hub",
+    title: "MacroKinetic | Self-Service Kiosks, Hotel Check-in & AI",
     description: company.positioning,
     type: "website",
-    url: "https://macrokinetic.com",
+    siteName: "MacroKinetic",
+    locale: "en_GB",
+    url: company.siteUrl,
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630, alt: "MacroKinetic intelligent customer service counter" }],
   },
   twitter: {
-    card: "summary",
-    title: "MacroKinetic | Global Corporate Hub",
+    card: "summary_large_image",
+    images: ["/og-default.jpg"],
+    title: "MacroKinetic | Self-Service Kiosks, Hotel Check-in & AI",
     description: company.positioning,
   },
 };
@@ -33,7 +37,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <body className="bg-canvas text-ink antialiased">
         <FloatingNav />
         <main>{children}</main>

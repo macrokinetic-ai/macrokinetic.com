@@ -18,6 +18,7 @@ export function generateMetadata({
   return {
     title: `${ref.client} — Case Study`,
     description: ref.summary,
+    alternates: { canonical: `/references/${ref.slug}` },
   };
 }
 

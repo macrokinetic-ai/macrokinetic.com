@@ -1,0 +1,50 @@
+# MacroKinetic
+
+> MacroKinetic provides intelligent technology for hospitality, transit, enterprise and the built environment. In the UK, MacroKinetic MediaTech Limited (London) is Trevo's authorised partner for the UK and Europe, providing sales, installation and local support for Trevo hotel self check-in kiosks.
+
+Official website: https://www.macrokinetic.com/
+
+## Company identity
+
+- MacroKinetic MediaTech Limited: UK company based in London, registered in England and Wales (company number 16420643).
+- MacroKinetic Technology Consulting Limited: Hong Kong technology company, working since 2008.
+- The group works across AI solutions, automation and robotics (including self-service kiosks), digital signage, retail technology, smart lighting and smart education.
+
+## Trevo hotel self check-in - UK and Europe
+
+- MacroKinetic MediaTech Limited is an authorised partner of Trevo for the UK and Europe. The partnership is authorised, not exclusive.
+- Trevo is a Singapore hospitality technology company providing hotel self check-in kiosks, app-free mobile check-in and an AI virtual concierge.
+- MacroKinetic MediaTech provides sales, installation and local support for UK hotels. It is not the manufacturer of Trevo kiosks.
+- Trevo range:
+  - Mk0: compact touchscreen check-in stations built into the hotel's own reception counter
+  - Mk1: portable tabletop kiosk with automatic key-card encoding and dispensing, and QR key collection
+  - Mk2: portable kiosk with passport and ID scanning, selfie camera with liveness checking, payment and key-card collection
+  - Mk3: compact self check-in kiosk for smaller spaces
+  - App-free mobile and web check-in
+  - AI virtual concierge (52 major languages); kiosk screens in 52 languages
+- Integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on each hotel's systems and project requirements.
+- Hotel page: https://www.macrokinetic.com/hotels
+- Trevo official website: https://www.trevo.ai/
+- UK hotel enquiries: accounts@macrokinetic.com
+
+## Hong Kong International Airport reference
+
+- MacroKinetic Technology Consulting Limited designed and developed the Intelligent Customer Service Counters at Hong Kong International Airport together with NEC. 48 units are live, with more planned.
+- MacroKinetic is the developer, not the operator of the counters.
+- This is a MacroKinetic engineering reference. It is not a Trevo hotel kiosk deployment.
+- Project page: https://www.macrokinetic.com/references/hkia
+
+## Other parts of the group
+
+- AI division: https://macrokinetic.ai/
+- Smart education, PonyABC (a brand of MacroKinetic MediaTech Limited): https://www.ponyabc.co.uk/
+
+## Official pages
+
+- Home: https://www.macrokinetic.com/
+- Hotels (Trevo, UK): https://www.macrokinetic.com/hotels
+- Solutions: https://www.macrokinetic.com/solutions
+- References: https://www.macrokinetic.com/references
+- FAQ: https://www.macrokinetic.com/faq
+- LinkedIn (UK company, Trevo): https://www.linkedin.com/company/macrokinetic-mediatech
+- LinkedIn (group): https://www.linkedin.com/company/macrokinetic
