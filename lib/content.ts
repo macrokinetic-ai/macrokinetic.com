@@ -178,17 +178,17 @@ export const pillars: Pillar[] = [
     name: "Smart Education",
     tagline: "Learning, Made Interactive",
     summary:
-      "Through PonyABC, MacroKinetic MediaTech develops interactive early-years learning — multilingual talking pens, physical learning cards and responsive smart lighting. The forthcoming PonyABC Sensory Colour Learning System brings child-led colour exploration into nursery and early-years SEN settings.",
+      "Through PonyABC, our London-based early-years brand, MacroKinetic brings together interactive learning hardware, multilingual content, digital media and connected technology — talking pens, learning materials, sensory colour experiences, free nursery resources and new education product development.",
     capabilities: [
-      "PonyABC Sensory Colour Learning System",
-      "Multilingual talking pen & PVC learning cards",
-      "Early-years songs, videos & free teaching resources",
-      "Institutional, research & distribution partnerships",
+      "Multilingual talking pens, cards & books",
+      "Sensory Colour Learning System (winter 2026)",
+      "Songs, videos & free nursery teaching resources",
+      "Education product development & partnerships",
     ],
     link: {
       label: "Education",
       href: "/education",
-      note: "PonyABC for early-years settings — institutional, research and partner enquiries.",
+      note: "MacroKinetic in early-years education, through PonyABC.",
     },
   },
 ];
@@ -699,40 +699,51 @@ export const trevoIntegrations = [
 export const PONYABC_SENSORY_URL = "https://ponyabc.co.uk/pages/sensory-colour-system";
 export const PONYABC_EMAIL = "marketing@ponyabc.co.uk";
 
-export const eduSteps = [
-  { title: "Tap a colour", text: "A child taps a PonyABC colour card using the P5 talking pen." },
-  { title: "Hear the colour", text: "The pen names the colour in multiple languages, supporting multilingual exploration." },
-  { title: "See the response", text: "The room lights change to match the card. Tap black and the lights turn off." },
-];
+export const PONYABC_SHOP = "https://ponyabc.co.uk/collections/all";
+export const PONYABC_NURSERIES = "https://ponyabc.co.uk/pages/faq?view=nurseries";
+export const PONYABC_YOUTUBE = "https://www.youtube.com/@PonyABC";
+export const PONYABC_TM = "UK00004423033";
 
-export const eduBenefits = [
-  { title: "Child-led exploration", text: "Children choose when to interact. There are no scores, reward charts or prescribed sequences." },
-  { title: "Portable by design", text: "The system needs power and Wi-Fi and can be moved between rooms." },
-  { title: "Multilingual learning", text: "The P5 pen supports English, French, Italian, Spanish, German, Portuguese, Mandarin and Cantonese, with further languages planned." },
-  { title: "Considered light responses", text: "Lights change colour when a card is tapped, with at least 1–2 seconds between taps. They do not flash." },
-];
-
-export const eduComponents = [
-  { title: "PonyABC Colour Cards", text: "Durable PVC cards with rounded corners and a wipe-clean surface, designed for repeated nursery use." },
-  { title: "PonyABC P5 Talking Pen", text: "Co-designed in London. Works offline for talking-card activities and speaks colour names in multiple languages." },
-  { title: "PonyABC Gateway", text: "A TrimUI Smart Pro handheld pre-installed with the PonyABC app. Kept beside the teacher, it shows colour names, pen and light status, low-battery alerts and simple British English settings. The pen reconnects automatically." },
-  { title: "Your choice of smart lighting", text: "Philips Hue: Hue Bridge with Hue colour lamps, such as Hue Iris or Hue Bloom. Or IKEA: DIRIGERA hub with KAJPLATS colour bulbs. The lights are third-party products, not made by PonyABC." },
+export const eduOffer: { title: string; text: string; link: { label: string; href: string } }[] = [
+  {
+    title: "Talking pens and learning cards",
+    text: "The PonyABC P5 talking pen works offline, bringing multilingual audio to physical learning materials. Durable PVC phonics and colour cards support hands-on early-years activities.",
+    link: { label: "Explore pens and cards", href: PONYABC_SHOP },
+  },
+  {
+    title: "Multilingual talking books",
+    text: "Interactive books support language exploration through audio and physical reading. The range includes a trilingual Cantonese, Mandarin and English encyclopedia and pen set.",
+    link: { label: "Explore learning books", href: PONYABC_SHOP },
+  },
+  {
+    title: "Sensory Colour Learning System",
+    text: "Coming winter 2026. Children tap a colour card with a talking pen, hear the colour name and see connected room lights change to match. Works with supported third-party Philips Hue or IKEA lighting.",
+    link: { label: "Explore the system", href: PONYABC_SENSORY_URL },
+  },
+  {
+    title: "3D-printed learning toys",
+    text: "The PonyABC Makerplace range includes small learning toys made in the UK, bringing physical play and creative design together.",
+    link: { label: "Explore Makerplace", href: PONYABC_SHOP },
+  },
+  {
+    title: "Songs and learning videos",
+    text: "Gentle nursery songs and simple learning videos help young children explore language and everyday concepts through music and familiar characters.",
+    link: { label: "PonyABC on YouTube", href: PONYABC_YOUTUBE },
+  },
 ];
 
 export const eduPartners = [
+  "Nursery groups and early-years settings",
   "Universities and early-years researchers",
-  "SEN specialists and education practitioners",
-  "Nursery groups and local authorities",
-  "Education distributors and resellers",
-  "Technology and smart-environment partners",
+  "SEN specialists",
+  "Education distributors",
+  "Technology partners",
+  "Chinese schools developing teaching materials",
 ];
 
 export const eduFaq: { q: string; a: string }[] = [
-  { q: "When will the Sensory Colour Learning System be available?", a: "The system is planned for winter 2026. Nurseries, education organisations, distributors and research partners can register their interest now." },
-  { q: "What is included in the starter configuration?", a: "A PonyABC P5 talking pen, PVC colour cards, a TrimUI Smart Pro gateway pre-installed with the PonyABC app, and one supported lighting option. Additional lights, pens and cards can be discussed, and we confirm what is supplied when we tailor the package." },
-  { q: "Does the system require Wi-Fi?", a: "The P5 pen works offline for talking-card activities. The connected colour-light system needs power and Wi-Fi to communicate with the supported lighting equipment." },
-  { q: "Can we use existing smart lights?", a: "The currently supported options are a Philips Hue Bridge with compatible Hue colour lamps, or an IKEA DIRIGERA hub with compatible KAJPLATS colour bulbs. Other devices should not be assumed compatible without testing." },
-  { q: "Does the lighting flash or change rapidly?", a: "No. Lighting changes are triggered by card taps, with at least 1–2 seconds between taps. A calmer mode with dimmer lighting and slower fades is planned but not yet available." },
-  { q: "Is this a therapeutic or clinical sensory system?", a: "No. PonyABC is an early-years educational product for interactive learning and play, including nursery and SEN settings. It is not a clinical or therapy device. It is intended for children aged 3 and over with adult supervision, and individual children's sensory preferences should guide its use." },
-  { q: "Can we discuss multi-site use, distribution or research?", a: "Yes. We welcome enquiries from nursery groups, local authorities, education distributors, SEN specialists, universities and technology partners. Tell us about your organisation and the opportunity you would like to explore." },
+  { q: "What is MacroKinetic's role in education?", a: "MacroKinetic brings its experience in interactive systems, connected hardware and digital technology into early-years education through PonyABC, a brand of its London company, MacroKinetic MediaTech Limited." },
+  { q: "What does PonyABC offer?", a: "PonyABC develops multilingual talking pens and learning cards, interactive books, sensory colour learning technology, UK-made 3D-printed toys, nursery songs, learning videos and free teaching resources. Some products, including the Sensory Colour Learning System, are still in development." },
+  { q: "Are PonyABC's nursery teaching resources free?", a: "Yes. PonyABC provides more than 30 free printable teaching packs for ages 2–5, also available on Tes. New topics are released regularly." },
+  { q: "Can organisations collaborate with MacroKinetic on education projects?", a: "Yes. We welcome discussions with nursery groups, universities and researchers, SEN specialists, education distributors, technology partners and Chinese schools developing learning materials. Contact marketing@ponyabc.co.uk." },
 ];

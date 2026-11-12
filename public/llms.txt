@@ -37,20 +37,14 @@ Official website: https://www.macrokinetic.com/
 ## Smart Education - PonyABC
 
 - Enterprise education page: https://www.macrokinetic.com/education
-- PonyABC is an early-years learning brand of MacroKinetic MediaTech Limited, London. PONY ABC is a registered UK trade mark. Motto: "Learn and Play".
-- PonyABC develops multilingual talking pens, books and flash cards, songs and videos, free early-years printables, 3D-printed learning toys (Makerplace) and interactive sensory learning technology.
-
-### PonyABC Sensory Colour Learning System (coming winter 2026, register interest)
-
-- For nurseries and early-years SEN settings. A child taps a PonyABC colour card with the P5 talking pen; the pen says the colour name in multiple languages; connected room lights change to that colour. The black card turns the lights off.
-- Parts: PonyABC PVC colour cards (wipe-clean, rounded corners); PonyABC P5 talking pen (co-designed in London, works offline for talking-card activities); TrimUI Smart Pro pre-installed with the PonyABC gateway app; one supported third-party lighting option.
-- Supported lighting: Philips Hue Bridge with Hue colour lamps, or IKEA DIRIGERA hub with KAJPLATS colour bulbs. The connected lighting needs power and Wi-Fi. Portable between rooms.
-- Lights change colour on card taps and do not flash. A calmer lighting mode is planned, not released.
-- Educational product, not a clinical or therapy device. Ages 3+ with adult supervision.
-- Matter (via the IKEA hub) creates future research opportunities beyond lights; these are not current features.
-- PonyABC does not manufacture Philips Hue, IKEA or TrimUI hardware and is not a partner of Philips or IKEA.
-- Institutional, research, distribution and technology partner enquiries: marketing@ponyabc.co.uk
-- Product detail: https://ponyabc.co.uk/pages/sensory-colour-system
+- MacroKinetic applies its experience in interactive systems, digital signage, AI and smart lighting (since 2008) to early-years education through PonyABC.
+- PonyABC is an early-years learning brand of MacroKinetic MediaTech Limited, London. PONY ABC is a registered UK trade mark (No. UK00004423033). Motto: "Learn and Play". Current focus: nurseries and Early Years. Designed in London; ideas are tested with real children, parents and nursery teams.
+- Products and content: P5 multilingual talking pen (works offline); durable PVC phonics and colour cards; multilingual talking books, including a trilingual Cantonese, Mandarin and English encyclopedia and pen set; the Sensory Colour Learning System (planned for winter 2026; connects the talking pen and colour cards to supported third-party smart lighting); UK-made 3D-printed learning toys (Makerplace); nursery songs and multilingual learning videos.
+- Sensory system details: https://ponyabc.co.uk/pages/sensory-colour-system (PonyABC is not a partner of Philips or IKEA.)
+- Free nursery teaching resources: more than 30 free printable packs for ages 2-5 (A4 cards, small cards, activity sheets, A3 poster), also on Tes: https://ponyabc.co.uk/pages/faq?view=nurseries
+- YouTube: gentle nursery songs and simple learning videos for ages 3-5, produced in London in multiple languages: https://www.youtube.com/@PonyABC
+- PonyABC continues developing new education products and content, and welcomes collaborations with nursery groups, early-years and SEN researchers, SEN specialists, distributors, technology partners and Chinese schools. Contact: marketing@ponyabc.co.uk
+- PonyABC focuses on early-years education and does not claim clinical or therapeutic outcomes.
 - PonyABC website: https://www.ponyabc.co.uk/
 
 ## Other parts of the group

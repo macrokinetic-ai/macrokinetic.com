@@ -1,26 +1,25 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import {
   company,
-  eduSteps,
-  eduBenefits,
-  eduComponents,
+  eduOffer,
   eduPartners,
   eduFaq,
-  PONYABC_SENSORY_URL,
   PONYABC_EMAIL,
+  PONYABC_NURSERIES,
+  PONYABC_YOUTUBE,
+  PONYABC_TM,
 } from "@/lib/content";
 
 const PAGE_URL = `${company.siteUrl}/education`;
-const TITLE = "PonyABC Sensory Colour Learning System | MacroKinetic";
+const TITLE = "Education Technology — PonyABC | MacroKinetic";
 const DESCRIPTION =
-  "PonyABC sensory colour learning for nurseries and early-years SEN settings. Explore multilingual play, room lighting and institutional partnerships.";
+  "Explore MacroKinetic's early-years education work through PonyABC: talking pens, multilingual books, nursery resources, sensory learning and partnerships.";
 const HERO = "https://ponyabc.co.uk/cdn/shop/files/pa-b-sensory-bg.png";
-const GATEWAY = "https://ponyabc.co.uk/cdn/shop/files/pa-gw-pony-hug.png";
-const VIDEO =
-  "https://ponyabc.co.uk/cdn/shop/videos/c/vp/b3d5c15c2e294203904994fa03548e14/b3d5c15c2e294203904994fa03548e14.HD-1080p-2.5Mbps-100163783.mp4";
-const MAIL_INTEREST = `mailto:${PONYABC_EMAIL}?subject=${encodeURIComponent("Sensory Colour Learning System - institutional interest")}`;
-const MAIL_PARTNER = `mailto:${PONYABC_EMAIL}?subject=${encodeURIComponent("PonyABC partnership enquiry")}`;
+const PLAY = "https://ponyabc.co.uk/cdn/shop/files/pa-play-bg.png";
+const MAIL = `mailto:${PONYABC_EMAIL}?subject=${encodeURIComponent("Education partnership enquiry")}`;
+const ext = { target: "_blank", rel: "noopener noreferrer" } as const;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -45,21 +44,13 @@ const schema = {
       name: "PonyABC",
       slogan: "Learn and Play",
       url: "https://www.ponyabc.co.uk",
+      sameAs: [PONYABC_YOUTUBE],
     },
     {
-      "@type": "Product",
-      "@id": `${PAGE_URL}#sensory-colour-system`,
-      name: "PonyABC Sensory Colour Learning System",
-      description:
-        "A child-led sensory colour system for nurseries and early-years SEN settings: a child taps a PonyABC colour card with the P5 talking pen, hears the colour name in multiple languages, and the room lights change to match. Coming winter 2026.",
+      "@type": "Organization",
+      "@id": `${company.siteUrl}/#organization`,
+      name: company.ukEntity.name,
       brand: { "@id": `${PAGE_URL}#ponyabc` },
-      manufacturer: {
-        "@type": "Organization",
-        "@id": `${company.siteUrl}/#organization`,
-        name: company.ukEntity.name,
-      },
-      audience: { "@type": "EducationalAudience", educationalRole: "Early years settings" },
-      url: PONYABC_SENSORY_URL,
     },
     {
       "@type": "FAQPage",
@@ -92,36 +83,34 @@ function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
 export default function EducationPage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero — MacroKinetic first */}
       <section className="bg-canvas pt-28 md:pt-32">
         <div className="shell pb-10 md:pb-12">
-          <p className="eyebrow">Education · Early Years · United Kingdom</p>
-          <p className="mt-4 inline-block rounded-full bg-paper px-3 py-1 text-[11px] uppercase tracking-tracked text-macro">
-            Coming winter 2026 · Register interest
-          </p>
+          <p className="eyebrow">Smart Education · MacroKinetic</p>
           <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
-            PonyABC Sensory Colour Learning System for early-years settings.
+            Bringing interactive technology into early-years learning.
           </h1>
           <div className="mt-8 max-w-2xl space-y-4 text-[16px] leading-relaxed text-muted">
             <p>
-              A child taps a colour card. The talking pen says the colour in
-              their chosen language. The room lights respond — a simple,
-              child-led way to bring interactive colour learning into everyday
-              nursery spaces.
+              MacroKinetic has been developing intelligent, interactive
+              technology since 2008. From customer service systems and digital
+              signage to AI and smart lighting, our work connects people,
+              information and the physical world.
             </p>
             <p>
-              PonyABC is an early-years learning brand of MacroKinetic MediaTech
-              Limited, London. We develop playful learning tools for nursery
-              settings, with opportunities for institutional buyers, education
-              partners and researchers.
+              Today, we bring that engineering experience into early-years
+              education through PonyABC, a London-designed learning brand of
+              MacroKinetic MediaTech Limited — combining interactive hardware,
+              multilingual content and playful learning for nurseries and young
+              children.
             </p>
           </div>
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <a href={MAIL_INTEREST} className={btnDark}>
-              Register your interest
+            <a href="#offer" className={btnDark}>
+              What we offer
             </a>
-            <a href="#how-it-works" className={btnLight}>
-              See how it works
+            <a href="https://www.ponyabc.co.uk" {...ext} className={btnLight}>
+              Visit PonyABC ↗
             </a>
           </div>
         </div>
@@ -137,201 +126,165 @@ export default function EducationPage() {
               height={1024}
               priority
               sizes="(max-width: 1400px) 100vw, 1400px"
-              className="h-auto w-full"
+              className="h-auto max-h-[620px] w-full object-cover"
             />
           </div>
-          <p className="mt-3 text-[11px] text-faint">Illustration.</p>
         </div>
       </section>
 
-      {/* How it works */}
-      <section id="how-it-works" className="scroll-mt-28 bg-canvas">
-        <div className="shell py-16 md:py-24">
-          <SectionHead eyebrow="How it works" title="A simple action. A room that responds." />
-          <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-12">
-            <ol className="border-hairline lg:col-span-5">
-              {eduSteps.map((st, i) => (
-                <li key={st.title} className="hairline-t py-6">
-                  <p className="font-mono text-[13px] text-macro">0{i + 1}</p>
-                  <h3 className="mt-2 text-[17px] font-medium text-ink">{st.title}</h3>
-                  <p className="mt-1 text-[15px] leading-relaxed text-muted">{st.text}</p>
-                </li>
-              ))}
-              <li className="hairline-t pt-6 text-[15px] font-medium text-ink">
-                The child leads the activity. The technology responds.
-              </li>
-            </ol>
-            <div className="lg:col-span-7">
-              <div className="overflow-hidden rounded-xl bg-ink">
-                <video
-                  controls
-                  preload="none"
-                  playsInline
-                  poster={HERO}
-                  className="h-auto w-full"
-                  aria-label="PonyABC Sensory Colour Learning System introduction video"
-                >
-                  <source src={VIDEO} type="video/mp4" />
-                </video>
-              </div>
-              <p className="mt-3 text-[12px] text-faint">
-                Introduction video (81 seconds).
-              </p>
-            </div>
+      {/* Story */}
+      <section className="bg-canvas">
+        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
+          <div className="md:col-span-5">
+            <SectionHead eyebrow="Our story" title="From intelligent technology to playful learning." />
+          </div>
+          <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-7">
+            <p>
+              Our Hong Kong company, MacroKinetic Technology Consulting Limited,
+              developed the intelligent customer service counters at Hong Kong
+              International Airport together with NEC.
+            </p>
+            <p>
+              An airport service counter and a nursery learning tool serve very
+              different people. But both rest on something we understand well:
+              making technology intuitive, interactive and genuinely useful.
+            </p>
+            <p>
+              PonyABC brings that thinking into the early years, combining
+              physical learning materials, audio, digital content and connected
+              devices. Our approach is simple: <strong className="font-medium text-ink">Learn and Play.</strong>
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Everyday spaces */}
-      <section className="hairline-t bg-paper">
+      {/* What we offer — equal cards */}
+      <section id="offer" className="scroll-mt-28 hairline-t bg-paper">
         <div className="shell py-16 md:py-24">
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
-            <div className="md:col-span-5">
-              <SectionHead
-                eyebrow="For nursery settings"
-                title="Bringing interactive colour into everyday nursery spaces."
-              />
-              <p className="mt-6 text-[16px] leading-relaxed text-graphite">
-                Not every setting has a dedicated sensory room. PonyABC is
-                designed to bring responsive colour lighting into ordinary
-                nursery rooms and early-years SEN environments, without the
-                complexity of a fixed sensory-room fit-out.
-              </p>
-            </div>
-            <dl className="grid grid-cols-1 gap-px sm:grid-cols-2 md:col-span-7">
-              {eduBenefits.map((b) => (
-                <div key={b.title} className="hairline-t py-5 sm:pr-6">
-                  <dt className="text-[16px] font-medium text-ink">{b.title}</dt>
-                  <dd className="mt-1 text-[15px] leading-relaxed text-muted">{b.text}</dd>
-                </div>
-              ))}
-            </dl>
+          <SectionHead eyebrow="PonyABC" title="What we offer." />
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {eduOffer.map((o) => (
+              <article key={o.title} className="flex flex-col rounded-xl bg-canvas p-8">
+                <h3 className="text-[17px] font-medium text-ink">{o.title}</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">{o.text}</p>
+                <a href={o.link.href} {...ext} className="mt-6 text-[14px] font-medium text-ink underline-offset-4 hover:underline">
+                  {o.link.label} ↗
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Components */}
+      {/* Free resources + YouTube */}
       <section className="hairline-t bg-canvas">
         <div className="shell grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-7">
-            <SectionHead eyebrow="The system" title="Four components. One connected experience." />
-            <div className="mt-10 border-hairline">
-              {eduComponents.map((c) => (
-                <div key={c.title} className="hairline-t py-5">
-                  <h3 className="text-[16px] font-medium text-ink">{c.title}</h3>
-                  <p className="mt-1 text-[15px] leading-relaxed text-muted">{c.text}</p>
-                </div>
-              ))}
+          <div className="md:col-span-6">
+            <SectionHead eyebrow="Free resources" title="Free resources for early-years settings." />
+            <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-graphite">
+              <p>
+                PonyABC offers more than 30 free printable teaching packs for
+                ages 2–5, covering early learning, feelings, daily routines and
+                the world around us — from Colours and Numbers 1 to 10 to
+                Feelings and Emotions, Calm Corner, People Who Help Us and Wash
+                Your Hands.
+              </p>
+              <p>
+                Each pack includes A4 teaching cards, smaller activity cards,
+                activity sheets and an A3 poster. The resources are also
+                published on Tes, and new topics are added regularly.
+              </p>
+              <a href={PONYABC_NURSERIES} {...ext} className={`inline-block ${btnLight}`}>
+                Browse free nursery resources ↗
+              </a>
             </div>
-            <a href={PONYABC_SENSORY_URL} target="_blank" rel="noopener noreferrer" className={`mt-8 inline-block ${btnLight}`}>
-              Explore the full system ↗
-            </a>
           </div>
-          <div className="md:col-span-5">
-            <div className="overflow-hidden rounded-xl bg-paper">
-              <Image
-                src={GATEWAY}
-                alt="Pony character beside a TrimUI Smart Pro showing the PonyABC gateway app"
-                width={900}
-                height={600}
-                sizes="(max-width: 768px) 100vw, 560px"
-                className="h-auto w-full"
-              />
+          <div className="md:col-span-6">
+            <SectionHead eyebrow="YouTube" title="PonyABC on YouTube." />
+            <div className="mt-6 space-y-4 text-[16px] leading-relaxed text-graphite">
+              <p>
+                Our YouTube channel brings gentle nursery songs and simple
+                learning videos to children aged 3–5. Produced in London in
+                multiple languages, it is part of our wider approach to learning
+                through music, language and play.
+              </p>
+              <div className="overflow-hidden rounded-xl bg-paper">
+                <Image
+                  src={PLAY}
+                  alt="Pony and friends at the playground"
+                  width={960}
+                  height={540}
+                  sizes="(max-width: 768px) 100vw, 640px"
+                  className="h-auto w-full"
+                />
+              </div>
+              <a href={PONYABC_YOUTUBE} {...ext} className={`inline-block ${btnLight}`}>
+                Visit @PonyABC ↗
+              </a>
             </div>
-            <p className="mt-3 text-[12px] text-faint">
-              The PonyABC gateway app on TrimUI Smart Pro.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Configurations */}
+      {/* Development */}
       <section className="hairline-t bg-paper">
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-5">
-            <SectionHead eyebrow="Configurations" title="Start with one room. Explore what comes next." />
+            <SectionHead eyebrow="Product development" title="Developing what comes next." />
           </div>
           <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-7">
             <p>
-              The starter configuration brings together a P5 talking pen,
-              colour cards, the PonyABC gateway and a choice of supported
-              lighting setup. Additional lights, lamps, card sets and pens can
-              be added for different nursery requirements.
+              PonyABC is an ongoing education technology and content programme,
+              not a fixed catalogue. We keep developing new learning tools,
+              interactive experiences and educational content, drawing on
+              MacroKinetic&rsquo;s experience in engineering, connected hardware
+              and digital technology.
             </p>
             <p>
-              We welcome discussions with individual settings, nursery groups
-              and multi-site education operators about suitable configurations.
+              Designed in London, our ideas are tested with real children,
+              parents and nursery teams. We are also interested in research
+              collaborations on interactive learning, multilingual education and
+              technology in early-years and SEN settings.
             </p>
-            <a href={MAIL_INTEREST} className={`inline-block ${btnDark}`}>
-              Discuss your setting
-            </a>
           </div>
         </div>
       </section>
 
-      {/* Collaboration */}
+      {/* Partners */}
       <section className="hairline-t bg-canvas">
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-5">
-            <SectionHead eyebrow="Research & partnerships" title="Built for exploration. Open to collaboration." />
+            <SectionHead eyebrow="Partnerships" title="Work with us." />
           </div>
           <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-7">
             <p>
-              The system is built around a straightforward idea: a
-              child&rsquo;s physical action can produce an immediate,
-              understandable response in the learning environment.
+              We welcome conversations with organisations that share an interest
+              in practical, playful early-years learning:
             </p>
-            <p>
-              The IKEA DIRIGERA hub supports Matter, creating possibilities to
-              explore future room responses beyond colour lighting. These are
-              development and research opportunities, not features of the
-              current release.
-            </p>
-            <p>We welcome conversations with:</p>
-            <ul className="space-y-2">
+            <ul className="flex flex-wrap gap-3">
               {eduPartners.map((p) => (
-                <li key={p} className="hairline-t pt-2 text-[15px] text-ink">
+                <li key={p} className="rounded-full border-hair border-hairline-strong px-4 py-2 text-[13px] text-graphite">
                   {p}
                 </li>
               ))}
             </ul>
             <p>
-              PonyABC develops and tests ideas with children, parents and
-              nursery teams, and we are interested in practical collaboration
-              that helps shape future early-years learning.
+              Whether you are exploring a product collaboration, a research
+              project, a distribution opportunity or a new learning resource, we
+              would be pleased to discuss the possibilities.
             </p>
-            <a href={MAIL_PARTNER} className={`inline-block ${btnLight}`}>
-              Explore a partnership
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* More from PonyABC */}
-      <section className="hairline-t bg-paper">
-        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-5">
-            <SectionHead eyebrow="More from PonyABC" title="Learn and Play." />
-          </div>
-          <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-7">
-            <p>
-              Beyond the Sensory Colour Learning System, PonyABC offers
-              multilingual talking books and flash cards, children&rsquo;s
-              songs and videos, free printable early-years teaching resources,
-              and small 3D-printed learning toys through Makerplace.
-            </p>
-            <a href="https://www.ponyabc.co.uk" target="_blank" rel="noopener noreferrer" className="inline-flex text-[14px] font-medium text-ink underline-offset-4 hover:underline">
-              Visit PonyABC: www.ponyabc.co.uk ↗
+            <a href={MAIL} className={`inline-block ${btnDark}`}>
+              Discuss an education partnership
             </a>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="hairline-t bg-canvas">
+      <section className="hairline-t bg-paper">
         <div className="shell grid grid-cols-1 gap-8 py-16 md:grid-cols-12 md:py-24">
           <div className="md:col-span-4">
-            <SectionHead eyebrow="FAQ" title="Questions education partners ask." />
+            <SectionHead eyebrow="FAQ" title="Education at MacroKinetic." />
           </div>
           <div className="md:col-span-8">
             <div className="border-hairline">
@@ -356,44 +309,34 @@ export default function EducationPage() {
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-7">
             <h2 className="text-2xl font-medium leading-tight tracking-editorial text-white md:text-3xl">
-              Let&rsquo;s explore what could work for your setting.
+              Let&rsquo;s build better learning experiences.
             </h2>
             <p className="mt-4 text-[15px] leading-relaxed text-white/70">
-              Whether you are planning a nursery learning space, reviewing
-              provision across several sites or exploring a research or
-              commercial partnership, we would like to hear from you.
+              Interested in PonyABC products, learning content or education
+              technology partnerships? Get in touch with our London team.
             </p>
           </div>
           <div className="flex flex-col justify-end gap-4 md:col-span-5 md:items-end">
-            <div className="flex flex-wrap gap-3">
-              <a href={MAIL_INTEREST} className="rounded-full bg-white px-6 py-3 text-[13px] font-medium tracking-editorial text-ink transition-opacity hover:opacity-85">
-                Register institutional interest
-              </a>
-              <a href={MAIL_PARTNER} className="rounded-full border-hair border-white/40 px-6 py-3 text-[13px] font-medium tracking-editorial text-white transition-colors hover:bg-white/10">
-                Discuss a partnership
-              </a>
-            </div>
-            <p className="text-[13px] text-white/70">
-              Email:{" "}
-              <a href={`mailto:${PONYABC_EMAIL}`} className="text-white underline underline-offset-4">
-                {PONYABC_EMAIL}
-              </a>
-            </p>
+            <a href={MAIL} className="rounded-full bg-white px-6 py-3 text-[13px] font-medium tracking-editorial text-ink transition-opacity hover:opacity-85">
+              {PONYABC_EMAIL}
+            </a>
+            <a href="https://www.ponyabc.co.uk" {...ext} className="text-[13px] text-white/70 hover:text-white">
+              Visit PonyABC: www.ponyabc.co.uk ↗
+            </a>
+            <Link href="/hotels" className="text-[13px] text-white/50 hover:text-white">
+              Also from MacroKinetic: hotel self check-in →
+            </Link>
           </div>
           <p className="text-[11px] leading-relaxed text-white/45 md:col-span-12">
-            PonyABC is a brand of MacroKinetic MediaTech Limited, London. PONY
-            ABC® is a registered UK trade mark. For ages 3+ with adult
-            supervision. Philips Hue, IKEA and TrimUI are independent
-            third-party brands; PonyABC does not manufacture their hardware and
-            has no partnership or endorsement arrangement with Philips or IKEA.
+            PonyABC is an early-years brand of MacroKinetic MediaTech Limited,
+            London. PONY ABC® is a registered UK trade mark (No. {PONYABC_TM}).
+            Philips Hue and IKEA are independent third-party brands; PonyABC is
+            not a partner of Philips or IKEA.
           </p>
         </div>
       </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     </>
   );
 }
