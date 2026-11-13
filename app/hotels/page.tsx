@@ -10,6 +10,7 @@ import {
   trevoExtras,
   trevoIntegrations,
   faqs,
+  hospitalityAiEvent,
 } from "@/lib/content";
 
 const PAGE_URL = `${company.siteUrl}/hotels`;
@@ -376,6 +377,28 @@ export default function HotelsPage() {
           </div>
         </section>
       )}
+
+      {/* Upcoming event */}
+      <section className="hairline-t bg-paper">
+        <Link
+          href={`/events/${hospitalityAiEvent.slug}`}
+          className="group shell flex flex-col gap-4 py-10 md:flex-row md:items-center md:justify-between"
+        >
+          <div>
+            <p className="eyebrow">Free online event · {hospitalityAiEvent.dateLabel}</p>
+            <p className="mt-3 max-w-3xl text-xl font-medium tracking-editorial text-ink md:text-2xl">
+              {hospitalityAiEvent.title}
+            </p>
+            <p className="mt-2 text-[14px] text-muted">
+              {hospitalityAiEvent.timeLabel} · with {hospitalityAiEvent.speaker.name}, {hospitalityAiEvent.speaker.role}
+            </p>
+          </div>
+          <span className={`whitespace-nowrap ${btnLight}`}>
+            Event details{" "}
+            <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </span>
+        </Link>
+      </section>
 
       {/* Final CTA */}
       <section className="hairline-t bg-ink">

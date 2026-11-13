@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import CityFootprint from "@/components/CityFootprint";
 import GatewaySplit from "@/components/GatewaySplit";
-import { company, pillars } from "@/lib/content";
+import { company, pillars, hospitalityAiEvent } from "@/lib/content";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -95,6 +95,15 @@ export default function HomePage() {
             <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </span>
         </Link>
+        <div className="shell -mt-4 pb-10 md:-mt-6 md:pb-12">
+          <Link
+            href={`/events/${hospitalityAiEvent.slug}`}
+            className="text-[14px] text-graphite underline-offset-4 hover:underline"
+          >
+            Free online event, {hospitalityAiEvent.dateLabel}:{" "}
+            <span className="font-medium text-ink">{hospitalityAiEvent.shortTitle}</span> →
+          </Link>
+        </div>
       </section>
 
       {/* ───────────────── Capability index ───────────────── */}

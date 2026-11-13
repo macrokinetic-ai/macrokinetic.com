@@ -472,8 +472,8 @@ export type FaqSection = { heading: string; items: { q: string; a: string }[] };
 // Format: date = YYYY-MM-DD, id = v<YYYY>.<MM>.<DD>-<revision> (increment revision if
 // multiple FAQ edits happen on the same day).
 export const faqVersion = {
-  date: "2026-11-12",
-  id: "v2026.11.12-1",
+  date: "2026-11-13",
+  id: "v2026.11.13-1",
 };
 
 export const faqs: FaqSection[] = [
@@ -493,8 +493,16 @@ export const faqs: FaqSection[] = [
         a: "No. Trevo is a Singapore hospitality technology company that makes the kiosks and software. MacroKinetic MediaTech Limited is Trevo's authorised UK and Europe partner for sales, installation and local support.",
       },
       {
-        q: "Will Trevo work with our existing PMS, room locks and payments?",
-        a: "Trevo's integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on your particular systems, versions and configuration, so we review the requirements with you before making a recommendation.",
+        q: "Does Trevo suit smaller hotels?",
+        a: "Yes. Trevo is not only for large properties. Heritage Collection, a Trevo customer in Singapore, uses Trevo at a 50-room property. Smaller hotels can also choose a compact kiosk or app-free mobile check-in. We discuss your property's size and arrival pattern before recommending a configuration.",
+      },
+      {
+        q: "We have limited space at reception. Which kiosk fits?",
+        a: "There are three options for tight spaces. The Trevo Mk0 is built into your own reception counter, so it takes no extra floor space. The Trevo Mk1 is a tabletop kiosk that sits on an existing desk and handles key-card collection. The Trevo Mk3 is a compact self check-in kiosk for smaller lobbies and side counters. We can look at your lobby layout with you before recommending one.",
+      },
+      {
+        q: "Will it work with our existing PMS?",
+        a: "Trevo's integration partners include Oracle OPERA, Infor HMS and Cloudbeds, among others, as well as SALTO and VingCard door locks and Stripe and Adyen payments. Compatibility depends on your particular systems, versions and configuration, so we check your systems first, before making a recommendation.",
       },
       {
         q: "Do guests have to use a kiosk?",
@@ -636,7 +644,7 @@ export const faqs: FaqSection[] = [
 // ── Trevo hotel self check-in (UK) — /hotels landing page ──────────────────
 // Copy mirrors the MacroKinetic MediaTech LinkedIn page overview (Nov 2026).
 // Rules: say "authorised partner", never "exclusive"; no prices; no customer
-// names; images must show real Trevo models only.
+// names (exception approved Nov 2026: Heritage Collection, in the hotels FAQ); images must show real Trevo models only.
 export type TrevoModel = {
   name: string;
   title: string;
@@ -758,3 +766,39 @@ export const eduFaq: { q: string; a: string }[] = [
   { q: "Are PonyABC's nursery teaching resources free?", a: "Yes. PonyABC provides more than 30 free printable teaching packs for ages 2–5, also available on Tes. New topics are released regularly." },
   { q: "Can organisations collaborate with MacroKinetic on education projects?", a: "Yes. We welcome discussions with nursery groups, universities and researchers, SEN specialists, education distributors, technology partners and Chinese schools developing learning materials. Contact marketing@ponyabc.co.uk." },
 ];
+
+// ── Events ─────────────────────────────────────────────────────────────────
+// Rules: link only to the exact Eventbrite URL (no tracking parameters);
+// speaker bio is verbatim as supplied by Trevo; guest speaker unnamed until
+// confirmed.
+export const hospitalityAiEvent = {
+  slug: "hospitality-in-the-age-of-ai",
+  title:
+    "Hospitality in the Age of AI: Balancing Automation, Efficiency and the Human Touch",
+  shortTitle: "Hospitality in the Age of AI",
+  dateLabel: "Thursday 10 December 2026",
+  timeLabel: "11:00–12:15 UK time (GMT)",
+  startDate: "2026-12-10T11:00:00+00:00",
+  endDate: "2026-12-10T12:15:00+00:00",
+  format: "Online",
+  priceLabel: "Free",
+  registerUrl:
+    "https://www.eventbrite.co.uk/e/hospitality-in-the-age-of-ai-tickets-2004670110264",
+  summary:
+    "A free online session on how hotels can use AI for automation and efficiency while keeping the human touch.",
+  organizer: { name: "Trevo", url: "https://www.trevo.ai/" },
+  speaker: {
+    name: "Maxim Tint",
+    role: "Founder & CEO, Trevo",
+    jobTitle: "Founder & CEO",
+    bio: "Maxim Tint is the founder and CEO of trevo.ai, an AI platform transforming hotel guest experiences through multimodal AI, computer vision and generative content. Over the past 12 years, he has helped hospitality businesses deploy technology that improves productivity and personalizes the guest experience, supporting more than 40,000 hotel rooms across eight countries. Maxim began his career building business intelligence and data warehousing systems as a founding member of a software company later acquired by NTT DATA.",
+  },
+  guestSpeaker: "Special guest speaker: to be announced",
+  agenda: [
+    "Welcome",
+    "AI challenges for the industry",
+    "AI solutions for hospitality",
+    "Trevo case studies",
+    "Q&A",
+  ],
+};

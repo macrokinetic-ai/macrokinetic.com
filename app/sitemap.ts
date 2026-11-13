@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { references } from "@/lib/content";
+import { references, hospitalityAiEvent } from "@/lib/content";
 
 // Production canonical origin. Matches `metadataBase` in app/layout.tsx.
 // If the production domain changes, update it in both places.
@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/education`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/solutions`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/references`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/events/${hospitalityAiEvent.slug}`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${BASE_URL}/faq`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE_URL}/privacy`, lastModified, changeFrequency: "yearly", priority: 0.2 },
   ];
