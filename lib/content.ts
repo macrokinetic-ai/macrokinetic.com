@@ -493,6 +493,14 @@ export const faqs: FaqSection[] = [
         a: "No. Trevo is a Singapore hospitality technology company that makes the kiosks and software. MacroKinetic MediaTech Limited is Trevo's authorised UK and Europe partner for sales, installation and local support.",
       },
       {
+        q: "Is Trevo new, and where is it already used?",
+        a: "No. Trevo was founded in Singapore in 2014 and reports around 60% market share there, with about 30,000 hotel rooms using its technology and more than 4 million check-ins and ID checks. Hotels using Trevo range from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms. M Social Hotel Sunnyvale in the US has chosen Trevo, and the first UK installation, at a five-star London hotel, is planned for December 2026.",
+      },
+      {
+        q: "What results do hotels see with Trevo?",
+        a: "Hotel Waterloo Singapore, whose lobby was designed around Trevo Mk0 kiosks, reports 100% self check-in adoption. In 2024 the Singapore Tourism Board cited nearly 40% of guests choosing Trevo mobile check-in at The Fullerton Hotel Singapore on a peak weekend. Trevo reports that kiosk use can reach 80% of arrivals, and that its upselling module can add up to 5% extra revenue a month. Results vary by property and set-up.",
+      },
+      {
         q: "Will Trevo work with our existing PMS, room locks and payments?",
         a: "Trevo's integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on your particular systems, versions and configuration, so we review the requirements with you before making a recommendation.",
       },
@@ -635,8 +643,9 @@ export const faqs: FaqSection[] = [
 
 // ── Trevo hotel self check-in (UK) — /hotels landing page ──────────────────
 // Copy mirrors the MacroKinetic MediaTech LinkedIn page overview (Nov 2026).
-// Rules: say "authorised partner", never "exclusive"; no prices; no customer
-// names; images must show real Trevo models only.
+// Rules: say "authorised partner", never "exclusive"; no prices; images must
+// show real Trevo models only. Customer names and figures only from the Trevo
+// deck or what Trevo's CEO has confirmed (Nov 2026), labelled as Trevo figures.
 export type TrevoModel = {
   name: string;
   title: string;
@@ -681,7 +690,7 @@ export const trevoModels: TrevoModel[] = [
 ];
 
 export const trevoSteps = [
-  { title: "Check in before arriving", text: "Guests can start registration on their own phone through a web link. No app download needed." },
+  { title: "Check in before arriving", text: "Guests can complete around 80% of check-in on their own phone through a web link, with no app to download (Trevo figure)." },
   { title: "Complete the necessary checks", text: "Depending on the kiosk and configuration, Trevo supports passport or ID scanning, selfie matching with liveness checking, and payment." },
   { title: "Collect a room key", text: "Guests collect an encoded key card from a supported Trevo kiosk, connected to the hotel's systems." },
   { title: "Continue when the room is ready", text: "If a room is not ready, auto-resume lets check-in continue later instead of starting again." },
@@ -701,6 +710,45 @@ export const trevoIntegrations = [
   "VingCard",
   "Stripe",
   "Adyen",
+];
+
+export const trevoStats: { value: string; label: string }[] = [
+  { value: "2014", label: "Founded in Singapore" },
+  { value: "~60%", label: "Market share in Singapore" },
+  { value: "30,000", label: "Hotel rooms using Trevo" },
+  { value: "4M+", label: "Check-ins and ID checks" },
+];
+
+export const trevoJourney: { place: string; text: string }[] = [
+  { place: "Singapore", text: "Home market since 2014, from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms." },
+  { place: "United States", text: "M Social Hotel Sunnyvale, in the San Francisco Bay Area, has chosen Trevo. Opening December 2026." },
+  { place: "London", text: "Trevo's first UK installation, at a five-star London hotel, is planned for December 2026." },
+];
+
+// Hotel names from the Trevo deck, shown as text only (no logos).
+export const trevoHotels: string[] = [
+  "M Hotel Singapore",
+  "PARKROYAL",
+  "The Fullerton Hotel Singapore",
+  "Pan Pacific",
+  "Goodwood Park",
+  "Hotel Waterloo",
+  "Heritage Collection",
+];
+
+export const trevoResults: { value: string; label: string; source: string }[] = [
+  { value: "100%", label: "self check-in adoption", source: "Hotel Waterloo Singapore, 2026. The lobby was designed around Trevo Mk0 kiosks; featured on CNA." },
+  { value: "~40%", label: "of guests chose mobile check-in", source: "The Fullerton Hotel Singapore on a peak weekend, 2024, as cited by the Singapore Tourism Board." },
+  { value: "80%", label: "of arrivals can check in at the kiosk", source: "What hotels can reach with Trevo kiosks. Trevo figure." },
+  { value: "Up to 5%", label: "extra revenue each month", source: "From room upgrades and add-ons such as airport transfers. Trevo figure." },
+];
+
+export const trevoGuides: { title: string; text: string; href: string }[] = [
+  { title: "Trevo for UK hotels", text: "The full introduction.", href: "/downloads/trevo/trevo-for-uk-hotels.pdf" },
+  { title: "Hotel groups", text: "One smooth check-in across every property.", href: "/downloads/trevo/trevo-for-uk-hotel-groups.pdf" },
+  { title: "Boutique and independent hotels", text: "From 50 rooms to five-star.", href: "/downloads/trevo/trevo-for-boutique-hotels.pdf" },
+  { title: "Members' clubs", text: "Discreet check-in that suits your interior.", href: "/downloads/trevo/trevo-for-members-clubs.pdf" },
+  { title: "Serviced apartments", text: "Check-in starts before the guest arrives.", href: "/downloads/trevo/trevo-for-serviced-apartments.pdf" },
 ];
 
 // ── PonyABC / Education (/education) ───────────────────────────────────────

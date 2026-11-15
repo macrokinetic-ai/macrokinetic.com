@@ -23,6 +23,15 @@ Official website: https://www.macrokinetic.com/
   - App-free mobile and web check-in
   - AI virtual concierge (52 major languages); kiosk screens in 52 languages
 - Integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on each hotel's systems and project requirements.
+- Track record (Trevo figures): founded in Singapore in 2014; around 60% market share in Singapore; about 30,000 hotel rooms; more than 4 million check-ins and ID checks.
+- Hotels using Trevo include M Hotel Singapore (five-star), Heritage Collection (50 rooms), PARKROYAL, The Fullerton Hotel Singapore, Pan Pacific and Goodwood Park. In the United States, M Social Hotel Sunnyvale (San Francisco Bay Area) opens in December 2026. The first UK installation, at a five-star London hotel, is planned for December 2026.
+- Results: Hotel Waterloo Singapore reached 100% self check-in adoption in 2026. At The Fullerton Hotel Singapore about 40% of guests chose mobile check-in on a peak weekend in 2024 (cited by the Singapore Tourism Board). Trevo figures: kiosk use can reach 80% of arrivals; upsells can add up to 5% revenue a month.
+- Downloadable PDF introductions:
+  - Trevo for UK hotels: https://www.macrokinetic.com/downloads/trevo/trevo-for-uk-hotels.pdf
+  - Hotel groups: https://www.macrokinetic.com/downloads/trevo/trevo-for-uk-hotel-groups.pdf
+  - Boutique and independent hotels: https://www.macrokinetic.com/downloads/trevo/trevo-for-boutique-hotels.pdf
+  - Members' clubs: https://www.macrokinetic.com/downloads/trevo/trevo-for-members-clubs.pdf
+  - Serviced apartments: https://www.macrokinetic.com/downloads/trevo/trevo-for-serviced-apartments.pdf
 - Hotel page: https://www.macrokinetic.com/hotels
 - Trevo official website: https://www.trevo.ai/
 - UK hotel enquiries: accounts@macrokinetic.com
