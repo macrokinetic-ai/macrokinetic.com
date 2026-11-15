@@ -9,6 +9,7 @@ import {
   trevoSteps,
   trevoExtras,
   trevoIntegrations,
+  trevoIntroPdfs,
   faqs,
 } from "@/lib/content";
 
@@ -347,6 +348,34 @@ export default function HotelsPage() {
             >
               See the airport project →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Trevo introductions (PDF) */}
+      <section id="introductions" className="scroll-mt-28 hairline-t bg-canvas">
+        <div className="shell py-16 md:py-24">
+          <SectionHead eyebrow="Downloads" title="Trevo introductions by property type" />
+          <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-graphite">
+            Short PDF guides for UK hotels, groups, boutique hotels, members&rsquo;
+            clubs and serviced apartments.
+          </p>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {trevoIntroPdfs.map((pdf) => (
+              <article key={pdf.href} className="flex flex-col rounded-xl bg-paper p-8">
+                <h3 className="text-xl font-medium text-ink">{pdf.title}</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-muted">{pdf.text}</p>
+                <a
+                  href={pdf.href}
+                  target="_blank"
+                  rel="noopener"
+                  title={pdf.fileTitle}
+                  className="mt-6 inline-flex text-[14px] font-medium text-ink underline underline-offset-4"
+                >
+                  Download PDF<span className="sr-only">: {pdf.fileTitle}</span>&nbsp;↗
+                </a>
+              </article>
+            ))}
           </div>
         </div>
       </section>

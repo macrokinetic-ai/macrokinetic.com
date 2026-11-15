@@ -24,6 +24,12 @@ Official website: https://www.macrokinetic.com/
   - AI virtual concierge (52 major languages); kiosk screens in 52 languages
 - Integration partners include Oracle OPERA, Infor HMS, Cloudbeds, SALTO, VingCard, Stripe and Adyen. Compatibility depends on each hotel's systems and project requirements.
 - Hotel page: https://www.macrokinetic.com/hotels
+- Trevo introductions by property type (PDF):
+  - Trevo for UK hotels (full introduction): https://www.macrokinetic.com/downloads/trevo/trevo-for-uk-hotels.pdf
+  - Hotel groups: https://www.macrokinetic.com/downloads/trevo/trevo-for-uk-hotel-groups.pdf
+  - Boutique and independent hotels: https://www.macrokinetic.com/downloads/trevo/trevo-for-boutique-hotels.pdf
+  - Members' clubs: https://www.macrokinetic.com/downloads/trevo/trevo-for-members-clubs.pdf
+  - Serviced apartments: https://www.macrokinetic.com/downloads/trevo/trevo-for-serviced-apartments.pdf
 - Trevo official website: https://www.trevo.ai/
 - UK hotel enquiries: accounts@macrokinetic.com
 
