@@ -9,6 +9,10 @@ import {
   trevoSteps,
   trevoExtras,
   trevoIntegrations,
+  trevoStats,
+  trevoJourney,
+  trevoResults,
+  trevoGuides,
   faqs,
 } from "@/lib/content";
 
@@ -140,6 +144,54 @@ export default function HotelsPage() {
           </div>
           <p className="mt-3 text-[11px] text-faint">
             Illustrative hotel scenes. The kiosks shown are real Trevo models.
+          </p>
+        </div>
+      </section>
+
+      {/* Track record */}
+      <section id="track-record" className="scroll-mt-28 hairline-t bg-paper">
+        <div className="shell py-16 md:py-24">
+          <SectionHead eyebrow="Track record" title="Proven in Asia. Now in London." />
+          <dl className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {trevoStats.map((st) => (
+              <div key={st.label} className="rounded-xl bg-canvas p-6">
+                <dt className="sr-only">{st.label}</dt>
+                <dd className="text-3xl font-semibold tracking-tight text-macro md:text-4xl">{st.value}</dd>
+                <p className="mt-2 text-[14px] text-muted">{st.label}</p>
+              </div>
+            ))}
+          </dl>
+          <ol className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {trevoJourney.map((j, i) => (
+              <li key={j.place} className="rounded-xl bg-canvas p-6">
+                <p className="font-mono text-[13px] text-macro">0{i + 1}</p>
+                <h3 className="mt-3 text-[16px] font-medium text-ink">{j.place}</h3>
+                <p className="mt-2 text-[14px] leading-relaxed text-muted">{j.text}</p>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-6 text-[12px] text-faint">Figures supplied by Trevo.</p>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="hairline-t bg-canvas">
+        <div className="shell py-16 md:py-24">
+          <SectionHead eyebrow="Results" title="What hotels already see." />
+          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {trevoResults.map((r) => (
+              <div key={r.label} className="flex flex-col rounded-xl bg-paper p-6">
+                <p className="text-3xl font-semibold tracking-tight text-macro md:text-4xl">{r.value}</p>
+                <p className="mt-3 text-[15px] font-medium text-ink">{r.label}</p>
+                <p className="mt-3 text-[13px] leading-relaxed text-muted">{r.source}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl text-[15px] leading-relaxed text-graphite">
+            When a hotel is designed around self check-in, guests choose it.
+            Like self-order
+            kiosks in UK restaurants, routine work leaves the counter, so staff
+            can focus on service. Results vary by property and set-up.
           </p>
         </div>
       </section>
@@ -348,6 +400,34 @@ export default function HotelsPage() {
               See the airport project →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Downloads */}
+      <section id="downloads" className="scroll-mt-28 hairline-t bg-paper">
+        <div className="shell py-16 md:py-24">
+          <SectionHead eyebrow="Downloads" title="Trevo introductions by property type." />
+          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-graphite">
+            Short PDF guides for UK hotels, hotel groups, boutique hotels,
+            members&rsquo; clubs and serviced apartments.
+          </p>
+          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {trevoGuides.map((g) => (
+              <li key={g.href} className="flex flex-col rounded-xl bg-canvas p-6">
+                <h3 className="text-[16px] font-medium text-ink">{g.title}</h3>
+                <p className="mt-2 flex-1 text-[14px] leading-relaxed text-muted">{g.text}</p>
+                <a
+                  href={g.href}
+                  target="_blank"
+                  rel="noopener"
+                  title={`${g.title} (PDF)`}
+                  className="mt-5 inline-flex text-[14px] font-medium text-ink underline underline-offset-4"
+                >
+                  Download PDF: {g.title}
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
