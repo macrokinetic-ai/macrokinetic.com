@@ -703,6 +703,41 @@ export const trevoIntegrations = [
   "Adyen",
 ];
 
+// Trevo introduction PDFs by property type (/hotels). Files live in
+// public/downloads/trevo/. Same rules as above: no prices, never "exclusive".
+export const trevoIntroPdfs: { title: string; text: string; href: string; fileTitle: string }[] = [
+  {
+    title: "Trevo for UK hotels",
+    text: "The full introduction.",
+    href: "/downloads/trevo/trevo-for-uk-hotels.pdf",
+    fileTitle: "Trevo for UK hotels — introduction (PDF)",
+  },
+  {
+    title: "Hotel groups",
+    text: "One smooth check-in across every property.",
+    href: "/downloads/trevo/trevo-for-uk-hotel-groups.pdf",
+    fileTitle: "Trevo for UK hotel groups — introduction (PDF)",
+  },
+  {
+    title: "Boutique and independent hotels",
+    text: "From 50 rooms to five-star.",
+    href: "/downloads/trevo/trevo-for-boutique-hotels.pdf",
+    fileTitle: "Trevo for boutique and independent hotels — introduction (PDF)",
+  },
+  {
+    title: "Members’ clubs",
+    text: "Discreet check-in that suits your interior.",
+    href: "/downloads/trevo/trevo-for-members-clubs.pdf",
+    fileTitle: "Trevo for members’ clubs — introduction (PDF)",
+  },
+  {
+    title: "Serviced apartments",
+    text: "Check-in starts before the guest arrives.",
+    href: "/downloads/trevo/trevo-for-serviced-apartments.pdf",
+    fileTitle: "Trevo for serviced apartments — introduction (PDF)",
+  },
+];
+
 // ── PonyABC / Education (/education) ───────────────────────────────────────
 // Enterprise copy drafted with ChatGPT (12 Nov 2026). Rules: no prices, no
 // certification claims, no "sensory-safe"/therapeutic claims, Philips/IKEA/

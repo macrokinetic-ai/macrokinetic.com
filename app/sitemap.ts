@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { references } from "@/lib/content";
+import { references, trevoIntroPdfs } from "@/lib/content";
 
 // Production canonical origin. Matches `metadataBase` in app/layout.tsx.
 // If the production domain changes, update it in both places.
@@ -25,5 +25,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...referenceRoutes];
+  const pdfRoutes: MetadataRoute.Sitemap = trevoIntroPdfs.map((pdf) => ({
+    url: `${BASE_URL}${pdf.href}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.5,
+  }));
+
+  return [...staticRoutes, ...referenceRoutes, ...pdfRoutes];
 }
