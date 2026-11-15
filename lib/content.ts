@@ -720,9 +720,20 @@ export const trevoStats: { value: string; label: string }[] = [
 ];
 
 export const trevoJourney: { place: string; text: string }[] = [
-  { place: "Singapore", text: "From the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms. Hotels using Trevo include PARKROYAL, The Fullerton Hotel Singapore, Pan Pacific and Goodwood Park." },
+  { place: "Singapore", text: "Home market since 2014, from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms." },
   { place: "United States", text: "M Social Hotel Sunnyvale, in the San Francisco Bay Area, has chosen Trevo. Opening December 2026." },
   { place: "London", text: "Trevo's first UK installation, at a five-star London hotel, is planned for December 2026." },
+];
+
+// Hotel names from the Trevo deck, shown as text only (no logos).
+export const trevoHotels: string[] = [
+  "M Hotel Singapore",
+  "PARKROYAL",
+  "The Fullerton Hotel Singapore",
+  "Pan Pacific",
+  "Goodwood Park",
+  "Hotel Waterloo",
+  "Heritage Collection",
 ];
 
 export const trevoResults: { value: string; label: string; source: string }[] = [

@@ -3,6 +3,8 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import {
   company,
   trevoModels,
@@ -13,6 +15,7 @@ import {
   trevoJourney,
   trevoResults,
   trevoGuides,
+  trevoHotels,
   faqs,
 } from "@/lib/content";
 
@@ -83,28 +86,46 @@ const btnDark =
 const btnLight =
   "rounded-full border-hair border-hairline-strong px-6 py-3 text-[13px] font-medium tracking-editorial text-ink transition-colors hover:bg-paper";
 
-function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionHead({ eyebrow, title, dark = false }: { eyebrow: string; title: string; dark?: boolean }) {
   return (
     <>
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-4 text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
+      <p className={dark ? "text-[11px] font-medium uppercase tracking-wide2 text-white/50" : "eyebrow"}>{eyebrow}</p>
+      <h2
+        className={`mt-4 max-w-4xl text-3xl font-medium leading-[1.12] tracking-[-0.03em] md:text-[42px] ${dark ? "text-white" : "text-ink"}`}
+      >
         {title}
       </h2>
     </>
   );
 }
 
+// Real file size and page count, read from the PDFs at build time.
+function pdfMeta(href: string) {
+  try {
+    const buf = fs.readFileSync(path.join(process.cwd(), "public", href));
+    const pages = (buf.toString("latin1").match(/\/Type\s*\/Page(?!s)/g) || []).length;
+    const mb = (buf.length / 1024 / 1024).toFixed(1);
+    return `PDF · ${pages} pages · ${mb} MB`;
+  } catch {
+    return "PDF";
+  }
+}
+
+const coverOf = (href: string) => href.replace("/downloads/trevo/", "/downloads/trevo/covers/").replace(".pdf", ".jpg");
+
 export default function HotelsPage() {
+  const [featured, ...guides] = trevoGuides;
+  const [waterloo, fullerton, ...trevoFigures] = trevoResults;
   return (
     <>
-      {/* Hero */}
+      {/* 01 Hero */}
       <section className="bg-canvas pt-28 md:pt-32">
-        <div className="shell pb-10 md:pb-12">
+        <div className="shell pb-12 md:pb-16">
           <p className="eyebrow">Hotels · United Kingdom</p>
-          <h1 className="mt-6 max-w-4xl text-4xl font-semibold leading-[1.08] tracking-tight text-ink md:text-6xl">
+          <h1 className="mt-6 max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-0.045em] text-ink md:text-[64px]">
             Hotel self check-in kiosks, with local support in London.
           </h1>
-          <div className="mt-8 max-w-2xl space-y-4 text-[16px] leading-relaxed text-muted">
+          <div className="mt-8 max-w-[610px] space-y-4 text-[16px] leading-[1.7] text-muted">
             <p>
               Hotel arrivals rarely happen one at a time. There is the early
               guest, the late flight, the coach party and the queue that
@@ -118,7 +139,7 @@ export default function HotelsPage() {
               installation and local support for UK hotels.
             </p>
           </div>
-          <div className="mt-10 flex flex-wrap items-center gap-4">
+          <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href="#contact" className={btnDark}>
               Discuss your hotel
             </a>
@@ -126,12 +147,7 @@ export default function HotelsPage() {
               See how it works
             </a>
           </div>
-        </div>
-      </section>
-
-      <section className="bg-canvas">
-        <div className="shell">
-          <div className="overflow-hidden rounded-xl bg-paper">
+          <div className="mt-12 overflow-hidden rounded-xl bg-paper md:mt-16">
             <Image
               src="/hotels/hero-mk2-lobby.jpg"
               alt="Guests checking in on a Trevo Mk2 self check-in kiosk in a hotel lobby"
@@ -139,7 +155,7 @@ export default function HotelsPage() {
               height={837}
               priority
               sizes="(max-width: 1400px) 100vw, 1400px"
-              className="h-auto w-full"
+              className="aspect-[16/11] h-auto w-full object-cover md:aspect-auto"
             />
           </div>
           <p className="mt-3 text-[11px] text-faint">
@@ -148,358 +164,327 @@ export default function HotelsPage() {
         </div>
       </section>
 
-      {/* Track record */}
-      <section id="track-record" className="scroll-mt-28 hairline-t bg-paper">
-        <div className="shell py-16 md:py-24">
-          <SectionHead eyebrow="Track record" title="Proven in Asia. Now in London." />
-          <dl className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {trevoStats.map((st) => (
-              <div key={st.label} className="rounded-xl bg-canvas p-6">
-                <dt className="sr-only">{st.label}</dt>
-                <dd className="text-3xl font-semibold tracking-tight text-macro md:text-4xl">{st.value}</dd>
-                <p className="mt-2 text-[14px] text-muted">{st.label}</p>
+      {/* 02 Proof band */}
+      <section id="track-record" className="scroll-mt-28 bg-ink text-white">
+        <div className="shell py-20 md:py-28">
+          <SectionHead dark eyebrow="Trevo at a glance" title="Proven in Singapore since 2014. Now supported from London." />
+
+          <dl className="mt-14 grid grid-cols-2 border-t border-white/15 lg:grid-cols-4">
+            {trevoStats.map((st, i) => (
+              <div
+                key={st.label}
+                className={`border-white/15 py-8 pr-6 lg:py-10 ${i % 2 === 1 ? "border-l pl-6" : ""} ${i > 1 ? "border-t lg:border-t-0" : ""} ${i === 2 ? "lg:border-l lg:pl-6" : ""}`}
+              >
+                <dd className="text-[40px] font-semibold leading-none tracking-[-0.05em] tabular-nums md:text-[56px]">{st.value}</dd>
+                <dt className="mt-4 text-[14px] text-white/60">{st.label}</dt>
               </div>
             ))}
           </dl>
-          <ol className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {trevoJourney.map((j, i) => (
-              <li key={j.place} className="rounded-xl bg-canvas p-6">
-                <p className="font-mono text-[13px] text-macro">0{i + 1}</p>
-                <h3 className="mt-3 text-[16px] font-medium text-ink">{j.place}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-muted">{j.text}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-6 text-[12px] text-faint">Figures supplied by Trevo.</p>
-        </div>
-      </section>
 
-      {/* Results */}
-      <section className="hairline-t bg-canvas">
-        <div className="shell py-16 md:py-24">
-          <SectionHead eyebrow="Results" title="What hotels already see." />
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {trevoResults.map((r) => (
-              <div key={r.label} className="flex flex-col rounded-xl bg-paper p-6">
-                <p className="text-3xl font-semibold tracking-tight text-macro md:text-4xl">{r.value}</p>
-                <p className="mt-3 text-[15px] font-medium text-ink">{r.label}</p>
-                <p className="mt-3 text-[13px] leading-relaxed text-muted">{r.source}</p>
+          <div className="grid grid-cols-1 border-t border-white/15 md:grid-cols-3">
+            {[waterloo, fullerton].map((r, i) => (
+              <div key={r.label} className={`border-white/15 py-8 md:py-10 md:pr-8 ${i === 1 ? "border-t md:border-l md:border-t-0 md:pl-8" : ""}`}>
+                <p className="text-[11px] font-medium uppercase tracking-wide2 text-white/50">
+                  {i === 0 ? "Hotel Waterloo · Singapore" : "The Fullerton Hotel · Singapore"}
+                </p>
+                <p className="mt-4 text-[36px] font-semibold leading-none tracking-[-0.04em] text-macro tabular-nums">{r.value}</p>
+                <p className="mt-3 text-[15px] font-medium text-white">{r.label}</p>
+                <p className="mt-2 text-[13px] leading-relaxed text-white/55">{r.source}</p>
               </div>
             ))}
+            <div className="border-t border-white/15 py-8 md:border-l md:border-t-0 md:py-10 md:pl-8">
+              <p className="text-[11px] font-medium uppercase tracking-wide2 text-white/50">Trevo figures</p>
+              <ul className="mt-4 space-y-5">
+                {trevoFigures.map((r) => (
+                  <li key={r.label}>
+                    <p className="text-[24px] font-semibold leading-none tracking-[-0.03em] tabular-nums">{r.value}</p>
+                    <p className="mt-2 text-[14px] text-white/70">{r.label}</p>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-[12px] leading-relaxed text-white/45">Results vary by property and set-up.</p>
+            </div>
           </div>
-          <p className="mt-8 max-w-3xl text-[15px] leading-relaxed text-graphite">
-            When a hotel is designed around self check-in, guests choose it.
-            Like self-order
-            kiosks in UK restaurants, routine work leaves the counter, so staff
-            can focus on service. Results vary by property and set-up.
-          </p>
-        </div>
-      </section>
 
-      {/* How it works */}
-      <section id="how-it-works" className="scroll-mt-28 bg-canvas">
-        <div className="shell py-16 md:py-24">
-          <SectionHead eyebrow="How it works" title="From arrival to room key." />
-          <ol className="mt-10 grid grid-cols-1 gap-px border-hairline sm:grid-cols-2 lg:grid-cols-4">
-            {trevoSteps.map((st, i) => (
-              <li key={st.title} className="hairline-t bg-canvas py-6 pr-6">
-                <p className="font-mono text-[13px] text-macro">0{i + 1}</p>
-                <h3 className="mt-3 text-[16px] font-medium text-ink">{st.title}</h3>
-                <p className="mt-2 text-[14px] leading-relaxed text-muted">{st.text}</p>
+          <ol className="relative grid grid-cols-1 gap-8 border-t border-white/15 pt-10 md:grid-cols-3 md:gap-0">
+            <span aria-hidden className="absolute left-0 right-[33%] top-[46px] hidden h-px bg-white/20 md:block" />
+            {trevoJourney.map((j, i) => (
+              <li key={j.place} className="relative md:pr-8">
+                <span
+                  aria-hidden
+                  className={`relative z-10 block h-3 w-3 rounded-full ring-4 ring-ink ${i === trevoJourney.length - 1 ? "bg-macro" : "bg-white"}`}
+                />
+                <h3 className="mt-5 text-[17px] font-medium text-white">{j.place}</h3>
+                <p className="mt-2 max-w-sm text-[14px] leading-relaxed text-white/60">{j.text}</p>
               </li>
             ))}
           </ol>
-          <p className="mt-6 text-[12px] text-faint">
-            Available steps depend on the kiosk model, hotel systems and agreed
-            configuration.
-          </p>
-        </div>
-      </section>
 
-      {/* Range */}
-      <section className="hairline-t bg-paper">
-        <div className="shell py-16 md:py-24">
-          <SectionHead
-            eyebrow="The Trevo range"
-            title="Four kiosks. Different ways to welcome guests."
-          />
-          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {trevoModels.map((m) => (
-              <article key={m.name} className="flex flex-col overflow-hidden rounded-xl bg-canvas">
-                <Image
-                  src={m.image.src}
-                  alt={m.image.alt}
-                  width={m.image.w}
-                  height={m.image.h}
-                  sizes="(max-width: 768px) 100vw, 700px"
-                  className="h-auto w-full"
-                />
-                <div className="flex flex-1 flex-col p-8">
-                  <h3 className="text-xl font-medium text-ink">
-                    <span className="text-macro">Trevo {m.name}</span> — {m.title}
-                  </h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-graphite">
-                    {m.description}
-                  </p>
-                  <p className="mt-3 text-[14px] leading-relaxed text-muted">
-                    {m.bestFor}
-                  </p>
-                </div>
-              </article>
-            ))}
+          <div className="mt-14 border-t border-white/15 pt-8">
+            <p className="text-[11px] font-medium uppercase tracking-wide2 text-white/50">Hotels using Trevo include</p>
+            <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-[15px] text-white/85 md:text-[17px]">
+              {trevoHotels.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+            <p className="mt-8 text-[12px] text-white/40">
+              Figures and hotel names supplied by Trevo; Fullerton figure as cited by the Singapore Tourism Board.
+            </p>
           </div>
-          <p className="mt-10 text-[15px] text-graphite">
-            Not sure which model fits?{" "}
-            <a href="#contact" className="font-medium text-ink underline underline-offset-4">
-              Discuss your lobby
-            </a>
-          </p>
         </div>
       </section>
 
-      {/* Beyond the kiosk */}
-      <section className="hairline-t bg-canvas">
-        <div className="shell grid grid-cols-1 gap-12 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-7">
-            <SectionHead
-              eyebrow="Beyond the kiosk"
-              title="Check-in does not have to begin at reception."
-            />
-            <dl className="mt-10 border-hairline">
+      {/* 03 Guest journey */}
+      <section id="how-it-works" className="scroll-mt-28 bg-canvas">
+        <div className="shell grid grid-cols-1 gap-12 py-20 md:py-28 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-20">
+          <div>
+            <SectionHead eyebrow="The guest journey" title="From arrival to room key." />
+            <ol className="mt-12 border-b border-hairline">
+              {trevoSteps.map((st, i) => (
+                <li key={st.title} className="grid grid-cols-[48px_1fr] gap-4 border-t border-hairline py-6 md:grid-cols-[64px_1fr]">
+                  <span className="font-mono text-[13px] text-macro">0{i + 1}</span>
+                  <div>
+                    <h3 className="text-[17px] font-medium text-ink">{st.title}</h3>
+                    <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">{st.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
               {trevoExtras.map((x) => (
-                <div key={x.title} className="hairline-t py-5">
-                  <dt className="text-[16px] font-medium text-ink">{x.title}</dt>
-                  <dd className="mt-1 text-[15px] leading-relaxed text-muted">{x.text}</dd>
+                <div key={x.title}>
+                  <dt className="text-[14px] font-medium text-ink">{x.title}</dt>
+                  <dd className="mt-1 text-[13px] leading-relaxed text-muted">{x.text}</dd>
                 </div>
               ))}
             </dl>
-            <p className="mt-6 text-[15px] leading-relaxed text-graphite">
-              The aim is not to remove the human welcome. It is to make
-              routine tasks easier for guests and reception teams.
+            <p className="mt-10 text-[12px] text-faint">
+              Available steps depend on the kiosk model, hotel systems and agreed
+              configuration. The aim is not to remove the human welcome, but to
+              make routine tasks easier for guests and reception teams.
             </p>
           </div>
-          <div className="md:col-span-5">
-            <div className="overflow-hidden rounded-xl bg-paper">
+          <div className="lg:pt-20">
+            <div className="rounded-xl bg-paper p-6 md:p-8">
               <video
                 src="/hotels/m-hotel-mk2.mp4"
                 poster="/hotels/m-hotel-mk2-poster.jpg"
-                autoPlay
                 muted
-                loop
                 playsInline
                 controls
                 preload="metadata"
                 width={544}
                 height={960}
-                className="mx-auto h-auto max-h-[680px] w-auto"
+                className="mx-auto h-auto w-full max-w-[300px] rounded-lg"
                 aria-label="Trevo at M Hotel: pre-arrival registration on a phone, check-in at a Trevo Mk2 kiosk and key-card collection"
               />
+              <p className="mx-auto mt-4 max-w-[300px] text-[12px] leading-relaxed text-muted">
+                Real Trevo installation at M Hotel Singapore: pre-arrival
+                registration, kiosk check-in and key collection.
+              </p>
             </div>
-            <p className="mt-3 text-[12px] text-faint">
-              Real Trevo installation at M Hotel: pre-arrival registration,
-              kiosk check-in and key collection.
-            </p>
           </div>
         </div>
       </section>
 
-      {/* Systems */}
+      {/* 04 Range */}
       <section className="hairline-t bg-paper">
-        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-4">
-            <SectionHead eyebrow="For hotel IT" title="Built around your hotel systems." />
+        <div className="shell py-20 md:py-28">
+          <SectionHead eyebrow="The Trevo range" title="Four kiosks. Different ways to welcome guests." />
+          <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 lg:gap-6">
+            {trevoModels.map((m) => (
+              <article key={m.name} className="flex flex-col overflow-hidden rounded-xl border border-hairline bg-canvas">
+                <div className="relative aspect-[16/10] bg-paper">
+                  <Image
+                    src={m.image.src}
+                    alt={m.image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 640px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col p-6 lg:p-8">
+                  <p className="text-[12px] font-semibold uppercase tracking-wide2 text-macro">Trevo {m.name}</p>
+                  <h3 className="mt-2 text-xl font-medium tracking-tight text-ink">{m.title}</h3>
+                  <p className="mt-3 text-[15px] leading-relaxed text-graphite">{m.description}</p>
+                  <p className="mt-auto pt-4 text-[13px] leading-relaxed text-muted">{m.bestFor}</p>
+                </div>
+              </article>
+            ))}
           </div>
-          <div className="md:col-span-8">
-            <p className="max-w-2xl text-[16px] leading-relaxed text-graphite">
-              Your hotel already has a property management system, room locks
-              and payment arrangements. A new check-in system needs to work
-              with them. Trevo&rsquo;s integration partners include:
-            </p>
-            <ul className="mt-6 flex flex-wrap gap-3">
-              {trevoIntegrations.map((i) => (
-                <li
-                  key={i}
-                  className="rounded-full border-hair border-hairline-strong bg-canvas px-4 py-2 text-[13px] text-graphite"
-                >
-                  {i}
+          <p className="mt-10 text-[15px] text-graphite">
+            Not sure which fits your lobby?{" "}
+            <a href="#contact" className="font-medium text-ink underline underline-offset-4">
+              We&rsquo;ll talk you through the options.
+            </a>
+          </p>
+        </div>
+      </section>
+
+      {/* 05 Implementation */}
+      <section className="bg-canvas">
+        <div className="shell py-20 md:py-28">
+          <SectionHead eyebrow="Implementation" title="Technology that fits the hotel you already run." />
+          <div className="mt-14 grid grid-cols-1 gap-12 border-t border-hairline pt-10 lg:grid-cols-2 lg:gap-20">
+            <div>
+              <h3 className="text-[17px] font-medium text-ink">System compatibility</h3>
+              <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
+                Your hotel already has a property management system, room locks
+                and payment arrangements. Trevo&rsquo;s integration partners
+                include:
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2">
+                {trevoIntegrations.map((i) => (
+                  <li key={i} className="rounded-md border border-hairline bg-paper px-3 py-1.5 text-[13px] text-graphite">
+                    {i}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-faint">
+                Compatibility depends on your hotel&rsquo;s systems, versions and
+                project requirements. We check these before recommending a
+                configuration.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-[17px] font-medium text-ink">Your UK partner</h3>
+              <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-muted">
+                MacroKinetic MediaTech Limited is a London-based hotel technology
+                company and Trevo&rsquo;s authorised partner for the UK and
+                Europe. We supply Trevo hotel self check-in kiosks and work with
+                UK hotels on kiosk selection, lobby layout, installation and
+                local support, whether you run a boutique hotel or several
+                properties.
+              </p>
+              <ul className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-hairline bg-hairline text-[13px] text-graphite">
+                {["Arrival review", "Kiosk selection", "Installation", "Local UK support"].map((t) => (
+                  <li key={t} className="bg-canvas px-4 py-3">{t}</li>
+                ))}
+              </ul>
+              <p className="mt-6 text-[14px] text-muted">
+                UK team:{" "}
+                <a href={`mailto:${company.salesEmail}?subject=Trevo%20self%20check-in%20for%20our%20hotel`} className="text-ink underline underline-offset-4">
+                  {company.salesEmail}
+                </a>
+                {"  ·  "}
+                <a href={company.domains.trevo} target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">
+                  About Trevo ↗
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-16 grid grid-cols-1 items-center gap-8 border-t border-hairline pt-10 md:grid-cols-12">
+            <div className="overflow-hidden rounded-xl bg-paper md:col-span-4">
+              <Image
+                src="/references/hkia/kiosk-visitors.jpg"
+                alt="Visitors using a MacroKinetic customer service kiosk at Hong Kong International Airport"
+                width={2560}
+                height={1920}
+                sizes="(max-width: 768px) 100vw, 420px"
+                className="aspect-[4/3] h-auto w-full object-cover"
+              />
+            </div>
+            <div className="md:col-span-8 md:pl-6">
+              <p className="eyebrow">MacroKinetic engineering experience</p>
+              <h3 className="mt-3 text-xl font-medium tracking-tight text-ink md:text-2xl">
+                Intelligent self-service engineering since 2008.
+              </h3>
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+                Our Hong Kong company, MacroKinetic Technology Consulting
+                Limited, designed and developed the Intelligent Customer Service
+                Counters at Hong Kong International Airport together with NEC.
+                48 units are live, with more planned.
+              </p>
+              <p className="mt-2 text-[12px] text-faint">
+                A MacroKinetic engineering reference, not a Trevo hotel deployment.
+              </p>
+              <Link href="/references/hkia" className="mt-4 inline-flex text-[14px] font-medium text-ink underline-offset-4 hover:underline">
+                See the airport project →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 Resources */}
+      <section id="downloads" className="scroll-mt-28 hairline-t bg-paper">
+        <div className="shell py-20 md:py-28">
+          <SectionHead eyebrow="Resources" title="Find the right introduction for your property." />
+          <div className="mt-12 grid grid-cols-1 gap-5 lg:grid-cols-[1.1fr_1fr]">
+            <a
+              href={featured.href}
+              target="_blank"
+              rel="noopener"
+              className="group flex flex-col overflow-hidden rounded-xl border border-hairline bg-canvas transition-colors hover:border-hairline-strong"
+            >
+              <div className="relative aspect-video bg-ink">
+                <Image src={coverOf(featured.href)} alt="" fill sizes="(max-width: 1024px) 100vw, 680px" className="object-cover" />
+              </div>
+              <div className="flex flex-1 flex-col p-6 lg:p-8">
+                <p className="text-[12px] font-semibold uppercase tracking-wide2 text-macro">Full introduction</p>
+                <h3 className="mt-2 text-xl font-medium tracking-tight text-ink">{featured.title}</h3>
+                <p className="mt-2 text-[15px] text-muted">The Trevo range, the guest journey and local UK support.</p>
+                <div className="mt-auto flex items-center justify-between pt-6 text-[13px]">
+                  <span className="text-faint">{pdfMeta(featured.href)}</span>
+                  <span className="font-medium text-ink underline-offset-4 group-hover:underline">View PDF →</span>
+                </div>
+              </div>
+            </a>
+            <ul className="grid grid-cols-1 gap-3">
+              {guides.map((g) => (
+                <li key={g.href}>
+                  <a
+                    href={g.href}
+                    target="_blank"
+                    rel="noopener"
+                    title={`${g.title} (PDF)`}
+                    className="group flex h-full items-center gap-5 rounded-xl border border-hairline bg-canvas p-3 pr-5 transition-colors hover:border-hairline-strong"
+                  >
+                    <div className="relative aspect-video w-28 flex-shrink-0 overflow-hidden rounded-md bg-ink sm:w-36">
+                      <Image src={coverOf(g.href)} alt="" fill sizes="144px" className="object-cover" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-[15px] font-medium text-ink">{g.title}</h3>
+                      <p className="mt-1 hidden text-[13px] text-muted sm:block">{g.text}</p>
+                      <p className="mt-1 text-[12px] text-faint">{pdfMeta(g.href)}</p>
+                    </div>
+                    <span aria-hidden className="text-[16px] text-faint transition-colors group-hover:text-ink">↓</span>
+                  </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted">
-              Compatibility depends on your hotel&rsquo;s systems, versions and
-              project requirements. We check these before recommending a
-              configuration.
-            </p>
-            <a href="#contact" className={`mt-8 inline-block ${btnLight}`}>
-              Discuss your existing systems
-            </a>
           </div>
         </div>
       </section>
 
-      {/* UK support */}
-      <section className="hairline-t bg-canvas">
-        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-4">
-            <SectionHead eyebrow="Your UK partner" title="Hotel self check-in kiosk supplier, installation and support in the UK." />
-          </div>
-          <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-8">
-            <p>
-              MacroKinetic MediaTech Limited is a London-based hotel technology
-              company and Trevo&rsquo;s authorised partner for the UK and
-              Europe. We supply Trevo hotel self check-in kiosks and work with
-              UK hotels on kiosk selection, lobby layout, installation and
-              local support.
-            </p>
-            <p>
-              We discuss the guest arrival process and check the requirements
-              of your property management system (PMS), door locks and payment
-              systems before recommending a configuration. Whether you operate
-              a boutique hotel or manage several properties, we can help you
-              explore a suitable approach.
-            </p>
-            <p className="text-[15px] text-muted">
-              Trevo is a Singapore hospitality technology company with hotel
-              deployments in more than eight countries; the first UK
-              installations are being prepared.{" "}
-              <a href={company.domains.trevo} target="_blank" rel="noopener noreferrer" className="text-ink underline underline-offset-4">
-                Trevo — Singapore hotel technology provider ↗
-              </a>
-            </p>
-            <a href="#contact" className={`inline-block ${btnDark}`}>
-              Discuss your hotel
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Experience */}
-      <section className="hairline-t bg-paper">
-        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
-          <div className="md:col-span-4">
-            <SectionHead
-              eyebrow="Experience beyond hotel check-in"
-              title="Intelligent self-service engineering since 2008."
-            />
-          </div>
-          <div className="space-y-5 text-[16px] leading-relaxed text-graphite md:col-span-8">
-            <p>
-              Our Hong Kong company, MacroKinetic Technology Consulting
-              Limited, designed and developed the Intelligent Customer Service
-              Counters at Hong Kong International Airport together with NEC.
-              48 units are live, with more planned.
-            </p>
-            <p className="text-[14px] text-muted">
-              This is a MacroKinetic engineering reference, not a Trevo hotel
-              deployment.
-            </p>
-            <Link
-              href="/references/hkia"
-              className="inline-flex text-[14px] font-medium text-ink underline-offset-4 hover:underline"
-            >
-              See the airport project →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Downloads */}
-      <section id="downloads" className="scroll-mt-28 hairline-t bg-paper">
-        <div className="shell py-16 md:py-24">
-          <SectionHead eyebrow="Downloads" title="Trevo introductions by property type." />
-          <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-graphite">
-            Short PDF guides for UK hotels, hotel groups, boutique hotels,
-            members&rsquo; clubs and serviced apartments.
-          </p>
-          <ul className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {trevoGuides.map((g) => (
-              <li key={g.href} className="flex flex-col rounded-xl bg-canvas p-6">
-                <h3 className="text-[16px] font-medium text-ink">{g.title}</h3>
-                <p className="mt-2 flex-1 text-[14px] leading-relaxed text-muted">{g.text}</p>
-                <a
-                  href={g.href}
-                  target="_blank"
-                  rel="noopener"
-                  title={`${g.title} (PDF)`}
-                  className="mt-5 inline-flex text-[14px] font-medium text-ink underline underline-offset-4"
-                >
-                  Download PDF: {g.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* FAQ */}
+      {/* 07 FAQ */}
       {trevoFaq && (
-        <section className="hairline-t bg-canvas">
-          <div className="shell grid grid-cols-1 gap-8 py-16 md:grid-cols-12 md:py-24">
-            <div className="md:col-span-4">
+        <section className="bg-canvas">
+          <div className="shell grid grid-cols-1 gap-8 py-20 md:py-28 lg:grid-cols-[0.36fr_0.64fr] lg:gap-16">
+            <div>
               <SectionHead eyebrow="FAQ" title="Questions hotels ask." />
+              <p className="mt-6 max-w-xs text-[15px] leading-relaxed text-muted">
+                From system compatibility to guest registration and local
+                support.
+              </p>
             </div>
-            <div className="md:col-span-8">
-              <div className="border-hairline">
-                {trevoFaq.items.map(({ q, a }) => (
-                  <details key={q} className="group hairline-t">
-                    <summary className="flex min-h-[52px] cursor-pointer list-none items-center justify-between py-4 text-[15px] font-medium text-ink [&::-webkit-details-marker]:hidden">
-                      <h3 className="font-medium">{q}</h3>
-                      <span className="ml-6 flex-shrink-0 text-lg leading-none text-faint transition-transform duration-200 ease-editorial group-open:rotate-45">
-                        +
-                      </span>
-                    </summary>
-                    <p className="pb-5 pr-10 text-[15px] leading-relaxed text-muted">{a}</p>
-                  </details>
-                ))}
-              </div>
+            <div className="border-b border-hairline">
+              {trevoFaq.items.map(({ q, a }) => (
+                <details key={q} className="group border-t border-hairline">
+                  <summary className="flex min-h-[56px] cursor-pointer list-none items-center justify-between py-5 text-[16px] font-medium text-ink [&::-webkit-details-marker]:hidden">
+                    <h3 className="font-medium">{q}</h3>
+                    <span className="ml-6 flex-shrink-0 text-lg leading-none text-faint transition-transform duration-200 ease-editorial group-open:rotate-45">
+                      +
+                    </span>
+                  </summary>
+                  <p className="pb-6 pr-10 text-[15px] leading-7 text-muted">{a}</p>
+                </details>
+              ))}
             </div>
           </div>
         </section>
       )}
-
-      {/* Final CTA */}
-      <section className="hairline-t bg-ink">
-        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-20">
-          <div className="md:col-span-6">
-            <h2 className="text-2xl font-medium leading-tight tracking-editorial text-white md:text-3xl">
-              Let&rsquo;s look at your hotel.
-            </h2>
-            <p className="mt-4 text-[15px] leading-relaxed text-white/70">
-              You do not need to know which Trevo model you want before
-              contacting us. In a first 20-minute conversation we can discuss:
-            </p>
-            <ul className="mt-4 space-y-2 text-[15px] text-white/85">
-              <li>— Your property and current arrival process</li>
-              <li>— Your PMS, room locks and payment systems</li>
-              <li>— Your lobby layout and suitable kiosk options</li>
-              <li>— Installation and UK support</li>
-            </ul>
-          </div>
-          <div className="flex flex-col justify-end gap-4 md:col-span-6 md:items-end">
-            <a href="#contact" className="rounded-full bg-white px-6 py-3 text-[13px] font-medium tracking-editorial text-ink transition-opacity hover:opacity-85">
-              Discuss your hotel
-            </a>
-            <p className="text-[13px] text-white/70">
-              Or email our UK team:{" "}
-              <a
-                href={`mailto:${company.salesEmail}?subject=Trevo%20self%20check-in%20for%20our%20hotel`}
-                className="text-white underline underline-offset-4"
-              >
-                {company.salesEmail}
-              </a>
-            </p>
-            <p className="text-[13px] text-white/50">
-              <a href={company.domains.trevo} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                About Trevo: www.trevo.ai ↗
-              </a>
-              {"  ·  "}
-              <a href={company.linkedin.uk} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                Follow us on LinkedIn ↗
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
 
       <script
         type="application/ld+json"
