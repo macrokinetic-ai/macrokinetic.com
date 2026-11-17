@@ -495,7 +495,7 @@ export const faqs: FaqSection[] = [
       },
       {
         q: "Is Trevo new, and where is it already used?",
-        a: "No. Trevo was founded in Singapore in 2014 and reports around 60% market share there, with about 30,000 hotel rooms using its technology and more than 4 million check-ins and ID checks. Hotels using Trevo range from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms. M Social Hotel Sunnyvale in the US has chosen Trevo, and the first UK installation, at a five-star London hotel, is planned for December 2026.",
+        a: "No. Trevo was founded in Singapore in 2014 and reports around 60% market share there, with about 30,000 hotel rooms using its technology and more than 4 million check-ins and ID checks. Hotels using Trevo range from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms. M Social Hotel Sunnyvale in the US has chosen Trevo, and the first UK installation, at a five-star London hotel, is planned for December 2026 or January 2027.",
       },
       {
         q: "What results do hotels see with Trevo?",
@@ -723,7 +723,7 @@ export const trevoStats: { value: string; label: string }[] = [
 export const trevoJourney: { place: string; text: string }[] = [
   { place: "Singapore", text: "Home market since 2014, from the five-star M Hotel Singapore to Heritage Collection, with just 50 rooms." },
   { place: "United States", text: "M Social Hotel Sunnyvale, in the San Francisco Bay Area, has chosen Trevo. Opening December 2026." },
-  { place: "London", text: "Trevo's first UK installation, at a five-star London hotel, is planned for December 2026." },
+  { place: "London", text: "Trevo's first UK installation, at a five-star London hotel, is planned for December 2026 or January 2027." },
 ];
 
 // Hotel names from the Trevo deck, shown as text only (no logos).
