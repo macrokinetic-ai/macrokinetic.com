@@ -143,6 +143,9 @@ export default function HotelsPage() {
             <a href="#contact" className={btnDark}>
               Discuss your hotel
             </a>
+            <a href={company.trevoIntroCallUrl} target="_blank" rel="noopener" className={btnLight}>
+              Book a 20-minute call
+            </a>
             <a href="#how-it-works" className={btnLight}>
               See how it works
             </a>
