@@ -18,6 +18,7 @@ export const company = {
   hkEntity: "MacroKinetic Technology Consulting Limited",
   siteUrl: "https://www.macrokinetic.com",
   salesEmail: "accounts@macrokinetic.com",
+  enquiryEmail: "enquiry@macrokinetic.com",
   established: 2008,
   tagline: "Engineering the interface between people and the physical world.",
   positioning:
