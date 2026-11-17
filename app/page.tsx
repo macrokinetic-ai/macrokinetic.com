@@ -89,6 +89,10 @@ export default function HomePage() {
               guest concierge — with sales, installation and local support from
               MacroKinetic MediaTech in London.
             </p>
+            <p className="mt-2 max-w-3xl text-[14px] leading-relaxed text-ink">
+              MacroKinetic MediaTech is Trevo&apos;s authorised partner for the UK
+              and Europe.
+            </p>
           </div>
           <span className="whitespace-nowrap rounded-full bg-ink px-6 py-3 text-[13px] font-medium text-white">
             Explore hotel self check-in{" "}
