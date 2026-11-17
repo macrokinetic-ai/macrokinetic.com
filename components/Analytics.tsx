@@ -2,7 +2,7 @@
 
 import Script from "next/script";
 import { useEffect, useState } from "react";
-import { getConsentCookie } from "./CookieConsentBanner";
+import { getConsent } from "./CookieConsentBanner";
 
 const GA_ID = "G-5DWEDYDC6N";
 
@@ -10,10 +10,10 @@ export default function Analytics() {
   const [consented, setConsented] = useState(false);
 
   useEffect(() => {
-    if (getConsentCookie() === "accepted") setConsented(true);
+    if (getConsent()?.analytics) setConsented(true);
 
     function onConsentChange() {
-      setConsented(getConsentCookie() === "accepted");
+      setConsented(getConsent()?.analytics ?? false);
     }
     window.addEventListener("cookie-consent-changed", onConsentChange);
     return () =>

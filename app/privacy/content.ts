@@ -1,7 +1,7 @@
 // Privacy notice for macrokinetic.com (UK GDPR / Data Protection Act 2018 / PECR).
 // Drafted 12 Nov 2026; revised after a second ChatGPT review (cookie settings, transfers, partner roles, complaints procedure). Not legal advice — update when
 // processors, retention or tools change.
-export const PRIVACY_UPDATED = "12 November 2026";
+export const PRIVACY_UPDATED = "17 November 2026";
 
 export type PrivacySection = { heading: string; intro?: string[]; items?: string[]; paras?: string[] };
 
@@ -21,6 +21,7 @@ export const privacySections: PrivacySection[] = [
       "Webinar and event registration (when we run one): your name, email address, organisation and role.",
       "Technical data: your IP address, browser and device details, processed to deliver the website securely. Our security service on the enquiry form (Cloudflare Turnstile) may process technical information such as your IP address and browser characteristics to identify and prevent automated misuse.",
       "Analytics data, only if you accept analytics cookies: pages visited, approximate location, device type and how you found the site.",
+      "Advertising data, only if you accept marketing cookies: the LinkedIn Insight Tag records your visit (pages viewed, browser, IP address and time) so LinkedIn can match it to LinkedIn members.",
     ],
   },
   {
@@ -30,6 +31,7 @@ export const privacySections: PrivacySection[] = [
       "To organise webinars and events you register for, and send the related event communications (reminders and the recording) — legitimate interests.",
       "To protect our website and enquiry form against spam and misuse — legitimate interests.",
       "To measure how the website is used through Google Analytics 4 — your consent, which you can withdraw at any time.",
+      "To measure visits from our LinkedIn ads and show relevant LinkedIn ads to people who visited this site (ad measurement and retargeting) through the LinkedIn Insight Tag — your consent, which you can withdraw at any time.",
     ],
     paras: [
       "Our legitimate interests are responding to prospective customers, running business events and protecting our website.",
@@ -40,12 +42,13 @@ export const privacySections: PrivacySection[] = [
   {
     heading: "Cookies",
     intro: [
-      "We use essential cookies to run the website and to remember your cookie choice for up to 12 months. Google Analytics 4 runs only if you accept optional analytics cookies.",
-      "You can reject optional cookies, or change your choice at any time, using the \"Cookie settings\" link in the website footer. Withdrawing consent stops future analytics tracking and removes the Google Analytics cookies from your browser.",
+      "We use essential cookies to run the website and to remember your cookie choice for up to 12 months. Google Analytics 4 runs only if you accept optional analytics cookies, and the LinkedIn Insight Tag runs only if you accept optional marketing cookies.",
+      "You can reject optional cookies, or change your choice at any time, using the \"Cookie settings\" link in the website footer. Withdrawing consent stops future tracking and removes the Google Analytics and LinkedIn cookies that this site sets. Cookies LinkedIn sets on its own domain (linkedin.com) can be removed in your browser settings or managed in your LinkedIn account.",
     ],
     items: [
       "cookie_consent (MacroKinetic, essential): remembers your cookie choice; 12 months.",
       "_ga and _ga_<ID> (Google Analytics, optional, only with your consent): distinguish visitors and sessions to measure website use; up to 2 years.",
+      "LinkedIn Insight Tag (provider: LinkedIn Ireland Unlimited Company; marketing, optional, only with your consent): ad measurement and retargeting. Cookies: li_sugr, bcookie, lidc, UserMatchHistory, AnalyticsSyncHistory, li_fat_id; from 1 day up to 2 years. Lawful basis: consent.",
       "Cloudflare Turnstile (security, enquiry form only): runs a security check to tell people from automated bots and may use technical signals from your browser while it runs.",
     ],
   },
@@ -56,6 +59,7 @@ export const privacySections: PrivacySection[] = [
       "Vercel — website hosting.",
       "Google (Google Workspace and Google Analytics) — email and, with your consent, analytics.",
       "Cloudflare (Turnstile) — spam protection on the enquiry form.",
+      "LinkedIn Ireland Unlimited Company — with your consent, LinkedIn ad measurement and retargeting (LinkedIn Insight Tag).",
       "Zoom — when you register for one of our webinars.",
     ],
   },
