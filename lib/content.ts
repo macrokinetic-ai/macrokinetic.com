@@ -19,6 +19,9 @@ export const company = {
   siteUrl: "https://www.macrokinetic.com",
   salesEmail: "accounts@macrokinetic.com",
   enquiryEmail: "enquiry@macrokinetic.com",
+  // Plain link (no Calendly embed script): fast, no third-party cookies.
+  trevoIntroCallUrl:
+    "https://calendly.com/macrokinetic-salesteam/trevo-intro-call?utm_source=website&utm_medium=hotels_page&utm_campaign=book_call",
   established: 2008,
   tagline: "Engineering the interface between people and the physical world.",
   positioning:

@@ -13,6 +13,7 @@ function directEmailFor(pathname: string | null) {
 export default function ContactSection({ email }: { email?: string }) {
   const pathname = usePathname();
   const directEmail = email ?? directEmailFor(pathname);
+  const isHotels = pathname?.startsWith("/hotels") ?? false;
   return (
     <section id="contact" className="hairline-t bg-paper scroll-mt-20">
       <div className="shell grid grid-cols-1 gap-16 py-20 md:grid-cols-12 md:py-28">
@@ -38,6 +39,26 @@ export default function ContactSection({ email }: { email?: string }) {
               {directEmail}
             </a>
           </div>
+
+          {isHotels && (
+            <div className="mt-8 hairline-t pt-6">
+              <p className="text-[11px] uppercase tracking-tracked text-faint">
+                Prefer to talk?
+              </p>
+              <p className="mt-3 max-w-xs text-[14px] leading-relaxed text-muted">
+                Book a free 20-minute intro call with the Trevo UK team.
+                Online, no pressure.
+              </p>
+              <a
+                href={company.trevoIntroCallUrl}
+                target="_blank"
+                rel="noopener"
+                className="mt-5 inline-block rounded-full border-hair border-hairline-strong px-6 py-3 text-[13px] font-medium tracking-editorial text-ink transition-colors hover:bg-canvas"
+              >
+                Book a 20-minute call
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Right — form */}
