@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { company as site } from "@/lib/content";
 
-const TO = "enquiry@macrokinetic.com, macrokinetic.93166749@gmail.com";
+// All enquiries go to accounts@ only.
+const TO = site.salesEmail;
 
-async function verifyTurnstile(token: string): Promise<boolean> {
+async function verifyTurnstile(token: string, ip: string | null): Promise<boolean> {
   const secret = process.env.TURNSTILE_SECRET_KEY;
   if (!secret) return true; // not configured — skip in dev
 
@@ -12,10 +14,22 @@ async function verifyTurnstile(token: string): Promise<boolean> {
     {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ secret, response: token }),
+      body: JSON.stringify({ secret, response: token, ...(ip ? { remoteip: ip } : {}) }),
     }
   );
-  const data = (await res.json()) as { success: boolean };
+  const data = (await res.json()) as {
+    success: boolean;
+    "error-codes"?: string[];
+    hostname?: string;
+  };
+  if (data.success !== true) {
+    // Never log the secret; error-codes say why (e.g. invalid-input-secret).
+    console.warn("[contact] Turnstile siteverify failed", {
+      errorCodes: data["error-codes"] ?? [],
+      hostname: data.hostname ?? null,
+      tokenPresent: Boolean(token),
+    });
+  }
   return data.success === true;
 }
 
@@ -81,7 +95,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const captchaOk = await verifyTurnstile(turnstileToken);
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
+    const captchaOk = await verifyTurnstile(turnstileToken, ip);
     if (!captchaOk) {
       return NextResponse.json(
         { error: "Security check failed. Please try again." },
@@ -96,8 +111,7 @@ export async function POST(request: NextRequest) {
       console.warn("[contact] SMTP not configured — skipping email delivery");
       return NextResponse.json(
         {
-          error:
-            "Email delivery is not yet configured. Please contact us directly at enquiry@macrokinetic.com.",
+          error: `Email delivery is not yet configured. Please contact us directly at ${site.salesEmail}.`,
         },
         { status: 503 }
       );
@@ -110,7 +124,7 @@ export async function POST(request: NextRequest) {
       auth: { user: SMTP_USER, pass: SMTP_PASS },
     });
 
-    const from = SMTP_FROM ?? "enquiry@macrokinetic.com";
+    const from = SMTP_FROM ?? site.enquiryEmail;
     const subject = `Enquiry from ${name}${company ? ` — ${company}` : ""}`;
 
     await transporter.sendMail({
@@ -133,8 +147,7 @@ export async function POST(request: NextRequest) {
     console.error("[contact] Error:", err);
     return NextResponse.json(
       {
-        error:
-          "Something went wrong. Please try again or reach us at enquiry@macrokinetic.com.",
+        error: `Something went wrong. Please try again or reach us at ${site.salesEmail}.`,
       },
       { status: 500 }
     );

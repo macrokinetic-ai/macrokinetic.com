@@ -11,7 +11,7 @@ const SITE_KEY =
 const inputBase =
   "w-full rounded-lg border-hair border-hairline bg-canvas px-4 py-3 text-[14px] text-ink placeholder:text-faint focus:border-ink focus:outline-none transition-colors";
 
-export default function ContactForm() {
+export default function ContactForm({ contactEmail }: { contactEmail: string }) {
   const [formState, setFormState] = useState<State>("idle");
   const [apiError, setApiError] = useState("");
   const [token, setToken] = useState("");
@@ -80,7 +80,7 @@ export default function ContactForm() {
       }
     } catch {
       setApiError(
-        "Something went wrong. Please try again or email us directly."
+        `Something went wrong. Please try again or email us at ${contactEmail}.`
       );
       setFormState("error");
     }
