@@ -127,29 +127,31 @@ export default function HotelsPage() {
           </h1>
           <div className="mt-8 max-w-[610px] space-y-4 text-[16px] leading-[1.7] text-muted">
             <p>
-              Hotel arrivals rarely happen one at a time. There is the early
-              guest, the late flight, the coach party and the queue that
-              appears just as reception gets busy.
+              Guests arrive early, flights land late, and queues build just
+              when reception is busiest.
             </p>
             <p>
-              Trevo gives guests another way to check in, collect their key
-              card and get on with their stay, while your team has more time
-              for the welcome. MacroKinetic MediaTech Limited is Trevo&rsquo;s
-              authorised partner for the UK and Europe, providing sales,
-              installation and local support for UK hotels.
+              Trevo gives guests the choice to check in before arrival, use a
+              self-service kiosk and collect their room key. Your reception
+              team stays free to help guests who need them.
+            </p>
+            <p>
+              MacroKinetic MediaTech Limited is Trevo&rsquo;s authorised UK and
+              Europe partner, providing sales, installation and local support
+              from London.
             </p>
           </div>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href="#contact" className={btnDark}>
-              Discuss your hotel
+              Discuss Trevo for your hotel
             </a>
             <a href="#how-it-works" className={btnLight}>
-              See how it works
+              See how Trevo works
             </a>
           </div>
           <div className="mt-12 overflow-hidden rounded-xl bg-paper md:mt-16">
             <Image
-              src="/hotels/hero-mk2-lobby.jpg"
+              src="/hotels/hero-mk2-lobby.jpg?v=2"
               alt="Guests checking in on a Trevo Mk2 self check-in kiosk in a hotel lobby"
               width={1600}
               height={837}
@@ -159,12 +161,65 @@ export default function HotelsPage() {
             />
           </div>
           <p className="mt-3 text-[11px] text-faint">
-            Illustrative hotel scenes. The kiosks shown are real Trevo models.
+            Illustrative hotel scenes featuring Trevo kiosk models.
           </p>
         </div>
       </section>
 
-      {/* 02 Proof band */}
+      {/* 02 Guest journey */}
+      <section id="how-it-works" className="scroll-mt-28 bg-canvas">
+        <div className="shell grid grid-cols-1 gap-12 py-20 md:py-28 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-20">
+          <div>
+            <SectionHead eyebrow="The guest journey" title="From arrival to room key." />
+            <ol className="mt-12 border-b border-hairline">
+              {trevoSteps.map((st, i) => (
+                <li key={st.title} className="grid grid-cols-[48px_1fr] gap-4 border-t border-hairline py-6 md:grid-cols-[64px_1fr]">
+                  <span className="font-mono text-[13px] text-macro">0{i + 1}</span>
+                  <div>
+                    <h3 className="text-[17px] font-medium text-ink">{st.title}</h3>
+                    <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">{st.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
+              {trevoExtras.map((x) => (
+                <div key={x.title}>
+                  <dt className="text-[14px] font-medium text-ink">{x.title}</dt>
+                  <dd className="mt-1 text-[13px] leading-relaxed text-muted">{x.text}</dd>
+                </div>
+              ))}
+            </dl>
+            <p className="mt-10 text-[12px] text-faint">
+              Available steps depend on the kiosk model, hotel systems and agreed
+              configuration. The aim is not to remove the human welcome, but to
+              make routine tasks easier for guests and reception teams.
+            </p>
+          </div>
+          <div className="lg:pt-20">
+            <div className="rounded-xl bg-paper p-6 md:p-8">
+              <video
+                src="/hotels/m-hotel-mk2.mp4"
+                poster="/hotels/m-hotel-mk2-poster.jpg"
+                muted
+                playsInline
+                controls
+                preload="metadata"
+                width={544}
+                height={960}
+                className="mx-auto h-auto w-full max-w-[300px] rounded-lg"
+                aria-label="Trevo at M Hotel: pre-arrival registration on a phone, check-in at a Trevo Mk2 kiosk and key-card collection"
+              />
+              <p className="mx-auto mt-4 max-w-[300px] text-[12px] leading-relaxed text-muted">
+                Real Trevo installation at M Hotel Singapore: pre-arrival
+                registration, kiosk check-in and key collection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 Proof band */}
       <section id="track-record" className="scroll-mt-28 bg-ink text-white">
         <div className="shell py-20 md:py-28">
           <SectionHead dark eyebrow="Trevo at a glance" title="Proven in Singapore since 2014. Now supported from London." />
@@ -234,59 +289,6 @@ export default function HotelsPage() {
         </div>
       </section>
 
-      {/* 03 Guest journey */}
-      <section id="how-it-works" className="scroll-mt-28 bg-canvas">
-        <div className="shell grid grid-cols-1 gap-12 py-20 md:py-28 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] xl:gap-20">
-          <div>
-            <SectionHead eyebrow="The guest journey" title="From arrival to room key." />
-            <ol className="mt-12 border-b border-hairline">
-              {trevoSteps.map((st, i) => (
-                <li key={st.title} className="grid grid-cols-[48px_1fr] gap-4 border-t border-hairline py-6 md:grid-cols-[64px_1fr]">
-                  <span className="font-mono text-[13px] text-macro">0{i + 1}</span>
-                  <div>
-                    <h3 className="text-[17px] font-medium text-ink">{st.title}</h3>
-                    <p className="mt-2 max-w-xl text-[15px] leading-relaxed text-muted">{st.text}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-              {trevoExtras.map((x) => (
-                <div key={x.title}>
-                  <dt className="text-[14px] font-medium text-ink">{x.title}</dt>
-                  <dd className="mt-1 text-[13px] leading-relaxed text-muted">{x.text}</dd>
-                </div>
-              ))}
-            </dl>
-            <p className="mt-10 text-[12px] text-faint">
-              Available steps depend on the kiosk model, hotel systems and agreed
-              configuration. The aim is not to remove the human welcome, but to
-              make routine tasks easier for guests and reception teams.
-            </p>
-          </div>
-          <div className="lg:pt-20">
-            <div className="rounded-xl bg-paper p-6 md:p-8">
-              <video
-                src="/hotels/m-hotel-mk2.mp4"
-                poster="/hotels/m-hotel-mk2-poster.jpg"
-                muted
-                playsInline
-                controls
-                preload="metadata"
-                width={544}
-                height={960}
-                className="mx-auto h-auto w-full max-w-[300px] rounded-lg"
-                aria-label="Trevo at M Hotel: pre-arrival registration on a phone, check-in at a Trevo Mk2 kiosk and key-card collection"
-              />
-              <p className="mx-auto mt-4 max-w-[300px] text-[12px] leading-relaxed text-muted">
-                Real Trevo installation at M Hotel Singapore: pre-arrival
-                registration, kiosk check-in and key collection.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* 04 Range */}
       <section className="hairline-t bg-paper">
         <div className="shell py-20 md:py-28">
@@ -341,9 +343,9 @@ export default function HotelsPage() {
                 ))}
               </ul>
               <p className="mt-6 max-w-xl text-[13px] leading-relaxed text-faint">
-                Compatibility depends on your hotel&rsquo;s systems, versions and
-                project requirements. We check these before recommending a
-                configuration.
+                Tell us which PMS, door locks and payment systems your hotel
+                uses. We&rsquo;ll review compatibility and the available
+                integration options before recommending a Trevo configuration.
               </p>
             </div>
             <div>
@@ -374,36 +376,6 @@ export default function HotelsPage() {
             </div>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 items-center gap-8 border-t border-hairline pt-10 md:grid-cols-12">
-            <div className="overflow-hidden rounded-xl bg-paper md:col-span-4">
-              <Image
-                src="/references/hkia/kiosk-visitors.jpg"
-                alt="Visitors using a MacroKinetic customer service kiosk at Hong Kong International Airport"
-                width={2560}
-                height={1920}
-                sizes="(max-width: 768px) 100vw, 420px"
-                className="aspect-[4/3] h-auto w-full object-cover"
-              />
-            </div>
-            <div className="md:col-span-8 md:pl-6">
-              <p className="eyebrow">MacroKinetic engineering experience</p>
-              <h3 className="mt-3 text-xl font-medium tracking-tight text-ink md:text-2xl">
-                Intelligent self-service engineering since 2008.
-              </h3>
-              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
-                Our Hong Kong company, MacroKinetic Technology Consulting
-                Limited, designed and developed the Intelligent Customer Service
-                Counters at Hong Kong International Airport together with NEC.
-                48 units are live, with more planned.
-              </p>
-              <p className="mt-2 text-[12px] text-faint">
-                A MacroKinetic engineering reference, not a Trevo hotel deployment.
-              </p>
-              <Link href="/references/hkia" className="mt-4 inline-flex text-[14px] font-medium text-ink underline-offset-4 hover:underline">
-                See the airport project →
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -485,6 +457,42 @@ export default function HotelsPage() {
           </div>
         </section>
       )}
+
+      {/* 08 Engineering reference */}
+      <section className="hairline-t bg-canvas">
+        <div className="shell py-16 md:py-20">
+          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-12">
+            <div className="overflow-hidden rounded-xl bg-paper md:col-span-4">
+              <Image
+                src="/references/hkia/kiosk-visitors.jpg"
+                alt="Visitors using a MacroKinetic customer service kiosk at Hong Kong International Airport"
+                width={2560}
+                height={1920}
+                sizes="(max-width: 768px) 100vw, 420px"
+                className="aspect-[4/3] h-auto w-full object-cover"
+              />
+            </div>
+            <div className="md:col-span-8 md:pl-6">
+              <p className="eyebrow">MacroKinetic engineering experience</p>
+              <h3 className="mt-3 text-xl font-medium tracking-tight text-ink md:text-2xl">
+                MacroKinetic group engineering experience since 2008.
+              </h3>
+              <p className="mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">
+                Our Hong Kong company, MacroKinetic Technology Consulting
+                Limited, designed and developed the Intelligent Customer Service
+                Counters at Hong Kong International Airport together with NEC.
+                48 units are live, with more planned.
+              </p>
+              <p className="mt-2 text-[12px] text-faint">
+                A MacroKinetic engineering reference, not a Trevo hotel deployment.
+              </p>
+              <Link href="/references/hkia" className="mt-4 inline-flex text-[14px] font-medium text-ink underline-offset-4 hover:underline">
+                See the airport project →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <script
         type="application/ld+json"

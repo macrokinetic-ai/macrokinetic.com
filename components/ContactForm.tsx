@@ -11,7 +11,13 @@ const SITE_KEY =
 const inputBase =
   "w-full rounded-lg border-hair border-hairline bg-canvas px-4 py-3 text-[14px] text-ink placeholder:text-faint focus:border-ink focus:outline-none transition-colors";
 
-export default function ContactForm({ contactEmail }: { contactEmail: string }) {
+export default function ContactForm({
+  contactEmail,
+  submitLabel = "Send Enquiry",
+}: {
+  contactEmail: string;
+  submitLabel?: string;
+}) {
   const [formState, setFormState] = useState<State>("idle");
   const [apiError, setApiError] = useState("");
   const [token, setToken] = useState("");
@@ -251,7 +257,7 @@ export default function ContactForm({ contactEmail }: { contactEmail: string }) 
         disabled={isLoading}
         className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[13px] font-medium tracking-editorial text-white transition-opacity hover:opacity-80 disabled:cursor-not-allowed disabled:opacity-40"
       >
-        {isLoading ? "Sending…" : <>Send Enquiry <span aria-hidden>→</span></>}
+        {isLoading ? "Sending…" : <>{submitLabel} <span aria-hidden>→</span></>}
       </button>
     </form>
   );
