@@ -662,7 +662,7 @@ export const trevoModels: TrevoModel[] = [
     description:
       "Compact touchscreen check-in stations built into the hotel's own reception furniture.",
     bestFor: "For hotels planning a new counter or adapting an existing one.",
-    image: { src: "/hotels/mk0.jpg", w: 1600, h: 837, alt: "Trevo Mk0 touchscreen check-in stations built into a hotel reception counter" },
+    image: { src: "/hotels/mk0.jpg?v=2", w: 1600, h: 837, alt: "Trevo Mk0 touchscreen check-in stations built into a hotel reception counter" },
   },
   {
     name: "Mk1",
@@ -670,7 +670,7 @@ export const trevoModels: TrevoModel[] = [
     description:
       "A portable touchscreen kiosk with automatic key-card encoding and dispensing, including QR-based key collection.",
     bestFor: "For hotels adding self-service key collection without redesigning the reception desk.",
-    image: { src: "/hotels/mk1.jpg", w: 1600, h: 837, alt: "Guest checking in on a Trevo Mk1 tabletop kiosk in a hotel lobby" },
+    image: { src: "/hotels/mk1.jpg?v=2", w: 1600, h: 837, alt: "Guest checking in on a Trevo Mk1 tabletop kiosk in a hotel lobby" },
   },
   {
     name: "Mk2",
@@ -678,7 +678,7 @@ export const trevoModels: TrevoModel[] = [
     description:
       "A portable check-in kiosk with passport and ID scanning, a selfie camera with liveness checking, payment and key-card collection.",
     bestFor: "For hotels wanting more of the arrival handled at one self-service station.",
-    image: { src: "/hotels/mk2.jpg", w: 1600, h: 837, alt: "Guest scanning a passport on a Trevo Mk2 self check-in kiosk" },
+    image: { src: "/hotels/mk2.jpg?v=2", w: 1600, h: 837, alt: "Guest scanning a passport on a Trevo Mk2 self check-in kiosk" },
   },
   {
     name: "Mk3",
@@ -740,8 +740,8 @@ export const trevoHotels: string[] = [
 export const trevoResults: { value: string; label: string; source: string }[] = [
   { value: "100%", label: "self check-in adoption", source: "Hotel Waterloo Singapore, 2026. The lobby was designed around Trevo Mk0 kiosks; featured on CNA." },
   { value: "~40%", label: "of guests chose mobile check-in", source: "The Fullerton Hotel Singapore on a peak weekend, 2024, as cited by the Singapore Tourism Board." },
-  { value: "80%", label: "of arrivals can check in at the kiosk", source: "What hotels can reach with Trevo kiosks. Trevo figure." },
-  { value: "Up to 5%", label: "extra revenue each month", source: "From room upgrades and add-ons such as airport transfers. Trevo figure." },
+  { value: "80%", label: "Trevo reports kiosk use by up to 80% of arrivals at some hotels", source: "What hotels can reach with Trevo kiosks. Trevo figure." },
+  { value: "Up to 5%", label: "Trevo reports up to 5% extra revenue each month", source: "From room upgrades and add-ons such as airport transfers. Trevo figure." },
 ];
 
 export const trevoGuides: { title: string; text: string; href: string }[] = [
