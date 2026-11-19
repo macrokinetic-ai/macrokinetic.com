@@ -3,6 +3,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
+import WebinarSlot from "@/components/WebinarSlot";
 import fs from "fs";
 import path from "path";
 import {
@@ -121,6 +122,8 @@ export default function HotelsPage() {
       {/* 01 Hero */}
       <section className="bg-canvas pt-28 md:pt-32">
         <div className="shell pb-12 md:pb-16">
+          {/* 00 Webinar slot: registration, then recording (lib/webinar.ts) */}
+          <WebinarSlot />
           <p className="eyebrow">Hotels · United Kingdom</p>
           <h1 className="mt-6 max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-0.045em] text-ink md:text-[64px]">
             Hotel self check-in kiosks, with local support in London.
