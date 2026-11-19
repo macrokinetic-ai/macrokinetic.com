@@ -80,7 +80,7 @@ function RegistrationBanner() {
         </h2>
         <p className="mt-2 text-[14px] text-graphite">{ev.shortDateLabel} · 11:00–12:15 GMT · Online</p>
         <p className="mt-1 text-[14px] text-muted">
-          With {ev.speaker.name}, {ev.speaker.role}. Guest speaker to be announced.
+          With {ev.speaker.name} ({ev.speaker.role}) and guest speaker {ev.guestSpeaker.name} ({ev.guestSpeaker.role}).
         </p>
         <Link href={EVENT_PATH} className={`mt-3 inline-block ${textLink}`}>
           Event details and agenda →

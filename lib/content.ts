@@ -820,8 +820,9 @@ export const eduFaq: { q: string; a: string }[] = [
 
 // ── Events ─────────────────────────────────────────────────────────────────
 // Rules: link only to the exact Eventbrite URL (no tracking parameters);
-// speaker bio is verbatim as supplied by Trevo; guest speaker unnamed until
-// confirmed. Event end, Eventbrite URL and the highlight video live in
+// speaker bio is verbatim as supplied by Trevo; speaker names and titles match
+// the Eventbrite page exactly (no bio for the guest speaker: none verified).
+// Event end, Eventbrite URL and the highlight video live in
 // lib/webinar.ts (the webinar slot on /hotels and the event page).
 export const hospitalityAiEvent = {
   slug: "hospitality-in-the-age-of-ai",
@@ -845,7 +846,12 @@ export const hospitalityAiEvent = {
     jobTitle: "Founder & CEO",
     bio: "Maxim Tint is the founder and CEO of trevo.ai, an AI platform transforming hotel guest experiences through multimodal AI, computer vision and generative content. Over the past 12 years, he has helped hospitality businesses deploy technology that improves productivity and personalizes the guest experience, supporting more than 40,000 hotel rooms across eight countries. Maxim began his career building business intelligence and data warehousing systems as a founding member of a software company later acquired by NTT DATA.",
   },
-  guestSpeaker: "Special guest speaker: to be announced",
+  guestSpeaker: {
+    name: "Samuel Salvage",
+    role: "Founder & CEO, Neptune Growth Partners",
+  },
+  qaNote:
+    "Live Q&A: Benny Chan, Trevo's authorised partner for the UK and Europe, will join the speakers to answer questions in the final 15 minutes.",
   agenda: [
     "Welcome",
     "AI challenges for the industry",

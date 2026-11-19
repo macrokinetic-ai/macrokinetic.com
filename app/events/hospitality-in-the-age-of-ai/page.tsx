@@ -11,7 +11,7 @@ import { company, hospitalityAiEvent as ev } from "@/lib/content";
 const PATH = `/events/${ev.slug}`;
 const PAGE_URL = `${company.siteUrl}${PATH}`;
 const TITLE = `${ev.shortTitle} — Free Online Event, 10 December 2026 | MacroKinetic`;
-const DESCRIPTION = `${ev.title}. ${ev.dateLabel}, ${ev.timeLabel}, online and free. Speaker: ${ev.speaker.name}, ${ev.speaker.role}.`;
+const DESCRIPTION = `${ev.title}. ${ev.dateLabel}, ${ev.timeLabel}, online and free. Speakers: ${ev.speaker.name} (${ev.speaker.role}) and ${ev.guestSpeaker.name} (${ev.guestSpeaker.role}).`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -50,12 +50,15 @@ const schema = {
     availability: "https://schema.org/InStock",
   },
   organizer: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
-  performer: {
-    "@type": "Person",
-    name: ev.speaker.name,
-    jobTitle: ev.speaker.jobTitle,
-    worksFor: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
-  },
+  performer: [
+    {
+      "@type": "Person",
+      name: ev.speaker.name,
+      jobTitle: ev.speaker.jobTitle,
+      worksFor: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
+    },
+    { "@type": "Person", name: ev.guestSpeaker.name, jobTitle: ev.guestSpeaker.role },
+  ],
 };
 
 const btnDark =
@@ -139,7 +142,11 @@ export default function HospitalityAiEventPage() {
               <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-graphite">{ev.speaker.bio}</p>
             </div>
             <div className="hairline-t pt-8">
-              <p className="text-[16px] text-graphite">{ev.guestSpeaker}</p>
+              <h3 className="text-xl font-medium text-ink">{ev.guestSpeaker.name}</h3>
+              <p className="mt-1 text-[14px] text-macro">{ev.guestSpeaker.role}</p>
+            </div>
+            <div className="hairline-t pt-8">
+              <p className="max-w-2xl text-[16px] leading-relaxed text-graphite">{ev.qaNote}</p>
             </div>
           </div>
         </div>
