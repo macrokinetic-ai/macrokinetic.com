@@ -6,6 +6,8 @@
  * and the briefed company facts. Edit copy here; pages stay structural.
  */
 
+import { webinar } from "./webinar";
+
 export const company = {
   name: "MacroKinetic",
   // Real legal entities (shown in the footer; UK Companies Act disclosure).
@@ -819,8 +821,8 @@ export const eduFaq: { q: string; a: string }[] = [
 // ── Events ─────────────────────────────────────────────────────────────────
 // Rules: link only to the exact Eventbrite URL (no tracking parameters);
 // speaker bio is verbatim as supplied by Trevo; guest speaker unnamed until
-// confirmed. After endDate the /hotels banner hides itself and the event page
-// shows "This event has ended" (components/UntilEventEnd.tsx).
+// confirmed. Event end, Eventbrite URL and the highlight video live in
+// lib/webinar.ts (the webinar slot on /hotels and the event page).
 export const hospitalityAiEvent = {
   slug: "hospitality-in-the-age-of-ai",
   title:
@@ -830,10 +832,10 @@ export const hospitalityAiEvent = {
   shortDateLabel: "Thu 10 Dec 2026",
   timeLabel: "11:00–12:15 UK time (GMT)",
   startDate: "2026-12-10T11:00:00+00:00",
-  endDate: "2026-12-10T12:15:00+00:00",
+  endDate: webinar.eventEnd,
   format: "Online",
   priceLabel: "Free",
-  registerUrl: "https://www.eventbrite.co.uk/e/2004670110264",
+  registerUrl: webinar.eventbriteUrl,
   summary:
     "A free online session on how hotels can use AI for automation and efficiency while keeping the human touch.",
   organizer: { name: "Trevo", url: "https://www.trevo.ai/" },

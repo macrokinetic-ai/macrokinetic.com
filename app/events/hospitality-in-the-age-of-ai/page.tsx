@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import UntilEventEnd from "@/components/UntilEventEnd";
+import { WebinarVideo, webinarVideoSchema } from "@/components/WebinarSlot";
 import { breadcrumbSchema } from "@/lib/schema";
+import { webinar } from "@/lib/webinar";
 import { company, hospitalityAiEvent as ev } from "@/lib/content";
 
 const PATH = `/events/${ev.slug}`;
@@ -64,9 +67,21 @@ const endedNote = (
   </p>
 );
 
-function RegisterButton() {
+// Hero after the event: the ended note, then the highlight video once it is set.
+const endedHero = (
+  <div>
+    {endedNote}
+    {webinar.highlightVideo && (
+      <div className="mt-8 max-w-3xl">
+        <WebinarVideo />
+      </div>
+    )}
+  </div>
+);
+
+function RegisterButton({ ended = endedNote }: { ended?: ReactNode }) {
   return (
-    <UntilEventEnd end={ev.endDate} ended={endedNote}>
+    <UntilEventEnd end={ev.endDate} ended={ended}>
       <a href={ev.registerUrl} target="_blank" rel="noopener noreferrer" className={btnDark}>
         Register free on Eventbrite ↗
       </a>
@@ -75,15 +90,14 @@ function RegisterButton() {
   );
 }
 
+const videoSchema = webinarVideoSchema();
+
 export default function HospitalityAiEventPage() {
   return (
     <>
       {/* Hero */}
       <section className="bg-canvas pt-28 md:pt-32">
         <div className="shell pb-12 md:pb-16">
-          <UntilEventEnd end={ev.endDate} ended={<p className="mb-6 text-[14px] font-medium text-macro">This event has ended.</p>}>
-            {null}
-          </UntilEventEnd>
           <p className="eyebrow">Free online event · Hotels</p>
           <h1 className="mt-6 max-w-4xl text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl">
             {ev.title}
@@ -104,7 +118,7 @@ export default function HospitalityAiEventPage() {
           </dl>
           <p className="mt-8 max-w-2xl text-[16px] leading-relaxed text-muted">{ev.summary}</p>
           <div className="mt-10">
-            <RegisterButton />
+            <RegisterButton ended={endedHero} />
           </div>
         </div>
       </section>
@@ -155,9 +169,18 @@ export default function HospitalityAiEventPage() {
       <section className="hairline-t bg-paper">
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-6">
-            <h2 className="text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
-              Join us online. It is free.
-            </h2>
+            <UntilEventEnd
+              end={ev.endDate}
+              ended={
+                <h2 className="text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
+                  About the organiser.
+                </h2>
+              }
+            >
+              <h2 className="text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
+                Join us online. It is free.
+              </h2>
+            </UntilEventEnd>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
               Organised by Trevo. MacroKinetic MediaTech Limited is Trevo&rsquo;s
               authorised partner for the UK and Europe, providing sales,
@@ -176,6 +199,7 @@ export default function HospitalityAiEventPage() {
       </section>
 
       <JsonLd data={schema} />
+      {videoSchema && <JsonLd data={videoSchema} />}
       <JsonLd
         data={breadcrumbSchema([{ name: ev.shortTitle, path: PATH }])}
       />
