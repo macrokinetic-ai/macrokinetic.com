@@ -3,6 +3,7 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import Image from "next/image";
 import Link from "next/link";
+import UntilEventEnd from "@/components/UntilEventEnd";
 import fs from "fs";
 import path from "path";
 import {
@@ -17,6 +18,7 @@ import {
   trevoGuides,
   trevoHotels,
   faqs,
+  hospitalityAiEvent as ev,
 } from "@/lib/content";
 
 const PAGE_URL = `${company.siteUrl}/hotels`;
@@ -121,6 +123,43 @@ export default function HotelsPage() {
       {/* 01 Hero */}
       <section className="bg-canvas pt-28 md:pt-32">
         <div className="shell pb-12 md:pb-16">
+          {/* 00 Webinar banner: hides itself after the event ends */}
+          <UntilEventEnd end={ev.endDate}>
+            <aside
+              aria-label="Upcoming webinar"
+              className="mb-10 flex flex-col gap-6 rounded-xl border-hair border-hairline-strong bg-paper p-5 md:mb-14 md:flex-row md:items-center md:justify-between md:gap-10 md:p-7"
+            >
+              <div>
+                <p className="eyebrow">Upcoming event</p>
+                <h2 className="mt-3 text-[22px] font-medium leading-tight tracking-editorial text-ink md:text-[26px]">
+                  Free webinar: {ev.shortTitle}
+                </h2>
+                <p className="mt-2 text-[14px] text-graphite">
+                  {ev.shortDateLabel} · 11:00–12:15 GMT · Online
+                </p>
+                <p className="mt-1 text-[14px] text-muted">
+                  With {ev.speaker.name}, {ev.speaker.role}. Guest speaker to be announced.
+                </p>
+                <Link
+                  href={`/events/${ev.slug}`}
+                  className="mt-3 inline-block text-[14px] font-medium text-ink underline underline-offset-4"
+                >
+                  Event details and agenda →
+                </Link>
+              </div>
+              <div className="min-w-0 shrink-0 md:max-w-[320px] md:text-right">
+                <a
+                  href={ev.registerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-block ${btnDark}`}
+                >
+                  Register free
+                </a>
+                <p className="mt-2 break-all text-[12px] text-faint">{ev.registerUrl}</p>
+              </div>
+            </aside>
+          </UntilEventEnd>
           <p className="eyebrow">Hotels · United Kingdom</p>
           <h1 className="mt-6 max-w-[900px] text-[40px] font-semibold leading-[1.05] tracking-[-0.045em] text-ink md:text-[64px]">
             Hotel self check-in kiosks, with local support in London.
