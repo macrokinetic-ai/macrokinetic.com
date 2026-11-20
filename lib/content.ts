@@ -837,26 +837,66 @@ export const hospitalityAiEvent = {
   format: "Online",
   priceLabel: "Free",
   registerUrl: webinar.eventbriteUrl,
+  // Answer-first summary, shown directly under the H1 and used as the Event description.
   summary:
-    "A free online session on how hotels can use AI for automation and efficiency while keeping the human touch.",
-  organizer: { name: "Trevo", url: "https://www.trevo.ai/" },
+    "Hospitality in the Age of AI is a free 75-minute online webinar for UK hotel professionals on Thursday 10 December 2026, 11:00–12:15 GMT. Featuring Trevo CEO Maxim Tint and guest speaker Samuel Salvage, it explores hospitality AI, hotel automation, self check-in, real Trevo case studies and how technology can support human-led guest service.",
+  organizer: { name: "Trevo", url: "https://www.trevo.ai" },
   speaker: {
     name: "Maxim Tint",
     role: "Founder & CEO, Trevo",
     jobTitle: "Founder & CEO",
+    note: "Joining from Singapore",
     bio: "Maxim Tint is the founder and CEO of trevo.ai, an AI platform transforming hotel guest experiences through multimodal AI, computer vision and generative content. Over the past 12 years, he has helped hospitality businesses deploy technology that improves productivity and personalizes the guest experience, supporting more than 40,000 hotel rooms across eight countries. Maxim began his career building business intelligence and data warehousing systems as a founding member of a software company later acquired by NTT DATA.",
   },
   guestSpeaker: {
     name: "Samuel Salvage",
     role: "Founder & CEO, Neptune Growth Partners",
+    jobTitle: "Founder & CEO",
+    org: "Neptune Growth Partners",
+    note: "Guest speaker on AI",
   },
   qaNote:
     "Live Q&A: Benny Chan, Trevo's authorised partner for the UK and Europe, will join the speakers to answer questions in the final 15 minutes.",
   agenda: [
     "Welcome",
-    "AI challenges for the industry",
+    "AI challenges for the hospitality industry",
     "AI solutions for hospitality",
     "Trevo case studies",
-    "Q&A",
+    "Q&A and open discussion",
+  ],
+  // Visible FAQ on the event page and its FAQPage JSON-LD (wording must stay identical).
+  faqs: [
+    {
+      q: "What is the Hospitality in the Age of AI webinar?",
+      a: "It is a free 75-minute online webinar for UK hotel professionals covering hospitality AI, automation, Trevo case studies and the balance between efficiency and human service.",
+    },
+    {
+      q: "When is the webinar and how long does it last?",
+      a: "Thursday 10 December 2026, from 11:00 to 12:15 GMT (UK time). The online webinar lasts 75 minutes.",
+    },
+    {
+      q: "Is the hotel AI webinar free?",
+      a: "Yes. The webinar is free to attend online. Register at https://www.eventbrite.co.uk/e/2004670110264",
+    },
+    {
+      q: "Who should attend the webinar?",
+      a: "UK hotel owners, general managers, front office managers, revenue managers, operations managers and hotel IT professionals.",
+    },
+    {
+      q: "Who are the webinar speakers?",
+      a: "Maxim Tint, Founder and CEO of Trevo, joins from Singapore. Samuel Salvage, Founder and CEO of Neptune Growth Partners, is the guest speaker on AI. Benny Chan, Trevo's authorised partner for the UK and Europe, joins the final live Q&A.",
+    },
+    {
+      q: "What will the webinar cover?",
+      a: "AI challenges for the hospitality industry, AI solutions for hospitality, Trevo case studies, and a live Q&A and open discussion.",
+    },
+    {
+      q: "Will the webinar explain hotel self check-in technology?",
+      a: "Yes. Trevo makes hotel self check-in kiosks and a platform connecting kiosks, mobile check-in and digital keys. Trevo case studies are part of the agenda.",
+    },
+    {
+      q: "Is the webinar about replacing hotel reception staff with AI?",
+      a: "No. The message is that technology should handle routine check-in tasks so reception teams have more time for guests, rather than replacing hospitality staff.",
+    },
   ],
 };

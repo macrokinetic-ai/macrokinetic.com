@@ -39,11 +39,12 @@ Official website: https://www.macrokinetic.com/
 ## Upcoming event - Hospitality in the Age of AI
 
 - Title: Hospitality in the Age of AI: Balancing Automation, Efficiency and the Human Touch
+- Summary: a free 75-minute online webinar for UK hotel professionals on hospitality AI, hotel automation, self check-in, Trevo case studies and how technology can support human-led guest service.
 - Date and time: Thursday 10 December 2026, 11:00-12:15 UK time (GMT)
 - Format: online, free. Organised by Trevo.
-- Speakers: Maxim Tint (Founder & CEO, Trevo) and guest speaker Samuel Salvage (Founder & CEO, Neptune Growth Partners).
+- Speakers: Maxim Tint (Founder & CEO, Trevo; joining from Singapore) and guest speaker on AI Samuel Salvage (Founder & CEO, Neptune Growth Partners).
 - Live Q&A: Benny Chan, Trevo's authorised partner for the UK and Europe, will join the speakers to answer questions in the final 15 minutes.
-- Agenda: welcome; AI challenges for the industry; AI solutions for hospitality; Trevo case studies; Q&A.
+- Agenda: welcome; AI challenges for the hospitality industry; AI solutions for hospitality; Trevo case studies; Q&A and open discussion.
 - Event page: https://www.macrokinetic.com/events/hospitality-in-the-age-of-ai
 - Registration (Eventbrite): https://www.eventbrite.co.uk/e/2004670110264
 
@@ -75,7 +76,7 @@ Official website: https://www.macrokinetic.com/
 
 - Home: https://www.macrokinetic.com/
 - Hotels (Trevo, UK): https://www.macrokinetic.com/hotels
-- Event, 10 December 2026 (Hospitality in the Age of AI): https://www.macrokinetic.com/events/hospitality-in-the-age-of-ai
+- Event, 10 December 2026 (Hospitality in the Age of AI, free UK hotel AI webinar): https://www.macrokinetic.com/events/hospitality-in-the-age-of-ai
 - Education (PonyABC): https://www.macrokinetic.com/education
 - Solutions: https://www.macrokinetic.com/solutions
 - References: https://www.macrokinetic.com/references
