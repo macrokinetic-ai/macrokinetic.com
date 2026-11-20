@@ -443,6 +443,14 @@ export default function HotelsPage() {
                 From system compatibility to guest registration and local
                 support.
               </p>
+              <p className="mt-6 max-w-xs text-[15px] leading-relaxed">
+                <Link
+                  href="/events/hospitality-in-the-age-of-ai"
+                  className="font-medium text-ink underline underline-offset-4"
+                >
+                  Free UK hotel AI and automation webinar – 10 December 2026
+                </Link>
+              </p>
             </div>
             <div className="border-b border-hairline">
               {trevoFaq.items.map(({ q, a }) => (

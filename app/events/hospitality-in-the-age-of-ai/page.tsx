@@ -4,19 +4,22 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import UntilEventEnd from "@/components/UntilEventEnd";
 import { WebinarVideo, webinarVideoSchema } from "@/components/WebinarSlot";
-import { breadcrumbSchema } from "@/lib/schema";
+import { breadcrumbSchema, ORG_ID } from "@/lib/schema";
 import { webinar } from "@/lib/webinar";
 import { company, hospitalityAiEvent as ev } from "@/lib/content";
 
 const PATH = `/events/${ev.slug}`;
 const PAGE_URL = `${company.siteUrl}${PATH}`;
-const TITLE = `${ev.shortTitle} — Free Online Event, 10 December 2026 | MacroKinetic`;
-const DESCRIPTION = `${ev.title}. ${ev.dateLabel}, ${ev.timeLabel}, online and free. Speakers: ${ev.speaker.name} (${ev.speaker.role}) and ${ev.guestSpeaker.name} (${ev.guestSpeaker.role}).`;
+const TITLE = "Free Hotel AI Webinar UK | 10 Dec 2026 | Trevo";
+const DESCRIPTION =
+  "Free UK hotel AI webinar, 10 Dec 2026, 11am GMT. Explore hotel automation, self check-in, Trevo case studies and the human touch. Register online.";
+// Real-screen Trevo kiosk banner used at the top of /hotels (no separate webinar artwork exists).
+const IMAGE = `${company.siteUrl}/hotels/hero-mk2-lobby.jpg`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: PATH },
+  alternates: { canonical: PAGE_URL },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
@@ -27,39 +30,98 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION, images: ["/og-hotels.jpg"] },
 };
 
+const EVENT_ID = `${PAGE_URL}#event`;
+const { "@context": _bc, ...breadcrumb } = breadcrumbSchema([{ name: ev.shortTitle, path: PATH }]);
+const videoSchema = webinarVideoSchema();
+const { "@context": _vc, ...video } = videoSchema ?? { "@context": "" };
+
+// One @graph: WebPage (published by the sitewide Organization, referenced by
+// @id, not duplicated), Event, FAQPage (identical to the visible FAQ),
+// breadcrumb, and the highlight VideoObject once it is set in lib/webinar.ts.
 const schema = {
   "@context": "https://schema.org",
-  "@type": "Event",
-  "@id": `${PAGE_URL}#event`,
-  name: ev.title,
-  description: ev.summary,
-  url: PAGE_URL,
-  image: [`${company.siteUrl}/og-hotels.jpg`],
-  startDate: ev.startDate,
-  endDate: ev.endDate,
-  eventStatus: "https://schema.org/EventScheduled",
-  eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
-  location: { "@type": "VirtualLocation", url: ev.registerUrl },
-  isAccessibleForFree: true,
-  inLanguage: "en-GB",
-  offers: {
-    "@type": "Offer",
-    url: ev.registerUrl,
-    price: 0,
-    priceCurrency: "GBP",
-    availability: "https://schema.org/InStock",
-  },
-  organizer: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
-  performer: [
+  "@graph": [
     {
-      "@type": "Person",
-      name: ev.speaker.name,
-      jobTitle: ev.speaker.jobTitle,
-      worksFor: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}#webpage`,
+      url: PAGE_URL,
+      name: TITLE,
+      description: DESCRIPTION,
+      inLanguage: "en-GB",
+      isPartOf: { "@id": `${company.siteUrl}/#website` },
+      publisher: { "@id": ORG_ID },
+      about: { "@id": EVENT_ID },
+      primaryImageOfPage: IMAGE,
     },
-    { "@type": "Person", name: ev.guestSpeaker.name, jobTitle: ev.guestSpeaker.role },
+    {
+      "@type": "Event",
+      "@id": EVENT_ID,
+      name: ev.title,
+      description: ev.summary,
+      url: PAGE_URL,
+      image: [IMAGE],
+      startDate: "2026-12-10T11:00:00+00:00",
+      endDate: "2026-12-10T12:15:00+00:00",
+      eventStatus: "https://schema.org/EventScheduled",
+      eventAttendanceMode: "https://schema.org/OnlineEventAttendanceMode",
+      isAccessibleForFree: true,
+      inLanguage: "en-GB",
+      location: { "@type": "VirtualLocation", url: ev.registerUrl },
+      organizer: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
+      performer: [
+        {
+          "@type": "Person",
+          name: ev.speaker.name,
+          jobTitle: ev.speaker.jobTitle,
+          worksFor: { "@type": "Organization", name: ev.organizer.name, url: ev.organizer.url },
+        },
+        {
+          "@type": "Person",
+          name: ev.guestSpeaker.name,
+          jobTitle: ev.guestSpeaker.jobTitle,
+          worksFor: { "@type": "Organization", name: ev.guestSpeaker.org },
+        },
+      ],
+      offers: {
+        "@type": "Offer",
+        url: ev.registerUrl,
+        price: "0",
+        priceCurrency: "GBP",
+        availability: "https://schema.org/InStock",
+      },
+      about: [
+        { "@type": "Thing", name: "AI in hospitality" },
+        { "@type": "Thing", name: "Hotel self check-in technology" },
+        { "@type": "Thing", name: "Hotel operations automation" },
+        { "@type": "Thing", name: "Hotel guest experience" },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faq`,
+      mainEntity: ev.faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    breadcrumb,
+    ...(videoSchema ? [video] : []),
   ],
 };
+
+// Render full URLs inside text as links, keeping the URL itself as the visible text.
+function withLinks(text: string) {
+  return text.split(/(https:\/\/\S+)/).map((part, i) =>
+    part.startsWith("https://") ? (
+      <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="break-all text-ink underline underline-offset-4">
+        {part}
+      </a>
+    ) : (
+      part
+    ),
+  );
+}
 
 const btnDark =
   "inline-block rounded-full bg-ink px-6 py-3 text-[13px] font-medium tracking-editorial text-white transition-opacity hover:opacity-85";
@@ -86,14 +148,12 @@ function RegisterButton({ ended = endedNote }: { ended?: ReactNode }) {
   return (
     <UntilEventEnd end={ev.endDate} ended={ended}>
       <a href={ev.registerUrl} target="_blank" rel="noopener noreferrer" className={btnDark}>
-        Register free on Eventbrite ↗
+        Register free on Eventbrite <span aria-hidden="true">↗</span>
       </a>
       <p className="mt-3 break-all text-[12px] text-faint">{ev.registerUrl}</p>
     </UntilEventEnd>
   );
 }
-
-const videoSchema = webinarVideoSchema();
 
 export default function HospitalityAiEventPage() {
   return (
@@ -105,7 +165,11 @@ export default function HospitalityAiEventPage() {
           <h1 className="mt-6 max-w-4xl text-3xl font-semibold leading-[1.1] tracking-tight text-ink md:text-5xl">
             {ev.title}
           </h1>
-          <dl className="mt-8 grid max-w-2xl grid-cols-1 gap-4 text-[15px] sm:grid-cols-3">
+          <p className="mt-6 max-w-3xl text-[17px] leading-relaxed text-graphite md:text-[18px]">{ev.summary}</p>
+          <div className="mt-8">
+            <RegisterButton ended={endedHero} />
+          </div>
+          <dl className="mt-10 grid max-w-2xl grid-cols-1 gap-4 text-[15px] sm:grid-cols-3">
             <div>
               <dt className="text-[12px] uppercase tracking-wide2 text-faint">Date</dt>
               <dd className="mt-1 text-ink">{ev.dateLabel}</dd>
@@ -119,10 +183,6 @@ export default function HospitalityAiEventPage() {
               <dd className="mt-1 text-ink">{ev.format} · {ev.priceLabel}</dd>
             </div>
           </dl>
-          <p className="mt-8 max-w-2xl text-[16px] leading-relaxed text-muted">{ev.summary}</p>
-          <div className="mt-10">
-            <RegisterButton ended={endedHero} />
-          </div>
         </div>
       </section>
 
@@ -139,11 +199,13 @@ export default function HospitalityAiEventPage() {
             <div>
               <h3 className="text-xl font-medium text-ink">{ev.speaker.name}</h3>
               <p className="mt-1 text-[14px] text-macro">{ev.speaker.role}</p>
+              <p className="mt-1 text-[14px] text-muted">{ev.speaker.note}</p>
               <p className="mt-4 max-w-2xl text-[16px] leading-relaxed text-graphite">{ev.speaker.bio}</p>
             </div>
             <div className="hairline-t pt-8">
               <h3 className="text-xl font-medium text-ink">{ev.guestSpeaker.name}</h3>
               <p className="mt-1 text-[14px] text-macro">{ev.guestSpeaker.role}</p>
+              <p className="mt-1 text-[14px] text-muted">{ev.guestSpeaker.note}</p>
             </div>
             <div className="hairline-t pt-8">
               <p className="max-w-2xl text-[16px] leading-relaxed text-graphite">{ev.qaNote}</p>
@@ -172,8 +234,28 @@ export default function HospitalityAiEventPage() {
         </div>
       </section>
 
-      {/* Register + context */}
+      {/* FAQ: server-rendered, answers always visible (same wording as the FAQPage JSON-LD) */}
       <section className="hairline-t bg-paper">
+        <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-24">
+          <div className="md:col-span-4">
+            <p className="eyebrow">FAQ</p>
+            <h2 className="mt-4 text-2xl font-medium leading-tight tracking-editorial text-ink md:text-3xl">
+              Frequently asked questions
+            </h2>
+          </div>
+          <dl className="md:col-span-8">
+            {ev.faqs.map((f) => (
+              <div key={f.q} className="hairline-t py-6">
+                <dt className="text-[17px] font-medium text-ink">{f.q}</dt>
+                <dd className="mt-2 max-w-2xl text-[15px] leading-relaxed text-graphite">{withLinks(f.a)}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </section>
+
+      {/* Register + context */}
+      <section className="hairline-t bg-canvas">
         <div className="shell grid grid-cols-1 gap-10 py-16 md:grid-cols-12 md:py-20">
           <div className="md:col-span-6">
             <UntilEventEnd
@@ -194,8 +276,14 @@ export default function HospitalityAiEventPage() {
               installation and local support for UK hotels.
             </p>
             <p className="mt-4 text-[15px] text-graphite">
+              Trevo:{" "}
+              <a href={ev.organizer.url} target="_blank" rel="noopener noreferrer" className="font-medium text-ink underline underline-offset-4">
+                {ev.organizer.url}
+              </a>
+            </p>
+            <p className="mt-4 text-[15px] text-graphite">
               <Link href="/hotels" className="font-medium text-ink underline underline-offset-4">
-                Trevo hotel self check-in in the UK: www.macrokinetic.com/hotels
+                Trevo hotel self check-in in the UK: {company.siteUrl}/hotels
               </Link>
             </p>
           </div>
@@ -206,10 +294,6 @@ export default function HospitalityAiEventPage() {
       </section>
 
       <JsonLd data={schema} />
-      {videoSchema && <JsonLd data={videoSchema} />}
-      <JsonLd
-        data={breadcrumbSchema([{ name: ev.shortTitle, path: PATH }])}
-      />
     </>
   );
 }
