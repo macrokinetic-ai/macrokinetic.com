@@ -467,6 +467,7 @@ export const nav = [
   { label: "Education", href: "/education" },
   { label: "Solutions", href: "/solutions" },
   { label: "References", href: "/references" },
+  { label: "Claude", href: "/claude" },
 ] as const;
 
 export type FaqSection = { heading: string; items: { q: string; a: string }[] };
